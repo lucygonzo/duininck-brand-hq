@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BRAND_IDENTITY, VERBAL_INVENTORY, MESSAGING_MATRIX } from '../data/brandData';
 import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, SubTabs, DataTable, Divider, C } from '../components/ui';
 
-const TABS = ['Messaging', 'Voice', 'Inventory', 'Conflicts', 'Patterns'];
+const TABS = ['Messaging', 'Voice', 'Portfolio Voice', 'Inventory', 'Conflicts', 'Patterns'];
 
 export default function VerbalIdentityPage() {
   const [tab, setTab] = useState(TABS[0]);
@@ -15,6 +15,31 @@ export default function VerbalIdentityPage() {
       <Callout>
         <strong>Critical finding:</strong> The most powerful positioning from the CMO discovery call ("Built to Last," "The Full Truck," "whole person" wellbeing, the centennial) appears NOWHERE on any live Duininck property. The brand strategy exists only here in Brand HQ, not on the websites customers actually visit.
       </Callout>
+
+      {/* Pinned Quick Reference: visible on all tabs */}
+      <Card style={{ background: C.s2, padding: '12px 16px', marginBottom: '16px', border: `1px solid ${C.border}` }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '20px' }}>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: '4px' }}>How to Talk About Us (Quick Reference)</div>
+            <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', fontWeight: 700, color: C.accent, marginBottom: '4px' }}>Brand Anchor: BUILT TO LAST</div>
+            <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, lineHeight: 1.5 }}>Fourth-generation, family-owned. 100 years. People. Values. Growth. When a Duininck truck shows up, it carries six operating companies and a century of earned trust.</div>
+          </div>
+          <div style={{ display: 'flex', gap: '16px', flexShrink: 0 }}>
+            <div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '7px', color: '#22C55E', textTransform: 'uppercase', marginBottom: '3px' }}>Say</div>
+              {BRAND_IDENTITY.doSay.slice(0, 4).map((s, i) => (
+                <div key={i} style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.sub, padding: '1px 0' }}>&#x2713; {s}</div>
+              ))}
+            </div>
+            <div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '7px', color: C.red, textTransform: 'uppercase', marginBottom: '3px' }}>Avoid</div>
+              {BRAND_IDENTITY.dontSay.slice(0, 4).map((s, i) => (
+                <div key={i} style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.ghost, padding: '1px 0' }}>&#x2717; {s}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Card>
 
       <SubTabs tabs={TABS} active={tab} onChange={setTab} />
 
@@ -35,8 +60,33 @@ export default function VerbalIdentityPage() {
               </div>
             </Card>
 
+            {/* Taglines at Multiple Lengths */}
+            <Divider label="Taglines" />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '12px' }}>
+              {Object.entries(MESSAGING_MATRIX.taglines).map(([length, text]) => (
+                <Card key={length} style={{ padding: '10px 14px', cursor: 'pointer' }} onClick={() => navigator.clipboard.writeText(text as string)}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, textTransform: 'uppercase', marginBottom: '4px' }}>{length}</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: length === 'short' ? '18px' : length === 'medium' ? '14px' : '12px', fontWeight: length === 'short' ? 800 : length === 'medium' ? 700 : 400, color: C.text, lineHeight: 1.4 }}>{text as string}</div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '7px', color: C.ghost, marginTop: '4px' }}>Click to copy</div>
+                </Card>
+              ))}
+            </div>
+
+            {/* Boilerplate Copy */}
+            <Divider label="Boilerplate Copy" />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '16px' }}>
+              {Object.entries(MESSAGING_MATRIX.boilerplate).map(([type, text]) => (
+                <Card key={type} style={{ padding: '10px 14px', cursor: 'pointer' }} onClick={() => navigator.clipboard.writeText(text as string)}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.accent, textTransform: 'uppercase', marginBottom: '4px' }}>{type.replace(/([A-Z])/g, ' $1').trim()}</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, lineHeight: 1.5 }}>{text as string}</div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '7px', color: C.ghost, marginTop: '4px' }}>Click to copy</div>
+                </Card>
+              ))}
+            </div>
+
             {/* Audience Toggles */}
-            <Lbl>Select Audience (messaging adapts from the core message above)</Lbl>
+            <Divider label="Audience-Adapted Messaging" />
+            <Lbl>Select audience to see how the core message adapts</Lbl>
             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '16px' }}>
               {MESSAGING_MATRIX.audiences.map(a => (
                 <button
@@ -98,6 +148,31 @@ export default function VerbalIdentityPage() {
               <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', color: C.text, lineHeight: 1.7, fontStyle: 'italic' }}>"{selected.sampleCopy}"</div>
               <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, marginTop: '8px' }}>Adapt for: {selected.channels.map(c => c.channel).join(' / ')}</div>
             </Card>
+
+            {/* Their Questions / How We Answer (if data exists) */}
+            {(selected as any).theirQuestions && (
+              <>
+                <Divider label="Their Questions & How We Answer" />
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <Card style={{ borderTop: `2px solid ${C.amber}` }}>
+                    <Lbl style={{ color: C.amber }}>What they ask before engaging</Lbl>
+                    {((selected as any).theirQuestions as string[]).map((q, i) => (
+                      <div key={i} style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', color: C.text, padding: '6px 0', borderBottom: `1px solid ${C.borderSoft}`, display: 'flex', gap: '6px' }}>
+                        <span style={{ color: C.amber, flexShrink: 0 }}>?</span> {q}
+                      </div>
+                    ))}
+                  </Card>
+                  <Card style={{ borderTop: `2px solid ${C.success}` }}>
+                    <Lbl style={{ color: C.success }}>How Duininck answers</Lbl>
+                    {((selected as any).howWeAnswer as string[]).map((a, i) => (
+                      <div key={i} style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', color: C.sub, padding: '6px 0', borderBottom: `1px solid ${C.borderSoft}`, display: 'flex', gap: '6px' }}>
+                        <span style={{ color: C.success, flexShrink: 0 }}>&#10003;</span> {a}
+                      </div>
+                    ))}
+                  </Card>
+                </div>
+              </>
+            )}
           </div>
         );
       })()}
@@ -138,6 +213,51 @@ export default function VerbalIdentityPage() {
               ))}
             </Card>
           </div>
+        </div>
+      )}
+
+      {tab === 'Portfolio Voice' && (
+        <div>
+          <Callout>Each portfolio company shares the same values DNA but speaks with a calibrated voice for its audience. The Duininck umbrella voice is the default. These are the adjustments for each sub-brand.</Callout>
+
+          {MESSAGING_MATRIX.portfolioVoice.map((pv, i) => (
+            <Card key={i} style={{ marginBottom: '12px', borderLeft: `4px solid ${C.accent}` }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '18px', fontWeight: 800, color: C.accent }}>{pv.brand}</div>
+                <Chip color={C.muted}>{pv.audienceFocus}</Chip>
+              </div>
+
+              <Body style={{ fontSize: '12px', marginBottom: '12px' }}>{pv.voiceShift}</Body>
+
+              <Lbl>Tone Adjustments</Lbl>
+              <div style={{ marginBottom: '12px' }}>
+                {pv.toneAdjustments.map((adj, j) => (
+                  <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '3px 0', display: 'flex', gap: '6px' }}>
+                    <span style={{ color: C.accent, flexShrink: 0 }}>&#9656;</span> {adj}
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <div style={{ background: 'rgba(34,197,94,0.04)', borderRadius: '6px', padding: '10px' }}>
+                  <Lbl style={{ color: '#22C55E' }}>Say</Lbl>
+                  {pv.doSay.map((s, j) => (
+                    <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '2px 0' }}>&#x2713; {s}</div>
+                  ))}
+                </div>
+                <div style={{ background: 'rgba(239,68,68,0.04)', borderRadius: '6px', padding: '10px' }}>
+                  <Lbl style={{ color: C.red }}>Avoid</Lbl>
+                  {pv.dontSay.map((s, j) => (
+                    <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.ghost, padding: '2px 0' }}>&#x2717; {s}</div>
+                  ))}
+                </div>
+              </div>
+            </Card>
+          ))}
+
+          <Block variant="blue">
+            <strong>Prinsco operates independently.</strong> Its voice, content hub ("The Water Table"), and audience are distinct from the Duininck construction brand. The connection adds trust ("family-owned responsiveness") but should not dominate the messaging.
+          </Block>
         </div>
       )}
 
