@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BRAND_IDENTITY, VERBAL_INVENTORY, MESSAGING_MATRIX } from '../data/brandData';
-import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, SubTabs, C } from '../components/ui';
+import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, SubTabs, DataTable, Divider, C } from '../components/ui';
 
 const TABS = ['Messaging', 'Voice', 'Inventory', 'Conflicts', 'Patterns'];
 
@@ -68,7 +68,7 @@ export default function VerbalIdentityPage() {
             </Card>
 
             {/* Value Props */}
-            <Lbl>Value Propositions</Lbl>
+            <Divider label="Value Propositions" />
             <div style={{ display: 'grid', gridTemplateColumns: selected.valueProps.length > 4 ? '1fr 1fr' : '1fr 1fr', gap: '8px', marginBottom: '16px' }}>
               {selected.valueProps.map((vp, i) => (
                 <Card key={i} style={{ padding: '12px' }}>
@@ -79,30 +79,21 @@ export default function VerbalIdentityPage() {
             </div>
 
             {/* Channels */}
-            <Lbl>Recommended Channels</Lbl>
-            <Card style={{ marginBottom: '16px' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Inter', sans-serif", fontSize: '12px' }}>
-                <thead>
-                  <tr style={{ borderBottom: `2px solid ${C.accent}` }}>
-                    {['Channel', 'How to Use', 'Frequency'].map(h => (
-                      <th key={h} style={{ textAlign: 'left', padding: '8px', fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, textTransform: 'uppercase' }}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {selected.channels.map((ch, i) => (
-                    <tr key={i} style={{ borderBottom: `1px solid ${C.borderSoft}` }}>
-                      <td style={{ padding: '8px', fontWeight: 600, color: C.text, whiteSpace: 'nowrap' }}>{ch.channel}</td>
-                      <td style={{ padding: '8px', color: C.sub }}>{ch.how}</td>
-                      <td style={{ padding: '8px', color: C.muted, fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', whiteSpace: 'nowrap' }}>{ch.frequency}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </Card>
+            <Divider label="Recommended Channels" />
+            <div style={{ marginBottom: '16px' }}>
+              <DataTable
+                headers={['Channel', 'How to Use', 'Frequency']}
+                colWidths={['18%', '62%', '20%']}
+                rows={selected.channels.map(ch => [
+                  <span style={{ fontWeight: 600, whiteSpace: 'nowrap' }}>{ch.channel}</span>,
+                  ch.how,
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: C.muted, whiteSpace: 'nowrap' }}>{ch.frequency}</span>,
+                ])}
+              />
+            </div>
 
             {/* Sample Copy */}
-            <Lbl>Sample Copy</Lbl>
+            <Divider label="Sample Copy" />
             <Card style={{ background: C.s2, borderLeft: `3px solid ${C.orange}` }}>
               <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', color: C.text, lineHeight: 1.7, fontStyle: 'italic' }}>"{selected.sampleCopy}"</div>
               <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, marginTop: '8px' }}>Adapt for: {selected.channels.map(c => c.channel).join(' / ')}</div>

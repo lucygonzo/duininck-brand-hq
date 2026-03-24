@@ -19,38 +19,38 @@ export default function CompetitivePage() {
       {tab === 'Overview' && (
         <div>
           <Lbl style={{ marginTop: '16px' }}>Head-to-Head Comparison</Lbl>
-          <Card style={{ overflowX: 'auto' }}>
+          <Card style={{ overflowX: 'auto', padding: '0' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Inter', sans-serif", fontSize: '11px' }}>
               <thead>
-                <tr style={{ borderBottom: `2px solid ${C.accent}` }}>
+                <tr style={{ background: C.accentDim, borderBottom: `2px solid ${C.accent}20` }}>
                   {['Company', 'Founded', 'Ownership', 'Revenue', 'Employees', 'States', 'Glassdoor', 'Open Roles', 'Heritage Claim'].map(h => (
-                    <th key={h} style={{ textAlign: 'left', padding: '6px 8px', fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{h}</th>
+                    <th key={h} style={{ textAlign: 'left', padding: '10px 10px', fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.accent, textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                <tr style={{ background: C.accentDim, borderBottom: `1px solid ${C.border}` }}>
-                  <td style={{ padding: '6px 8px', fontWeight: 700, color: C.accent }}>Duininck</td>
-                  <td style={{ padding: '6px 8px' }}>1926</td>
-                  <td style={{ padding: '6px 8px' }}>Family, 4th gen</td>
-                  <td style={{ padding: '6px 8px' }}>~$100M est.</td>
-                  <td style={{ padding: '6px 8px' }}>700+</td>
-                  <td style={{ padding: '6px 8px' }}>5+</td>
-                  <td style={{ padding: '6px 8px' }}>9 reviews</td>
-                  <td style={{ padding: '6px 8px' }}>~25</td>
-                  <td style={{ padding: '6px 8px', fontSize: '10px' }}>100 years, 4 generations, portfolio breadth</td>
+                <tr style={{ background: `${C.accent}12`, borderBottom: `1px solid ${C.accent}20` }}>
+                  <td style={{ padding: '10px 10px', fontWeight: 700, color: C.accent }}>Duininck</td>
+                  <td style={{ padding: '10px 10px', color: C.accent }}>1926</td>
+                  <td style={{ padding: '10px 10px', color: C.accent }}>Family, 4th gen</td>
+                  <td style={{ padding: '10px 10px', color: C.accent }}>~$100M est.</td>
+                  <td style={{ padding: '10px 10px', color: C.accent }}>700+</td>
+                  <td style={{ padding: '10px 10px', color: C.accent }}>5+</td>
+                  <td style={{ padding: '10px 10px', color: C.accent }}>9 reviews</td>
+                  <td style={{ padding: '10px 10px', color: C.accent }}>~25</td>
+                  <td style={{ padding: '10px 10px', fontSize: '10px', color: C.accent }}>100 years, 4 gens, portfolio breadth</td>
                 </tr>
                 {COMPETITOR_PROFILES.map((cp, i) => (
-                  <tr key={i} style={{ borderBottom: `1px solid ${C.borderSoft}` }}>
-                    <td style={{ padding: '6px 8px', fontWeight: 600, color: C.text }}>{cp.name}</td>
-                    <td style={{ padding: '6px 8px', color: C.sub }}>{cp.founded}</td>
-                    <td style={{ padding: '6px 8px', color: C.sub }}>{cp.ownership}</td>
-                    <td style={{ padding: '6px 8px', color: C.sub }}>{cp.revenue}</td>
-                    <td style={{ padding: '6px 8px', color: C.sub }}>{cp.employees}</td>
-                    <td style={{ padding: '6px 8px', color: C.sub }}>{cp.states}</td>
-                    <td style={{ padding: '6px 8px', color: C.sub }}>{cp.glassdoor.rating}/5 ({cp.glassdoor.reviews})</td>
-                    <td style={{ padding: '6px 8px', color: C.sub }}>{cp.openPositions}</td>
-                    <td style={{ padding: '6px 8px', color: C.sub, fontSize: '10px' }}>{cp.heritageClaim.substring(0, 60)}...</td>
+                  <tr key={i} style={{ background: i % 2 === 0 ? 'transparent' : C.accentGlow, borderBottom: `1px solid ${C.borderSoft}` }}>
+                    <td style={{ padding: '10px 10px', fontWeight: 600, color: C.text }}>{cp.name}</td>
+                    <td style={{ padding: '10px 10px', color: C.sub }}>{cp.founded}</td>
+                    <td style={{ padding: '10px 10px', color: C.sub }}>{cp.ownership}</td>
+                    <td style={{ padding: '10px 10px', color: C.sub }}>{cp.revenue}</td>
+                    <td style={{ padding: '10px 10px', color: C.sub }}>{cp.employees}</td>
+                    <td style={{ padding: '10px 10px', color: C.sub }}>{cp.states}</td>
+                    <td style={{ padding: '10px 10px', color: C.sub }}>{cp.glassdoor.rating}/5 ({cp.glassdoor.reviews})</td>
+                    <td style={{ padding: '10px 10px', color: C.sub }}>{cp.openPositions}</td>
+                    <td style={{ padding: '10px 10px', color: C.sub, fontSize: '10px' }}>{cp.heritageClaim.substring(0, 60)}...</td>
                   </tr>
                 ))}
               </tbody>

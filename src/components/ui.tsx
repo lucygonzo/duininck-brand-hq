@@ -108,7 +108,10 @@ export const Dot = () => (
 );
 
 export const Card = ({ children, style = {}, onClick }: { children: ReactNode; style?: React.CSSProperties; onClick?: () => void }) => (
-  <div onClick={onClick} style={{ background: C.s1, border: `1px solid ${C.border}`, borderRadius: '8px', padding: '18px', cursor: onClick ? 'pointer' : undefined, transition: 'border-color 0.2s', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', ...style }}>{children}</div>
+  <div onClick={onClick} style={{ background: C.s1, border: `1px solid ${C.border}`, borderRadius: '10px', padding: '20px', cursor: onClick ? 'pointer' : undefined, transition: 'border-color 0.2s, box-shadow 0.2s', boxShadow: '0 1px 4px rgba(0,0,0,0.05)', ...style }}
+    onMouseEnter={onClick ? (e) => { (e.currentTarget as HTMLDivElement).style.borderColor = C.borderHov; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'; } : undefined}
+    onMouseLeave={onClick ? (e) => { (e.currentTarget as HTMLDivElement).style.borderColor = ''; (e.currentTarget as HTMLDivElement).style.boxShadow = ''; } : undefined}
+  >{children}</div>
 );
 
 export const Lbl = ({ children, style = {} }: { children: ReactNode; style?: React.CSSProperties }) => (
@@ -141,9 +144,9 @@ export const StatusChip = ({ status, color }: { status: string; color: string })
 );
 
 export const SubTabs = ({ tabs, active, onChange }: { tabs: string[]; active: string; onChange: (t: string) => void }) => (
-  <div style={{ display: 'flex', gap: '2px', marginBottom: '24px', borderBottom: `1px solid ${C.border}` }}>
+  <div style={{ display: 'flex', gap: '4px', marginBottom: '24px', borderBottom: `2px solid ${C.border}`, paddingBottom: '0' }}>
     {tabs.map(t => (
-      <button key={t} onClick={() => onChange(t)} style={{ fontFamily: F.mono, fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.12em', padding: '8px 14px', background: 'none', border: 'none', cursor: 'pointer', color: active === t ? C.accent : C.muted, borderBottom: `2px solid ${active === t ? C.accent : 'transparent'}`, marginBottom: '-1px', transition: 'color 0.15s' }}>{t}</button>
+      <button key={t} onClick={() => onChange(t)} style={{ fontFamily: F.mono, fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.12em', padding: '10px 16px', background: active === t ? C.accentDim : 'none', border: 'none', borderBottom: `2px solid ${active === t ? C.accent : 'transparent'}`, borderRadius: active === t ? '6px 6px 0 0' : '0', cursor: 'pointer', color: active === t ? C.accent : C.muted, fontWeight: active === t ? 600 : 400, marginBottom: '-2px', transition: 'all 0.15s' }}>{t}</button>
     ))}
   </div>
 );
@@ -169,6 +172,42 @@ export const CopyHex = ({ hex, name, role }: { hex: string; name: string; role: 
     </div>
   );
 };
+
+export const Divider = ({ label }: { label?: string }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '28px 0 20px' }}>
+    <div style={{ flex: 1, height: '1px', background: C.border }} />
+    {label && <span style={{ fontFamily: F.mono, fontSize: '8px', color: C.muted, textTransform: 'uppercase', letterSpacing: '0.14em', flexShrink: 0 }}>{label}</span>}
+    <div style={{ flex: 1, height: '1px', background: C.border }} />
+  </div>
+);
+
+export const DataTable = ({ headers, rows, compact = false, colWidths }: { headers: string[]; rows: (string | ReactNode)[][]; compact?: boolean; colWidths?: string[] }) => (
+  <Card style={{ padding: '0', overflow: 'hidden' }}>
+    <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: F.body, fontSize: compact ? '11px' : '12px', tableLayout: colWidths ? 'fixed' : 'auto' }}>
+      {colWidths && (
+        <colgroup>
+          {colWidths.map((w, i) => <col key={i} style={{ width: w }} />)}
+        </colgroup>
+      )}
+      <thead>
+        <tr style={{ background: C.accentDim }}>
+          {headers.map((h, i) => (
+            <th key={i} style={{ textAlign: 'left', padding: compact ? '8px 10px' : '10px 14px', fontFamily: F.mono, fontSize: '8px', color: C.accent, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, borderBottom: `2px solid ${C.accent}20` }}>{h}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row, ri) => (
+          <tr key={ri} style={{ background: ri % 2 === 0 ? 'transparent' : C.accentGlow, borderBottom: `1px solid ${C.borderSoft}` }}>
+            {row.map((cell, ci) => (
+              <td key={ci} style={{ padding: compact ? '7px 10px' : '10px 14px', color: ci === 0 ? C.text : C.sub, fontWeight: ci === 0 ? 500 : 400, verticalAlign: 'top', lineHeight: 1.5 }}>{cell}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </Card>
+);
 
 export const Placeholder = ({ title, num, note }: { title: string; num: string; note?: string }) => (
   <div>
