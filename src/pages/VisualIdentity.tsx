@@ -43,21 +43,23 @@ export default function VisualIdentityPage() {
             </div>
           </div>
 
-          <Divider label="Full Brand Palette" />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px', marginBottom: '20px' }}>
-            {V.primaryPalette.map((c, i) => (
-              <div key={i} onClick={() => navigator.clipboard.writeText(c.hex)} style={{ cursor: 'pointer', background: '#fff', border: `1px solid ${C.border}`, borderRadius: '10px', overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
-                <div style={{ height: '80px', background: c.hex, display: 'flex', alignItems: 'flex-end', padding: '8px 10px' }}>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: c.hex === '#FFFFFF' || c.hex === '#F7F6F3' ? C.muted : '#fff', opacity: 0.9 }}>{c.hex}</span>
+          {/* Supporting Colors: smaller, secondary row */}
+          <Divider label="Supporting Palette" />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '16px' }}>
+            {V.primaryPalette.slice(2).map((c, i) => (
+              <div key={i} onClick={() => navigator.clipboard.writeText(c.hex)} style={{ cursor: 'pointer', background: '#fff', border: `1px solid ${C.border}`, borderRadius: '8px', overflow: 'hidden' }}>
+                <div style={{ height: '48px', background: c.hex, display: 'flex', alignItems: 'flex-end', padding: '6px 8px' }}>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: c.hex === '#FFFFFF' || c.hex === '#F7F6F3' ? C.muted : '#fff' }}>{c.hex}</span>
                 </div>
-                <div style={{ padding: '10px 12px' }}>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', fontWeight: 600, color: C.text }}>{c.name}</div>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, marginTop: '2px' }}>{c.role}</div>
+                <div style={{ padding: '8px 10px' }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', fontWeight: 600, color: C.text }}>{c.name}</div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted }}>{c.role}</div>
                 </div>
               </div>
             ))}
           </div>
 
+          {/* Color specs table */}
           <DataTable
             headers={['Color', 'HEX', 'RGB', 'CMYK', 'PMS', 'Usage']}
             colWidths={['16%', '12%', '14%', '16%', '14%', '28%']}
@@ -75,29 +77,6 @@ export default function VisualIdentityPage() {
             compact
           />
 
-          <Divider label="Color Usage in Context" />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', marginBottom: '20px' }}>
-            {[
-              { bg: '#004F71', text: '#FFFFFF', label: 'Teal + White', sample: 'Built to Last' },
-              { bg: '#FE5000', text: '#FFFFFF', label: 'Orange + White', sample: 'Apply Now' },
-              { bg: '#FFFFFF', text: '#1E293B', label: 'White + Navy', sample: 'Body copy reads clean' },
-              { bg: '#F7F6F3', text: '#004F71', label: 'Gray + Teal', sample: 'Section header' },
-              { bg: '#1E293B', text: '#FFFFFF', label: 'Navy + White', sample: 'Footer treatment' },
-              { bg: '#004F71', text: '#FE5000', label: 'Teal + Orange', sample: 'CTA highlight' },
-              { bg: '#FFFFFF', text: '#004F71', label: 'White + Teal', sample: 'Primary heading' },
-              { bg: '#F7F6F3', text: '#1E293B', label: 'Gray + Navy', sample: 'Subtle section' },
-            ].map((demo, i) => (
-              <div key={i} style={{ borderRadius: '8px', overflow: 'hidden', border: `1px solid ${C.border}`, boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-                <div style={{ background: demo.bg, padding: '16px 12px', minHeight: '56px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '14px', fontWeight: 700, color: demo.text }}>{demo.sample}</span>
-                </div>
-                <div style={{ padding: '6px 10px', background: '#fff' }}>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, textTransform: 'uppercase' }}>{demo.label}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-
           <Divider label="Centennial Campaign Palette" />
           <Card style={{ background: C.orangeGlow, border: `1px solid ${C.orange}30` }}>
             <Lbl style={{ color: C.orange }}>100th Anniversary · July 25, 2026</Lbl>
@@ -112,34 +91,49 @@ export default function VisualIdentityPage() {
             </div>
           </Card>
 
-          {/* Surfaces Palette */}
-          <Divider label="Surfaces & Extended Palette" />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '16px' }}>
-            {V.surfacesPalette.map((s, i) => (
-              <div key={i} onClick={() => navigator.clipboard.writeText(s.hex)} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', background: '#fff', border: `1px solid ${C.border}`, borderRadius: '6px' }}>
-                <div style={{ width: '28px', height: '28px', borderRadius: '6px', background: s.hex.length > 7 ? `#${s.hex.slice(1,7)}` : s.hex, border: '1px solid rgba(0,0,0,0.08)', flexShrink: 0, opacity: s.hex.length > 7 ? parseInt(s.hex.slice(7), 16) / 255 : 1 }} />
-                <div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', fontWeight: 600, color: C.text }}>{s.name}</div>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted }}>{s.usage}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Surfaces Palette: compact single strip */}
+          <Divider label="Surfaces" />
+          <Card style={{ padding: '12px 16px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', gap: '0', marginBottom: '8px', borderRadius: '6px', overflow: 'hidden', height: '32px' }}>
+              {V.surfacesPalette.map((s, i) => (
+                <div key={i} onClick={() => navigator.clipboard.writeText(s.hex)} style={{ flex: 1, background: s.hex.length > 7 ? `#${s.hex.slice(1,7)}` : s.hex, cursor: 'pointer', opacity: s.hex.length > 7 ? parseInt(s.hex.slice(7), 16) / 255 : 1, border: '1px solid rgba(0,0,0,0.04)', position: 'relative' }} title={`${s.name}: ${s.hex}`} />
+              ))}
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted }}>White</span>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted }}>Tints and state surfaces</span>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted }}>Error</span>
+            </div>
+          </Card>
 
-          {/* Audience Color Emphasis */}
+          {/* Audience Color Emphasis with swatches */}
           <Divider label="Color Emphasis by Audience" />
-          <Body style={{ fontSize: '11px', color: C.muted, marginBottom: '10px' }}>Different audiences respond to different color emphasis. The palette stays the same; the lead color shifts.</Body>
-          {V.audienceColorNotes.map((a, i) => (
-            <Card key={i} style={{ marginBottom: '6px', padding: '12px 16px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                <div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', fontWeight: 700, color: C.accent }}>{a.audience}</div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', color: C.sub, marginTop: '4px' }}>{a.emphasis}</div>
+          <Body style={{ fontSize: '11px', color: C.muted, marginBottom: '10px' }}>The palette stays the same. The lead color shifts by audience.</Body>
+          {(() => {
+            const audienceSwatches: Record<string, string[]> = {
+              'GCs & Public Works': ['#004F71', '#1E293B', '#F7F6F3', '#FE5000'],
+              'Prospective Employees': ['#FE5000', '#004F71', '#FFFFFF', '#1E293B'],
+              'Golf Architects': ['#16251C', '#83B348', '#004F71', '#FFFFFF'],
+              'Current Employees': ['#004F71', '#FE5000', '#D4880B', '#F7F6F3'],
+              'Communities': ['#004F71', '#F7F6F3', '#1E293B', '#FFFFFF'],
+            };
+            return V.audienceColorNotes.map((a, i) => (
+              <Card key={i} style={{ marginBottom: '6px', padding: '12px 16px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', fontWeight: 700, color: C.accent }}>{a.audience}</div>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, marginTop: '3px' }}>{a.emphasis}</div>
+                  </div>
+                  <div style={{ display: 'flex', gap: '3px', flexShrink: 0, marginLeft: '12px' }}>
+                    {(audienceSwatches[a.audience] || ['#004F71']).map((hex, j) => (
+                      <div key={j} style={{ width: j === 0 ? '32px' : '20px', height: '32px', borderRadius: '4px', background: hex, border: hex === '#FFFFFF' || hex === '#F7F6F3' ? '1px solid #ddd' : '1px solid rgba(0,0,0,0.06)', opacity: j === 0 ? 1 : 0.7 + (0.1 * (3 - j)) }} title={hex} />
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.muted, marginTop: '6px', fontStyle: 'italic' }}>{a.rationale}</div>
-            </Card>
-          ))}
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.muted, marginTop: '4px', fontStyle: 'italic' }}>{a.rationale}</div>
+              </Card>
+            ));
+          })()}
 
           {/* Action Color Concept */}
           <Divider label="Action Color: The Orange Signal" />
@@ -169,22 +163,25 @@ export default function VisualIdentityPage() {
             <Body style={{ fontSize: '12px', marginBottom: '12px' }}>
               Understanding which colors competitors own in the MN heavy civil market reveals where Duininck can carve visual white space. Teal is currently unclaimed territory.
             </Body>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
               {[
-                { company: 'Ames Construction', colors: 'Navy blue + gold', hex: '#1C3454', note: 'Corporate blue. Common, unremarkable.' },
-                { company: 'Knife River', colors: 'Red + black', hex: '#CC0000', note: 'High-energy. Stands out on equipment and signage.' },
-                { company: 'C.S. McCrossan', colors: 'Dark blue + white', hex: '#1A3A6C', note: 'Conservative blue. Feels institutional.' },
-                { company: 'Aggregate Industries', colors: 'Green + gray', hex: '#4A7C3F', note: 'Environmental positioning through color.' },
-                { company: 'Landscapes Unlimited', colors: 'Forest green + white', hex: '#1B5E3B', note: 'Golf industry standard green.' },
-                { company: 'Wadsworth Golf', colors: 'Navy + red + white', hex: '#1C2D5C', note: 'Patriotic palette. Traditional.' },
+                { company: 'Ames Construction', palette: ['#1C3454', '#C8A64C', '#FFFFFF', '#333333'], note: 'Corporate blue + gold. Common, unremarkable.' },
+                { company: 'Knife River', palette: ['#CC0000', '#222222', '#FFFFFF', '#666666'], note: 'Red + black. High-energy. Stands out on equipment.' },
+                { company: 'C.S. McCrossan', palette: ['#1A3A6C', '#FFFFFF', '#E8E8E8', '#333333'], note: 'Conservative blue + white. Institutional.' },
+                { company: 'Aggregate Industries', palette: ['#4A7C3F', '#777777', '#FFFFFF', '#333333'], note: 'Green + gray. Environmental positioning.' },
+                { company: 'Landscapes Unlimited', palette: ['#1B5E3B', '#FFFFFF', '#333333', '#8B7D3C'], note: 'Forest green + white. Golf standard.' },
+                { company: 'Wadsworth Golf', palette: ['#1C2D5C', '#C03030', '#FFFFFF', '#333333'], note: 'Navy + red + white. Patriotic, traditional.' },
               ].map((comp, i) => (
-                <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'center', padding: '8px 10px', background: C.s2, borderRadius: '6px' }}>
-                  <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: comp.hex, flexShrink: 0, border: '1px solid rgba(0,0,0,0.08)' }} />
-                  <div>
-                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', fontWeight: 600, color: C.text }}>{comp.company}</div>
-                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted }}>{comp.colors}</div>
-                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.ghost }}>{comp.note}</div>
+                <div key={i} style={{ padding: '10px 12px', background: C.s2, borderRadius: '8px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', fontWeight: 700, color: C.text }}>{comp.company}</div>
                   </div>
+                  <div style={{ display: 'flex', gap: '0', borderRadius: '4px', overflow: 'hidden', height: '28px', marginBottom: '6px' }}>
+                    {comp.palette.map((hex, j) => (
+                      <div key={j} style={{ flex: j === 0 ? 2 : 1, background: hex, border: hex === '#FFFFFF' || hex === '#E8E8E8' ? '1px solid #ddd' : 'none' }} />
+                    ))}
+                  </div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.ghost }}>{comp.note}</div>
                 </div>
               ))}
             </div>
@@ -233,28 +230,100 @@ export default function VisualIdentityPage() {
       {/* ===== TAB 3: LOGOS & ASSETS ===== */}
       {tab === 'Logos & Assets' && (
         <div>
-          <Divider label="Sourced Logo Files" />
-          <Body style={{ fontSize: '11px', color: C.muted, marginBottom: '10px' }}>Logo files pulled directly from live websites. Click any link to download. Items marked with ⚠ still need to be sourced from Nicole.</Body>
-          {V.sourcedLogos.map((logo, i) => (
-            <Card key={i} style={{ marginBottom: '6px', padding: '12px 16px', borderLeft: `3px solid ${logo.status === 'missing' ? C.warning : C.success}` }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  {logo.status === 'missing' && <span style={{ fontSize: '14px' }}>⚠️</span>}
-                  <div>
-                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', fontWeight: 600, color: C.text }}>{logo.brand}</div>
-                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted }}>{logo.file || 'Not sourced'} · {logo.format || 'N/A'}</div>
+          {/* Grouped-style logo preview grid by brand */}
+          {(() => {
+            const brandGroups = [
+              {
+                brand: 'Duininck Companies (Parent)',
+                desc: 'Primary corporate identity for the portfolio holding company',
+                logos: V.sourcedLogos.filter(l => l.brand === 'Duininck Companies'),
+                bgColors: ['#FFFFFF', '#004F71', '#1E293B'],
+              },
+              {
+                brand: 'Duininck Inc. (Construction)',
+                desc: 'Heavy civil construction, materials, and paving operations',
+                logos: V.sourcedLogos.filter(l => l.brand === 'Duininck Inc.'),
+                bgColors: ['#FFFFFF', '#004F71'],
+              },
+              {
+                brand: 'Duininck Golf',
+                desc: 'Golf course construction, renovation, and restoration',
+                logos: V.sourcedLogos.filter(l => l.brand === 'Duininck Golf'),
+                bgColors: ['#1E293B', '#FFFFFF'],
+              },
+              {
+                brand: 'Prinsco',
+                desc: 'Water management solutions and drainage pipe manufacturing',
+                logos: V.sourcedLogos.filter(l => l.brand === 'Prinsco'),
+                bgColors: ['#FFFFFF'],
+              },
+            ];
+            const missingBrands = V.sourcedLogos.filter(l => l.status === 'missing');
+
+            return (
+              <>
+                {brandGroups.map((group, gi) => (
+                  <div key={gi} style={{ marginBottom: '28px' }}>
+                    <Divider label={group.brand} />
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', color: C.muted, marginBottom: '12px' }}>{group.desc}</div>
+                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                      {group.logos.map((logo, li) => {
+                        const isWhiteLogo = logo.file.toLowerCase().includes('white');
+                        const isBlackLogo = logo.file.toLowerCase().includes('black') || logo.file.toLowerCase().includes('Black');
+                        const bg = isWhiteLogo ? '#1E293B' : isBlackLogo ? '#F0EEEB' : '#FFFFFF';
+                        return (
+                          <div key={li} style={{ flex: '1 1 180px', minWidth: '160px', maxWidth: '240px' }}>
+                            <div style={{ background: bg, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', height: '80px', border: `1px solid ${C.border}` }}>
+                              {logo.url ? (
+                                <img src={logo.url} alt={`${logo.brand} logo`} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                              ) : (
+                                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: C.ghost }}>Not available</span>
+                              )}
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px', padding: '0 2px' }}>
+                              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.sub }}>{logo.format}</span>
+                              <div style={{ display: 'flex', gap: '8px' }}>
+                                {logo.url && logo.format.includes('SVG') && (
+                                  <a href={logo.url} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.accent, textDecoration: 'none', fontWeight: 600 }}>SVG</a>
+                                )}
+                                {logo.url && logo.format.includes('PNG') && (
+                                  <a href={logo.url} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.accent, textDecoration: 'none', fontWeight: 600 }}>PNG</a>
+                                )}
+                                {logo.url && !logo.format.includes('SVG') && !logo.format.includes('PNG') && (
+                                  <a href={logo.url} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.accent, textDecoration: 'none', fontWeight: 600 }}>Download</a>
+                                )}
+                              </div>
+                            </div>
+                            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.ghost, marginTop: '2px', padding: '0 2px' }}>{logo.note}</div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-                <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                  <Chip color={logo.status === 'sourced' ? C.success : C.warning}>{logo.status}</Chip>
-                  {logo.url && (
-                    <a href={logo.url} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.accent, textDecoration: 'none', padding: '3px 8px', border: `1px solid ${C.accent}30`, borderRadius: '6px' }}>Download &#8599;</a>
-                  )}
-                </div>
-              </div>
-              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.muted, marginTop: '4px' }}>{logo.note}</div>
-            </Card>
-          ))}
+                ))}
+
+                {/* Missing logos */}
+                {missingBrands.length > 0 && (
+                  <div style={{ marginBottom: '20px' }}>
+                    <Divider label="Missing Assets" />
+                    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                      {missingBrands.map((logo, i) => (
+                        <div key={i} style={{ flex: '1 1 180px', minWidth: '160px', maxWidth: '240px' }}>
+                          <div style={{ background: C.s2, borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', height: '80px', border: `2px dashed ${C.warning}` }}>
+                            <span style={{ fontSize: '20px' }}>⚠️</span>
+                          </div>
+                          <div style={{ marginTop: '5px', padding: '0 2px' }}>
+                            <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', fontWeight: 600, color: C.warning }}>{logo.brand}</span>
+                            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.ghost, marginTop: '2px' }}>{logo.note}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            );
+          })()}
 
           <Divider label="Font Sources" />
           {V.fontSources.map((f, i) => (
