@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { BRAND_IDENTITY, VERBAL_INVENTORY } from '../data/brandData';
+import { BRAND_IDENTITY, VERBAL_INVENTORY, MESSAGING_MATRIX } from '../data/brandData';
 import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, SubTabs, C } from '../components/ui';
 
-const TABS = ['Voice', 'Inventory', 'Conflicts', 'Patterns'];
+const TABS = ['Messaging', 'Voice', 'Inventory', 'Conflicts', 'Patterns'];
 
 export default function VerbalIdentityPage() {
   const [tab, setTab] = useState(TABS[0]);
+  const [activeAudience, setActiveAudience] = useState(MESSAGING_MATRIX.audiences[0].id);
 
   return (
     <div>
@@ -16,6 +17,99 @@ export default function VerbalIdentityPage() {
       </Callout>
 
       <SubTabs tabs={TABS} active={tab} onChange={setTab} />
+
+      {tab === 'Messaging' && (() => {
+        const core = MESSAGING_MATRIX.coreMessage;
+        const selected = MESSAGING_MATRIX.audiences.find(a => a.id === activeAudience) || MESSAGING_MATRIX.audiences[0];
+        return (
+          <div>
+            {/* Core Message */}
+            <Card style={{ marginTop: '16px', borderTop: `3px solid ${C.accent}`, background: C.accentDim, marginBottom: '20px' }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: '6px' }}>Core Message (Universal)</div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '20px', fontWeight: 800, color: C.accent, lineHeight: 1.3, marginBottom: '8px' }}>{core.headline}</div>
+              <Body>{core.body}</Body>
+              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '10px' }}>
+                {core.proof.map((p, i) => (
+                  <span key={i} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.accent, background: '#fff', border: `1px solid ${C.accent}30`, padding: '3px 8px', borderRadius: '4px' }}>{p}</span>
+                ))}
+              </div>
+            </Card>
+
+            {/* Audience Toggles */}
+            <Lbl>Select Audience (messaging adapts from the core message above)</Lbl>
+            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '16px' }}>
+              {MESSAGING_MATRIX.audiences.map(a => (
+                <button
+                  key={a.id}
+                  onClick={() => setActiveAudience(a.id)}
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: '12px',
+                    fontWeight: activeAudience === a.id ? 700 : 400,
+                    color: activeAudience === a.id ? '#fff' : C.sub,
+                    background: activeAudience === a.id ? C.accent : '#fff',
+                    border: `1px solid ${activeAudience === a.id ? C.accent : C.border}`,
+                    borderRadius: '20px',
+                    padding: '6px 14px',
+                    cursor: 'pointer',
+                    transition: 'all 0.15s',
+                  }}
+                >
+                  {a.icon} {a.name}
+                </button>
+              ))}
+            </div>
+
+            {/* Selected Audience Messaging */}
+            <Card style={{ borderLeft: `4px solid ${C.accent}`, marginBottom: '16px' }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>Adapted for: {selected.icon} {selected.name}</div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '18px', fontWeight: 800, color: C.text, lineHeight: 1.3, marginBottom: '6px' }}>{selected.headline}</div>
+              <Body style={{ fontSize: '13px', color: C.sub }}>{selected.subline}</Body>
+            </Card>
+
+            {/* Value Props */}
+            <Lbl>Value Propositions</Lbl>
+            <div style={{ display: 'grid', gridTemplateColumns: selected.valueProps.length > 4 ? '1fr 1fr' : '1fr 1fr', gap: '8px', marginBottom: '16px' }}>
+              {selected.valueProps.map((vp, i) => (
+                <Card key={i} style={{ padding: '12px' }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', fontWeight: 700, color: C.accent, marginBottom: '4px' }}>{vp.prop}</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, lineHeight: 1.5 }}>{vp.detail}</div>
+                </Card>
+              ))}
+            </div>
+
+            {/* Channels */}
+            <Lbl>Recommended Channels</Lbl>
+            <Card style={{ marginBottom: '16px' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Inter', sans-serif", fontSize: '12px' }}>
+                <thead>
+                  <tr style={{ borderBottom: `2px solid ${C.accent}` }}>
+                    {['Channel', 'How to Use', 'Frequency'].map(h => (
+                      <th key={h} style={{ textAlign: 'left', padding: '8px', fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, textTransform: 'uppercase' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {selected.channels.map((ch, i) => (
+                    <tr key={i} style={{ borderBottom: `1px solid ${C.borderSoft}` }}>
+                      <td style={{ padding: '8px', fontWeight: 600, color: C.text, whiteSpace: 'nowrap' }}>{ch.channel}</td>
+                      <td style={{ padding: '8px', color: C.sub }}>{ch.how}</td>
+                      <td style={{ padding: '8px', color: C.muted, fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', whiteSpace: 'nowrap' }}>{ch.frequency}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Card>
+
+            {/* Sample Copy */}
+            <Lbl>Sample Copy</Lbl>
+            <Card style={{ background: C.s2, borderLeft: `3px solid ${C.orange}` }}>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', color: C.text, lineHeight: 1.7, fontStyle: 'italic' }}>"{selected.sampleCopy}"</div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, marginTop: '8px' }}>Adapt for: {selected.channels.map(c => c.channel).join(' / ')}</div>
+            </Card>
+          </div>
+        );
+      })()}
 
       {tab === 'Voice' && (
         <div>
