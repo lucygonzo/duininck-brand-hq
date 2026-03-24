@@ -47,7 +47,7 @@ Format: H2 sections, bullet points, mark unverified items [UNCONFIRMED].`,
     driveFile: '05_Competitive/competitive-landscape.md',
     estimatedTime: '90 min',
     inputsNeeded: ['Competitor names by subsidiary', 'Any existing competitive intel', 'RFP/bid competitor lists'],
-    prompt: `You are a brand strategist building a multi-sector competitive analysis for Duininck Companies — a 100-year-old, fourth-generation family business portfolio.
+    prompt: `You are a brand strategist building a multi-sector competitive analysis for Duininck Companies. a 100-year-old, fourth-generation family business portfolio.
 
 Create: 05_Competitive/competitive-landscape.md
 
@@ -56,7 +56,7 @@ Context:
 - HQ: Willmar, MN; operations in MN, TX, GA, SD
 - 100-year centennial in 2026, 4th generation active
 - Brand unification in progress (unified Duininck + golf niche + Prinsco independent)
-- "Untouchable Wedge": The Full Truck — century of trust, whole-person values, vertically integrated
+- "Untouchable Wedge": The Full Truck. century of trust, whole-person values, vertically integrated
 
 COMPETITORS TO RESEARCH:
 Construction: Ames Construction, C.S. McCrossan, Knife River, Aggregate Industries
@@ -72,7 +72,7 @@ For EACH competitor:
 **Weaknesses / Gaps:** (bullets)
 **Digital Presence:** Website quality (1-5), social followers, SEO estimate
 **Employer Brand:** Career page messaging, Glassdoor rating
-**Duininck's Edge:** (1-2 sentences — what they can't copy)
+**Duininck's Edge:** (1-2 sentences. what they can't copy)
 
 Then:
 ## Positioning Map (brand maturity × capability breadth)
@@ -94,18 +94,18 @@ Then:
 Create: 04_Audience_Research/audience-segments.md
 
 CONFIRMED SEGMENTS (from CMO Nicole Behne):
-1. Public Works & General Contractors — Nicole conducted customer interviews. Primary.
-2. Golf Course Architects & Owners — Niche audience. "Architects come to that site vs GCs."
-3. Prospective Employees (Seasonal + FT) — "We're hiring every year for seasonal help."
-4. Current Employees (700+ field) — "Over 700 employees in the field not getting the information."
-5. Communities Where They Operate — "Share with employees and communities where we live and work."
-6. Agricultural Customers (Prinsco) — May be out of scope. Prinsco operates independently.
+1. Public Works & General Contractors. Nicole conducted customer interviews. Primary.
+2. Golf Course Architects & Owners. Niche audience. "Architects come to that site vs GCs."
+3. Prospective Employees (Seasonal + FT). "We're hiring every year for seasonal help."
+4. Current Employees (700+ field). "Over 700 employees in the field not getting the information."
+5. Communities Where They Operate. "Share with employees and communities where we live and work."
+6. Agricultural Customers (Prinsco). May be out of scope. Prinsco operates independently.
 
 KEY INSIGHTS FROM NICOLE:
 - Blue-collar workers won't go on camera
 - "Whole person" wellbeing framework = recruiting differentiator
-- Seasonal hiring is existential — need people to SEE what an amazing org this is
-- No intranet — 700+ workers disconnected from brand story
+- Seasonal hiring is existential. need people to SEE what an amazing org this is
+- No intranet. 700+ workers disconnected from brand story
 - Golf audience is fundamentally different from construction audience
 
 For EACH segment: Demographics, Psychographics, Behaviors, Jobs to Be Done (functional/emotional/social), Messaging that works, Channel preferences.
@@ -129,14 +129,14 @@ Then:
 Create: 06_Digital_Ecosystem/seo-baseline.md
 
 PROPERTIES TO AUDIT:
-- duininckcompanies.com (parent — being unified)
-- duininckgolf.com (niche — retaining)
-- prinsco.com (independent — may be out of scope)
+- duininckcompanies.com (parent. being unified)
+- duininckgolf.com (niche. retaining)
+- prinsco.com (independent. may be out of scope)
 - Hart Ranch properties (independent)
 
 KEY CONTEXT:
-- Brand unification in progress — concrete brand website being retired (needs redirect plan)
-- Nicole is already using AI tools (Claude, Co-pilot, ChatGPT) — GEO matters to her
+- Brand unification in progress. concrete brand website being retired (needs redirect plan)
+- Nicole is already using AI tools (Claude, Co-pilot, ChatGPT). GEO matters to her
 - 100-year-old company = strong authority signals if properly surfaced
 - Golf division has niche SEO opportunity (golf course builders/restoration)
 - Local SEO critical for construction (projects are geographic)
@@ -147,7 +147,7 @@ AUDIT SECTIONS:
 ## Keyword Rankings (current positions for target keywords by subsidiary)
 ## Target Keyword Map (what searches SHOULD find each entity?)
 ## On-Page SEO Audit (title tags, meta descriptions, schema, images, speed)
-## Local SEO (Google Business Profiles for all locations — Willmar, TX, GA, SD)
+## Local SEO (Google Business Profiles for all locations. Willmar, TX, GA, SD)
 ## Backlink Analysis (quality, gaps, competitor comparison)
 ## Redirect Plan (concrete brand → unified brand migration)
 
@@ -182,11 +182,11 @@ Document: Does Duininck appear? What info? Is it accurate? Who appears instead?
 Create: 06_Digital_Ecosystem/digital-audit.md + 06_Digital_Ecosystem/social-audit.md
 
 KNOWN DIGITAL STATE (from CMO Nicole):
-- Social scheduling: Buffer (unhappy — "clunky")
+- Social scheduling: Buffer (unhappy. "clunky")
 - Content tracking: Excel files (hates it)
 - AI tools: Claude, Co-pilot, ChatGPT (uses regularly)
-- Golf social: DARK — stopped posting. Urgent to restart.
-- Internal comms: NONE — no intranet for 700+ field employees
+- Golf social: DARK. stopped posting. Urgent to restart.
+- Internal comms: NONE. no intranet for 700+ field employees
 - Content insight: Static graphics get "two likes." Carousels work.
 
 AUDIT SECTIONS:
@@ -203,8 +203,8 @@ What content types are working? What's flopping? Data-backed.
 Each property: structure, content, UX, mobile, speed, SEO basics, conversion paths
 
 ## Tool Recommendations
-Social scheduling replacement (Sprout, Later, Hootsuite, Metricool — pros/cons/price)
-Internal comms (Beekeeper, Staffbase, Workvivo — for blue-collar mobile-first)
+Social scheduling replacement (Sprout, Later, Hootsuite, Metricool. pros/cons/price)
+Internal comms (Beekeeper, Staffbase, Workvivo. for blue-collar mobile-first)
 Content calendar (Notion, Monday, Asana)
 
 ## Workflow Redesign
@@ -234,7 +234,7 @@ CONFIRMED VOICE (from CMO discovery):
 
 KEY CONSTRAINTS:
 - Blue-collar audience won't tolerate corporate speak
-- Faith-based values are real, not veneer — express authentically, not preachy
+- Faith-based values are real, not veneer. express authentically, not preachy
 - Golf voice is distinct from construction voice (architects vs. GCs)
 - Never say: "disrupting," "innovative solutions," "best-in-class," "we're like a family" (they ARE a family)
 
@@ -267,7 +267,7 @@ KNOWN VISUALS:
 - Status: Brand unification in progress. Concrete brand being eliminated. Golf retains niche.
 
 PHOTOGRAPHY RULES (from Nicole):
-- Blue-collar workforce won't go on camera — NO talking heads
+- Blue-collar workforce won't go on camera. NO talking heads
 - Film the WORK: equipment, b-roll, drone footage, process
 - Add voiceover narratives over cinematic footage
 - Carousels > static graphics (graphics get "two likes")
@@ -302,16 +302,16 @@ Career, Family/Social, Finances, Health, Community, Spiritual
 HYPOTHESIS: No construction competitor in the Midwest messages this way. Validate.
 
 CONSTRAINTS:
-- Blue-collar workers won't go on camera — content must be visual (equipment, work), not testimonial
-- Seasonal hiring is critical — need people to see what an amazing org this is
-- "We're like a family" is OFF LIMITS (they ARE a family — don't dilute with cliche)
+- Blue-collar workers won't go on camera. content must be visual (equipment, work), not testimonial
+- Seasonal hiring is critical. need people to see what an amazing org this is
+- "We're like a family" is OFF LIMITS (they ARE a family. don't dilute with cliche)
 - Nicole: "We're hiring every year for this seasonal help"
 
 BUILD:
 ## Current Employer Brand Assessment
 ## Employee Value Proposition (EVP) mapped to 6 wellbeing dimensions
 ## Recruiting Headlines (seasonal workers, experienced operators, veterans, young pros)
-## Content Strategy (stats-based spotlights, equipment reels, day-in-the-life — no talking heads)
+## Content Strategy (stats-based spotlights, equipment reels, day-in-the-life. no talking heads)
 ## Blue-Collar Capture Rules (what TO do, what NOT to do)
 ## Competitive Employer Brand Comparison (vs. Ames, McCrossan, Knife River)
 ## Centennial Recruiting Angle ("100 years and just getting started")
@@ -343,7 +343,7 @@ CURRENT STATE:
 - Claude/Co-pilot/ChatGPT for writing (likes AI)
 - Designer can shoot but can't own strategy
 - Golf social is DARK
-- Static graphics get "two likes" — carousels work
+- Static graphics get "two likes". carousels work
 - Golf beauty shots come 1 YEAR after construction
 
 BUILD:
@@ -351,9 +351,9 @@ BUILD:
 ## Seasonal Capture Calendar (Apr-Nov active season + off-season publishing)
 ## Content Templates (Project story carousel, Employee spotlight, Equipment reel, Golf restoration)
 ## AI-Assisted Production Pipeline (Claude prompts for each content type)
-## Tool Recommendations (social scheduling, internal comms, content calendar — with pricing)
+## Tool Recommendations (social scheduling, internal comms, content calendar. with pricing)
 ## Golf Social Restart Strategy (approach, first 30 days, content plan)
-## Internal Comms Strategy (reaching 700+ disconnected field workers — mobile-first)
+## Internal Comms Strategy (reaching 700+ disconnected field workers. mobile-first)
 ## Measurement Framework (monthly metrics dashboard)
 ## Centennial Content Plan (pre/during/post July 25 event)`,
     status: 'pending' as StepStatus,
@@ -370,9 +370,9 @@ BUILD:
 
 Create: 08_Strategy/centennial-campaign.md
 
-EVENT: July 25, 2026 — Public celebration, ~2,000 attendees
+EVENT: July 25, 2026. Public celebration, ~2,000 attendees
 CONTENT: Documentary videos with historic footage, AI-animated stills, family history
-VIDEO PARTNER: Nicole's contact from Hormel days — already producing documentary
+VIDEO PARTNER: Nicole's contact from Hormel days. already producing documentary
 BRAND MOMENT: This is the ultimate proof point. Most construction companies don't survive 20 years.
 
 NARRATIVE: "100 years of building things that endure."

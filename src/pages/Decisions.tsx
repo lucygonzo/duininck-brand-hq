@@ -3,7 +3,7 @@ import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, C } from '../comp
 export default function DecisionsPage() {
   return (
     <div>
-      <SectionHeader num="12 / Workspace" title="Decision Audit Log" sub="Key brand decisions, their rationale, and status — updated post-CMO discovery call." />
+      <SectionHeader num="12 / Workspace" title="Decision Audit Log" sub="Key brand decisions, their rationale, and status. Updated post-CMO discovery call." />
       <Callout>
         Every brand decision is logged here with context and rationale. <strong>Major update:</strong> The CMO discovery call (March 12, 2026) confirmed several critical decisions that were previously pending. The architecture question is resolved.
       </Callout>
@@ -70,10 +70,10 @@ export default function DecisionsPage() {
       {[
         {
           decision: 'Content System Architecture',
-          context: 'Nicole needs a content SYSTEM — not just content. She needs workflow, templates, AI-assisted production, scheduling, and measurement that makes 3 people operate like 10.',
+          context: 'Nicole needs a content SYSTEM, not just content. Workflow, templates, AI-assisted production, scheduling, and measurement that makes 3 people operate like 10.',
           options: 'Custom workflow design vs. Platform adoption (Sprout, Later) vs. Hybrid (templates + existing tools)',
           owner: 'Lucy (recommendation) + Nicole (approval)',
-          status: 'Discovery Complete — Recommendation Needed',
+          status: 'Discovery Complete, Recommendation Needed',
           urgency: 'Critical',
         },
         {
@@ -94,7 +94,7 @@ export default function DecisionsPage() {
         },
         {
           decision: 'Centennial Brand Launch Timing',
-          context: 'Should the unified brand officially launch AT the July 25 centennial event, or before it? The centennial event is 2,000 people — maximum visibility.',
+          context: 'Should the unified brand officially launch AT the July 25 centennial event, or before it? The centennial event draws 2,000 people. Maximum visibility.',
           options: 'Launch at centennial event vs. Soft launch before + centennial as celebration vs. Phased rollout',
           owner: 'Nicole + Family Leadership',
           status: 'To Discuss',

@@ -1,5 +1,5 @@
 // ============================================================
-// DUININCK COMPANIES BRAND HQ — DATA
+// DUININCK COMPANIES BRAND HQ. DATA
 // Source: duininckcompanies.com, CMO discovery call (Mar 12, 2026),
 //         31 deep research files (research-output/)
 // CMO: Nicole Behne (ex-Polaris, ex-Hormel)
@@ -24,7 +24,7 @@ export const CLIENT = {
   founded: '1926',
   headquarters: 'Willmar, Minnesota',
   centennialYear: '2026',
-  centennialEvent: 'July 25, 2026 — Public celebration, ~2,000 attendees',
+  centennialEvent: 'July 25, 2026. Public celebration, ~2,000 attendees',
 };
 
 // ---- CMO PROFILE (from discovery call) ----
@@ -36,14 +36,14 @@ export const CMO = {
   workStyle: 'Project-based ONLY. Hates retainers. Burned by agency overhead models.',
   currentTools: 'Claude, Co-pilot, ChatGPT, Buffer (unhappy with it)',
   painPoints: [
-    'No content strategy — has foundations but no strategic lens on what to capture and why',
-    'Social workflow is "clunky" — Excel files + Buffer, feels awful',
+    'No content strategy. has foundations but no strategic lens on what to capture and why',
+    'Social workflow is "clunky". Excel files + Buffer, feels awful',
     'Tiny team for massive scope: CMO + 1 graphic designer + 1 admin/community manager',
     'No intranet for 700+ field employees who are disconnected from the brand story',
-    'Golf division went dark on social — need to restart without losing momentum',
-    'Blue-collar workforce won\'t go on camera — needs creative capture approaches',
+    'Golf division went dark on social. need to restart without losing momentum',
+    'Blue-collar workforce won\'t go on camera. needs creative capture approaches',
     'Content timing gap: golf course beauty shots come a YEAR after construction (growing season)',
-    '2026 season captures will feed 2027 content — need to plan NOW',
+    '2026 season captures will feed 2027 content. need to plan NOW',
   ],
   quote: '"I feel like I have more purpose in my work today than I ever have and I\'m working for a company that builds roads and golf courses."',
   referral: 'Sam Duininck (4th gen, connected Reagan to Nicole)',
@@ -72,7 +72,7 @@ export const METRICS = [
 export const OPEN_PRIORITIES = [
   { text: 'Build content capture strategy for 2026 season (feeds 2027 content)', urgency: 'Critical', owner: 'Lucy + Nicole' },
   { text: 'Define social workflow to replace clunky Excel + Buffer process', urgency: 'Critical', owner: 'Lucy' },
-  { text: 'Restart Golf division social presence (went dark — urgent)', urgency: 'Critical', owner: 'Nicole' },
+  { text: 'Restart Golf division social presence (went dark. urgent)', urgency: 'Critical', owner: 'Nicole' },
   { text: 'Plan centennial content for July 25 event (2,000 attendees)', urgency: 'Critical', owner: 'Nicole + video partner' },
   { text: 'Audit sub-brand visual consistency post-unification', urgency: 'High', owner: 'Lucy' },
   { text: 'Develop blue-collar content capture playbook (no on-camera talent)', urgency: 'High', owner: 'Lucy + Reagan' },
@@ -93,7 +93,7 @@ export const COMPANY = {
     gen1: 'Henry, Amos, and Wilbur Duininck (1920s-1950s): Founded on Minnesota road construction. Survived Depression-era bankruptcy. Rebuilt through perseverance and local relationships.',
     gen2: 'Curt, Willis, Norm, Harris, Lee, and Larry (1950s-1980s): Expanded scope. Added DOD contracts, diversified into manufacturing (Prinsco), golf (Hart Ranch), and real estate.',
     gen3: 'Jason, Chris, Kyle, Jamie, Jeremy, Judd, Ryan, and Trevor (1988-present): Professionalized operations. Created Central Team (2014). Restructured into 3 industry sectors (2022). Documented purpose, values, and behaviors.',
-    gen4: 'Sam Duininck and others formally introduced at 2018 Family Summit. Actively in the business — Sam connected this engagement.',
+    gen4: 'Sam Duininck and others formally introduced at 2018 Family Summit. Actively in the business. Sam connected this engagement.',
   },
 
   values: [
@@ -112,7 +112,7 @@ export const COMPANY = {
       hq: 'Willmar, MN',
       description: 'Plastic pipe manufacturer for agricultural drainage, stormwater, and onsite market segments. Multi-state operations.',
       status: 'Flagship',
-      brandNote: 'Independent brand — separate from Duininck naming. Stays independent.',
+      brandNote: 'Independent brand. separate from Duininck naming. Stays independent.',
     },
     {
       name: 'Duininck Heavy Civil (Midwest)',
@@ -144,7 +144,7 @@ export const COMPANY = {
       hq: 'Delano, MN & Atlanta, GA',
       description: 'Golf course renovation, construction, and restoration. Known for work on Donald Ross, Seth Raynor, and Tillinghast courses.',
       status: 'Specialty / Niche',
-      brandNote: 'CONFIRMED: Keeps niche positioning. Different audience (architects vs. GCs). Went dark on social — restarting.',
+      brandNote: 'CONFIRMED: Keeps niche positioning. Different audience (architects vs. GCs). Went dark on social. restarting.',
     },
     {
       name: 'Hart Ranch Golf Club',
@@ -191,9 +191,9 @@ export const COMPANY = {
 
   awards: [
     { year: '2024', award: 'Minnesota Family Business Award' },
-    { year: '2023', award: '#1 Public Golf Course in South Dakota (Golfweek) — Hart Ranch' },
+    { year: '2023', award: '#1 Public Golf Course in South Dakota (Golfweek). Hart Ranch' },
     { year: '2022', award: 'Willmar Foundation Community Building Award' },
-    { year: '2003', award: 'Sheldon G. Hayes Award — National Asphalt Pavement Association' },
+    { year: '2003', award: 'Sheldon G. Hayes Award. National Asphalt Pavement Association' },
   ],
 };
 
@@ -201,34 +201,34 @@ export const BRAND_IDENTITY = {
   archetype: 'The Builder / The Steward',
   archetypeNote: 'Duininck embodies the Builder archetype (creating tangible, lasting infrastructure) crossed with the Steward (protecting and growing what has been entrusted). Nicole\'s own words validate this: she has "more purpose than ever" working at a roads-and-golf company because the foundation of the organization is that strong.',
   brandAnchor: 'BUILT TO LAST',
-  brandAnchorNote: 'Every subsidiary maps back to this: roads that last, pipes that endure, courses that stand the test of time, communities that grow. The family itself is the proof — 100 years, 4 generations, still building. No competitor can fabricate this.',
+  brandAnchorNote: 'Every subsidiary maps back to this: roads that last, pipes that endure, courses that stand the test of time, communities that grow. The family itself is the proof. 100 years, 4 generations, still building. No competitor can fabricate this.',
   coreNarrative: 'For 100 years, the Duininck family has been building things that endure: roads, water systems, golf courses, communities, and a company culture rooted in faith and service. Now in its fourth generation, Duininck Companies proves that when you build on the right foundation, growth is not just possible but inevitable.',
 
-  // THE UNTOUCHABLE WEDGE — what makes Duininck impossible to replicate
+  // THE UNTOUCHABLE WEDGE. what makes Duininck impossible to replicate
   wedge: {
     headline: 'The Full Truck',
     description: 'When a Duininck truck pulls up on a site, it doesn\'t just represent one crew or one capability. It represents 100 years of earned trust, 4 generations of family commitment, the full weight of 6+ operating companies, and a values system that treats every employee as a whole person. No competitor can build this overnight. No competitor can fake a century.',
     proofPoints: [
-      '100 years of continuous family operation — survived the Depression, diversified across a century',
+      '100 years of continuous family operation. survived the Depression, diversified across a century',
       'Blue-collar workforce that stays because they\'re treated as whole people, not headcount',
       'A CMO from Fortune 200 companies who says she has "more purpose here than anywhere"',
-      'Golf division so respected they restore courses by Ross, Raynor, and Tillinghast — the legends',
+      'Golf division so respected they restore courses by Ross, Raynor, and Tillinghast. the legends',
       'Own the infrastructure: water systems, sewer systems, aggregates, pipe manufacturing. Vertically integrated.',
       'Faith-based values that are authentic and longstanding, not a corporate veneer',
-      '4th generation is already in the business. The succession isn\'t a plan — it\'s happening.',
+      '4th generation is already in the business. The succession isn\'t a plan. it\'s happening.',
     ],
   },
 
   personality: [
     { trait: 'Steadfast', description: 'Reliable, consistent, and proven over generations. We show up and deliver. 100 years proves it.' },
-    { trait: 'Humble', description: 'Let the work speak. These are blue-collar people who won\'t even go on camera — because the work IS the story.' },
+    { trait: 'Humble', description: 'Let the work speak. These are blue-collar people who won\'t even go on camera. because the work IS the story.' },
     { trait: 'Generous', description: 'With time, talent, and resources. Giving is a reflex, not a strategy. The wellbeing framework isn\'t HR theater.' },
     { trait: 'Forward-Looking', description: 'Rooted in tradition but always building for the next generation. Gen 4 is already in the business. Brand unification is happening NOW.' },
     { trait: 'Grounded', description: 'Connected to the land, the work, the people, the values. You can\'t fake this. The dirt under the fingernails is real.' },
   ],
 
   doSay: [
-    'Built to last — 100 years and counting',
+    'Built to last. 100 years and counting',
     'People. Values. Growth.',
     'Four generations strong',
     'When our truck pulls up, you get all of us',
@@ -244,12 +244,12 @@ export const BRAND_IDENTITY = {
     'Innovative solutions (too startup-y)',
     'Synergistic alignment',
     'Best-in-class (overused, unsubstantiated)',
-    'We\'re like a family (they ARE a family — don\'t dilute it)',
+    'We\'re like a family (they ARE a family. don\'t dilute it)',
   ],
 };
 
 export const VISUAL_IDENTITY = {
-  status: 'Brand unification in progress — websites being revised, concrete brand being eliminated',
+  status: 'Brand unification in progress. websites being revised, concrete brand being eliminated',
   currentPalette: [
     { name: 'Duininck Teal', hex: '#004F71', role: 'Primary brand color' },
     { name: 'Duininck Orange', hex: '#FE5000', role: 'Accent / CTA / energy' },
@@ -258,7 +258,7 @@ export const VISUAL_IDENTITY = {
     { name: 'Warm Gray', hex: '#F7F6F3', role: 'Background / subtle surfaces' },
   ],
   typography: {
-    primary: 'Roboto (300, 400) — currently on website',
+    primary: 'Roboto (300, 400). currently on website',
     note: 'Website redesign underway. Typography may change with unification.',
   },
   logoNote: 'Brand unification in progress. Concrete brand logo being retired. Golf retains niche visual treatment.',
@@ -283,7 +283,7 @@ export const AUDIENCE_SEGMENTS = [
   },
   {
     name: 'Prospective Employees (Seasonal + Full-Time)',
-    description: 'Blue-collar operators, skilled trades, equipment operators, and laborers — especially seasonal hires needed every construction season.',
+    description: 'Blue-collar operators, skilled trades, equipment operators, and laborers. especially seasonal hires needed every construction season.',
     priority: 'Critical',
     status: 'CONFIRMED by Nicole',
     nicoleNote: '"We\'re hiring every year for this seasonal help. We need people to see what an amazing organization this is so that they want to come work for us."',
@@ -306,13 +306,13 @@ export const AUDIENCE_SEGMENTS = [
     name: 'Agricultural Customers (Prinsco)',
     description: 'Farmers and agricultural businesses purchasing drainage pipe and water management solutions through Prinsco.',
     priority: 'Primary (Prinsco)',
-    status: 'Inferred — Prinsco operates somewhat independently',
+    status: 'Inferred. Prinsco operates somewhat independently',
     nicoleNote: 'Nicole\'s scope is construction & materials sector. Prinsco may have its own marketing.',
   },
 ];
 
 export const COMPETITORS = {
-  note: 'Full competitive analysis pending. Key insight: Duininck\'s real competitive advantage isn\'t operational — it\'s the 100-year family story, the values culture, and the "whole person" employee approach. No competitor can replicate a century.',
+  note: 'Full competitive analysis pending. Key insight: Duininck\'s real competitive advantage isn\'t operational. it\'s the 100-year family story, the values culture, and the "whole person" employee approach. No competitor can replicate a century.',
   bySubsidiary: [
     { subsidiary: 'Prinsco', competitors: ['ADS (Advanced Drainage Systems)', 'Hancor', 'Contech', 'Local tile manufacturers'], category: 'Water Management' },
     { subsidiary: 'Duininck Heavy Civil', competitors: ['Ames Construction', 'C.S. McCrossan', 'Knife River', 'Aggregate Industries'], category: 'Construction' },
@@ -330,11 +330,11 @@ export const CENTENNIAL = {
     attendance: '~2,000 people',
     type: 'Public celebration / community event',
     content: 'Documentary videos with historic footage, AI-animated stills, family history',
-    videoPartner: 'Nicole\'s contact from Hormel days — already producing documentary',
+    videoPartner: 'Nicole\'s contact from Hormel days. already producing documentary',
   },
-  narrative: 'This isn\'t just an anniversary party. It\'s a proof point. Most construction companies don\'t survive 20 years. Duininck has survived 100 — including a Depression-era bankruptcy, generational transitions, industry consolidation, and market shifts. The centennial is the ultimate brand credential.',
+  narrative: 'This isn\'t just an anniversary party. It\'s a proof point. Most construction companies don\'t survive 20 years. Duininck has survived 100. including a Depression-era bankruptcy, generational transitions, industry consolidation, and market shifts. The centennial is the ultimate brand credential.',
   opportunities: [
-    'Centennial as recruiting anchor: "Join a company that\'s been building for 100 years — and is just getting started"',
+    'Centennial as recruiting anchor: "Join a company that\'s been building for 100 years. and is just getting started"',
     'Centennial as customer proof: "When you hire Duininck, you hire a century of experience"',
     'Centennial as internal pride: Give 700+ field employees a reason to feel part of something historic',
     'Centennial as press moment: Local and trade media coverage of 100-year family business milestone',
@@ -346,30 +346,30 @@ export const CENTENNIAL = {
 export const CONTENT_INTEL = {
   currentState: {
     tools: 'Buffer (unhappy) + Excel files (clunky) + Claude/Co-pilot/ChatGPT for writing',
-    team: '3 people — Nicole + designer + admin. Designer can shoot but can\'t own strategy.',
+    team: '3 people. Nicole + designer + admin. Designer can shoot but can\'t own strategy.',
     golfSocial: 'DARK. Sam and a few guys were doing it themselves with an agency. Stopped because too busy.',
     messagingFramework: 'Nicole built audience-based messaging framework. "Great foundations but still feels clunky."',
   },
   keyInsights: [
     {
       insight: 'Content capture timing is offset by a full year',
-      detail: 'Golf course beauty shots don\'t come until a YEAR after construction — when the grass grows in, shrubbery fills out. Sam confirmed: "The beautiful pictures don\'t come until a year after we\'re done." This means 2026 captures feed 2027 content.',
+      detail: 'Golf course beauty shots don\'t come until a YEAR after construction. when the grass grows in, shrubbery fills out. Sam confirmed: "The beautiful pictures don\'t come until a year after we\'re done." This means 2026 captures feed 2027 content.',
       implication: 'Must plan a capture calendar NOW for the full 2026 construction season. Every project needs a "capture plan" with before/during/after phases mapped to content release dates 6-12 months later.',
     },
     {
       insight: 'Blue-collar workforce won\'t go on camera',
       detail: 'Nicole was explicit: "These guys are blue-collar. They don\'t want to talk to anybody. They\'re not going to be on camera." But she can video them DOING the work and add voiceover.',
-      implication: 'Content strategy must be built around cinematic b-roll, voiceover narratives, equipment footage, and drone work — NOT talking heads. This is actually a brand advantage: the work speaks for itself.',
+      implication: 'Content strategy must be built around cinematic b-roll, voiceover narratives, equipment footage, and drone work. NOT talking heads. This is actually a brand advantage: the work speaks for itself.',
     },
     {
-      insight: 'Graphics don\'t perform on social — carousels do',
+      insight: 'Graphics don\'t perform on social. carousels do',
       detail: 'Nicole and Reagan agreed: static graphics get "two likes." Carousels work. Video works. Real content works.',
       implication: 'Stop making branded graphics. Build carousel templates for project stories (before/during/after), employee spotlights (photo + stats + quote overlay), and equipment/process sequences.',
     },
     {
       insight: 'Nicole wants process automation, not more people',
-      detail: 'She\'s already using AI tools. She doesn\'t need more bodies — she needs a system that makes her 3-person team operate like a 10-person team.',
-      implication: 'The deliverable here isn\'t "content" — it\'s a content SYSTEM. Workflow, templates, AI-assisted production pipeline, scheduling, and measurement.',
+      detail: 'She\'s already using AI tools. She doesn\'t need more bodies. she needs a system that makes her 3-person team operate like a 10-person team.',
+      implication: 'The deliverable here isn\'t "content". it\'s a content SYSTEM. Workflow, templates, AI-assisted production pipeline, scheduling, and measurement.',
     },
   ],
   seasonalCapturePlan: {

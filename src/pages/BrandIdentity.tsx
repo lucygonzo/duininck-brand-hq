@@ -32,7 +32,7 @@ export default function BrandIdentityPage() {
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.orange, background: C.orangeDim, padding: '3px 8px', borderRadius: '9999px', textTransform: 'uppercase' }}>Unreplicable</div>
         </div>
         <Body style={{ marginBottom: '12px' }}>{BRAND_IDENTITY.wedge.description}</Body>
-        <Lbl>Proof Points — What No Competitor Can Copy</Lbl>
+        <Lbl>Proof Points: What No Competitor Can Copy</Lbl>
         {BRAND_IDENTITY.wedge.proofPoints.map((point, i) => (
           <div key={i} style={{ display: 'flex', gap: '8px', fontFamily: "'Inter', sans-serif", fontSize: '12px', color: C.text, padding: '5px 0', borderBottom: i < BRAND_IDENTITY.wedge.proofPoints.length - 1 ? `1px solid ${C.borderSoft}` : 'none' }}>
             <span style={{ color: C.orange, flexShrink: 0, fontWeight: 700 }}>{String(i + 1).padStart(2, '0')}</span> {point}

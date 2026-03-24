@@ -1,5 +1,5 @@
 import { COMPANY } from '../data/brandData';
-import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, C } from '../components/ui';
+import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, Divider, C } from '../components/ui';
 
 export default function BrandArchitecturePage() {
   return (
@@ -17,7 +17,7 @@ export default function BrandArchitecturePage() {
       </div>
 
       <Callout>
-        <strong>"When a Duininck truck pulls up on a site, we need to represent ALL of it, not just a piece of it."</strong> — Nicole Behne. This quote IS the architecture decision. One unified Duininck brand for construction, with Golf retaining its niche positioning for a fundamentally different audience.
+        <strong>"When a Duininck truck pulls up on a site, we need to represent ALL of it, not just a piece of it."</strong> (Nicole Behne) This quote IS the architecture decision. One unified Duininck brand for construction, with Golf retaining niche positioning for a fundamentally different audience.
       </Callout>
 
       {/* CONFIRMED ARCHITECTURE */}
@@ -31,9 +31,9 @@ export default function BrandArchitecturePage() {
           <Body style={{ fontSize: '12px', marginBottom: '10px' }}>All construction and materials entities operating under a single "Duininck" brand. No more separate concrete brand. Minnesota and Texas unified. One truck = all capabilities.</Body>
           <Lbl>What's Unifying</Lbl>
           {[
-            { name: 'Duininck Heavy Civil (Midwest)', note: 'Core — being unified' },
-            { name: 'Duininck Heavy Civil (Texas)', note: 'Was managed separately — now unifying' },
-            { name: 'Duininck Concrete', note: 'Brand being ELIMINATED — folding in' },
+            { name: 'Duininck Heavy Civil (Midwest)', note: 'Core, being unified' },
+            { name: 'Duininck Heavy Civil (Texas)', note: 'Was managed separately, now unifying' },
+            { name: 'Duininck Concrete', note: 'Brand being ELIMINATED, folding in' },
           ].map((item, i) => (
             <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '5px 0', borderBottom: `1px solid ${C.borderSoft}` }}>
               <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', color: C.text }}>{item.name}</span>
@@ -47,9 +47,9 @@ export default function BrandArchitecturePage() {
               <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '16px', fontWeight: 700, color: C.text }}>Niche Exception: Golf</div>
               <Chip color={C.amber}>Niche</Chip>
             </div>
-            <Body style={{ fontSize: '12px', marginBottom: '6px' }}>Golf retains distinct positioning. Different audience (architects vs. GCs), different website, different content strategy. Currently dark on social — restarting.</Body>
+            <Body style={{ fontSize: '12px', marginBottom: '6px' }}>Golf retains distinct positioning. Different audience (architects vs. GCs), different website, different content strategy. Currently dark on social, restart planned.</Body>
             <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.accent, fontStyle: 'italic', padding: '6px 8px', background: C.accentGlow, borderRadius: '4px' }}>
-              "Golf still has a bit of a niche because of the architects that come to that site versus general contractors and public works." — Nicole
+              "Golf still has a bit of a niche because of the architects that come to that site versus general contractors and public works." (Nicole)
             </div>
           </Card>
           <Card style={{ borderLeft: `3px solid ${C.blue}` }}>
@@ -63,14 +63,14 @@ export default function BrandArchitecturePage() {
       </div>
 
       {/* TIMELINE */}
+      <Divider label="Unification Timeline" />
       <Card style={{ marginBottom: '20px' }}>
-        <Lbl>Brand Unification Timeline</Lbl>
         {[
           { date: 'May 2025', event: 'Nicole Behne joins as CMO. Brand unification kickoff.', status: 'complete' },
           { date: 'Jun-Dec 2025', event: 'Stakeholder interviews, customer interviews, brand discovery. Agency engaged.', status: 'complete' },
           { date: 'Jan-Mar 2026', event: 'Website consolidation in progress. Concrete brand retirement. Content strategy development.', status: 'active' },
           { date: 'Apr-Jun 2026', event: 'Unified brand rollout. Content capture season begins. Golf social relaunch.', status: 'upcoming' },
-          { date: 'Jul 25, 2026', event: 'CENTENNIAL EVENT — unified brand showcase, 2,000 attendees, documentary premiere.', status: 'milestone' },
+          { date: 'Jul 25, 2026', event: 'CENTENNIAL EVENT: unified brand showcase, 2,000 attendees, documentary premiere.', status: 'milestone' },
           { date: 'Aug-Dec 2026', event: 'Post-centennial momentum. Full unified digital presence. Content system operating.', status: 'upcoming' },
         ].map((item, i) => (
           <div key={i} style={{ display: 'flex', gap: '14px', padding: '8px 0', borderBottom: `1px solid ${C.borderSoft}` }}>
@@ -81,7 +81,7 @@ export default function BrandArchitecturePage() {
       </Card>
 
       {/* CURRENT SUB-BRAND STATUS */}
-      <Lbl>Current Sub-Brand Status</Lbl>
+      <Divider label="Sub-Brand Status" />
       {COMPANY.subsidiaries.map((s, i) => (
         <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'center', padding: '10px 14px', background: C.s1, border: `1px solid ${C.border}`, borderRadius: '8px', marginBottom: '4px' }}>
           <div style={{ flex: 1 }}>
@@ -99,16 +99,16 @@ export default function BrandArchitecturePage() {
 
       <div style={{ marginTop: '20px' }}>
         <Block variant="green">
-          <strong>Why This Architecture Works:</strong> Nicole's "Full Truck" insight solves the architecture question. When a Duininck truck pulls up, it should represent everything — not fragment into sub-brands the customer has never heard of. The concrete brand was a vestige of an old acquisition. Golf stays niche because architects don't Google "heavy civil" — they search for golf course builders specifically.
+          <strong>Why This Architecture Works:</strong> Nicole's "Full Truck" insight resolves the architecture question. When a Duininck truck pulls up, it should represent everything, not fragment into sub-brands the customer has never heard of. The concrete brand was a vestige of an old acquisition. Golf stays niche because architects search for golf course builders specifically, not "heavy civil."
         </Block>
       </div>
 
       <Block variant="blue">
         <strong>Strategic Recommendations:</strong><br />
-        1. Launch the unified brand at the July 25 centennial event — maximum visibility, maximum emotional impact.<br />
-        2. Create a simple endorsement system: "Duininck Golf — A Duininck Company" for the niche exception.<br />
-        3. Retire all legacy concrete branding by centennial date — clean cut, no lingering.<br />
-        4. Develop a truck/equipment wrap standard that visualizes "the full truck" — every capability, one brand.
+        1. Launch the unified brand at the July 25 centennial event. Maximum visibility, maximum emotional impact.<br />
+        2. Create a simple endorsement system: "Duininck Golf, A Duininck Company" for the niche exception.<br />
+        3. Retire all legacy concrete branding by centennial date. Clean cut, no lingering.<br />
+        4. Develop a truck/equipment wrap standard that visualizes "the full truck." Every capability, one brand.
       </Block>
     </div>
   );
