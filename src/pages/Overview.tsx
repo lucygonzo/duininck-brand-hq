@@ -24,6 +24,25 @@ export default function OverviewPage({ onNavigate }: { onNavigate?: (tabId: stri
     <div>
       <SectionHeader num="00 / Foundation" title="Overview" sub="Executive summary: current state, key metrics, and open priorities for the Duininck Companies brand engagement." />
 
+      {/* START HERE: Three orientation cards */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '20px' }}>
+        <Card style={{ borderTop: `3px solid ${C.accent}`, padding: '16px' }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.accent, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>What We Researched</div>
+          <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '22px', fontWeight: 800, color: C.accent, marginBottom: '4px' }}>31</div>
+          <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, lineHeight: 1.5 }}>Research files across company profile, 8 audience segments, 7 competitor profiles, digital ecosystem, SEO/GEO, industry landscape, and perception scoring.</div>
+        </Card>
+        <Card style={{ borderTop: `3px solid ${C.orange}`, padding: '16px' }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.orange, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>What Surprised Us</div>
+          <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '22px', fontWeight: 800, color: C.orange, marginBottom: '4px' }}>4.7</div>
+          <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, lineHeight: 1.5 }}>Brand perception score out of 10. A company this strong should score twice that. The gap between internal quality and external visibility is the entire opportunity.</div>
+        </Card>
+        <Card style={{ borderTop: `3px solid #22C55E`, padding: '16px' }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: '#22C55E', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>What We Need Your Eyes On</div>
+          <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '22px', fontWeight: 800, color: '#22C55E', marginBottom: '4px' }}>6</div>
+          <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, lineHeight: 1.5 }}>Open discussion points throughout this document where your perspective will shape the strategy. Marked with green "Discussion Point" cards.</div>
+        </Card>
+      </div>
+
       {/* COMPANY DESCRIPTION */}
       <Card style={{ marginBottom: '0', borderTop: `3px solid ${C.accent}`, borderRadius: '10px 10px 0 0' }}>
         <Body style={{ fontSize: '14px', lineHeight: 1.7, marginBottom: '0' }}>

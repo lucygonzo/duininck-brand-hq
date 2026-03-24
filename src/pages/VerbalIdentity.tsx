@@ -336,7 +336,7 @@ export default function VerbalIdentityPage() {
           </div>
 
           <Block variant="red">
-            <strong>This needs resolution before brand unification works externally.</strong> A customer who visits duininckcompanies.com sees "Stewardship, Integrity, Servant Leadership." The same customer on duininck.com sees "Safety First, Team Duininck, Mind The Gap." Are these complementary (corporate values + operating behaviors)? Or has one set replaced the other? Nicole should clarify.
+            <strong>Discussion Point: This needs resolution before brand unification works externally.</strong> A customer who visits duininckcompanies.com sees "Stewardship, Integrity, Servant Leadership." The same customer on duininck.com sees "Safety First, Team Duininck, Mind The Gap." Are these complementary (corporate values + operating behaviors)? Or has one set replaced the other? Understanding the intent here will shape how we present values across the unified brand.
           </Block>
         </div>
       )}

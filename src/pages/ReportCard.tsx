@@ -2,9 +2,9 @@ import { SectionHeader, Callout, Card, Lbl, Body, ProgressBar, C } from '../comp
 
 export default function ReportCardPage() {
   const sections = [
-    { name: 'Company Profile', pct: 95, note: 'Deep research complete: SOS filings, LinkedIn mapping, press coverage, heritage competitors. Awaiting Nicole confirmation on employee count (700+ vs. 1,000).' },
-    { name: 'Brand Identity', pct: 80, note: 'Archetype, anchor, wedge validated against competitors. Core narrative drafted (3 versions). Wedge corrected: 3 heritage competitors exist.' },
-    { name: 'Visual Identity', pct: 55, note: 'Web audit complete: hex codes, fonts, cross-property consistency documented. Source logo files still awaiting Nicole.' },
+    { name: 'Company Profile', pct: 95, note: 'Deep research complete: SOS filings, LinkedIn mapping, press coverage, heritage competitors. One open question on employee count (700+ vs. 1,000 on website).' },
+    { name: 'Brand Identity', pct: 80, note: 'Archetype, anchor, wedge validated against competitors. Core narrative drafted (3 versions). Wedge corrected: 3 heritage competitors exist in MN.' },
+    { name: 'Visual Identity', pct: 55, note: 'Web audit complete: hex codes, fonts, cross-property consistency documented. Source logo vector files needed to finalize.' },
     { name: 'Verbal Identity', pct: 80, note: 'Full tagline inventory scraped from all properties. TWO conflicting value sets discovered. Language patterns documented. Messaging matrix pending.' },
     { name: 'Brand Architecture', pct: 95, note: 'CONFIRMED + validated with 5 unification case studies (Beldon, Quanta, Virgin, Mars, Hung Thinh).' },
     { name: 'Audience Research', pct: 90, note: '8 segments deep researched with channels, funnel leaks, win/loss factors. Trade school pipeline mapped (5 programs). 2 segments added from research.' },
@@ -21,7 +21,7 @@ export default function ReportCardPage() {
     <div>
       <SectionHeader num="13 / Workspace" title="Report Card" sub="Brand HQ completion status across all sections. Updated with 31 deep research files." />
       <Callout>
-        Overall brand intelligence: <strong>{avg}%</strong> complete. 31 research files, ~6,000 lines of intelligence across company profile, audience (8 segments), competitive (7 profiles), digital ecosystem, SEO/GEO, industry trends, perception scoring, funnel audits, and best-in-class benchmarks. Remaining gaps: source logo files from Nicole, content system design, internal comms platform selection.
+        Overall brand intelligence: <strong>{avg}%</strong> complete. 31 research files covering company profile, 8 audience segments, 7 competitor profiles, digital ecosystem, SEO/GEO, industry trends, perception scoring, funnel audits, and best-in-class benchmarks. Remaining items: source logo files, content system design, and internal comms platform selection.
       </Callout>
 
       <Card style={{ marginBottom: '24px' }}>

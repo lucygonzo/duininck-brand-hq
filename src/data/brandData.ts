@@ -429,7 +429,7 @@ export const VISUAL_IDENTITY = {
     { brand: 'Duininck Golf', file: 'Duininck-Golf-Black.png', url: 'https://www.duininckgolf.com/wp-content/uploads/2022/11/Duininck-Golf-Black.png', format: 'PNG (1000x259)', status: 'sourced', note: 'Black version. No SVG available.' },
     { brand: 'Duininck Golf', file: 'Duininck-Golf-white-2Shadow.png', url: 'https://www.duininckgolf.com/wp-content/uploads/2022/12/Duininck-Golf-white-2Shadow.png', format: 'PNG', status: 'sourced', note: 'White with drop shadow. Not ideal for print.' },
     { brand: 'Prinsco', file: 'Prinsco_Logo-WaterMgmtSol-2018_Primary-Logo.png', url: 'https://www.prinsco.com/wp-content/uploads/2023/11/Prinsco_Logo-WaterMgmtSol-2018_Primary-Logo.png', format: 'PNG (2550x1006)', status: 'sourced', note: 'Includes "Water Management Solutions" descriptor. Very large file.' },
-    { brand: 'Hart Ranch', file: '', url: '', format: '', status: 'missing', note: 'Not sourced yet. Need to pull from hartranch.com or request from Nicole.' },
+    { brand: 'Hart Ranch', file: '', url: '', format: '', status: 'missing', note: 'Not sourced yet. Can be pulled from hartranch.com or provided via shared Drive folder.' },
     { brand: 'Duininck Concrete', file: '', url: '', format: '', status: 'missing', note: 'Not sourced. Brand being eliminated but needed for transition docs.' },
   ],
 

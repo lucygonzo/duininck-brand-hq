@@ -355,7 +355,7 @@ export default function VisualIdentityPage() {
           />
 
           <Block variant="amber">
-            <strong>Still needed from Nicole:</strong> Source vector files (AI/EPS) for all logos, Hart Ranch logo in any format, approved color variations (grayscale, single-color, reversed), and any brand guide PDF that defines logo usage rules.
+            <strong>Discussion Point: Asset files.</strong> We pulled every logo available from the live websites. To finalize the visual system, we also need source vector files (AI/EPS), the Hart Ranch logo, approved color variations (grayscale, single-color, reversed), and any existing brand guide PDF. A shared Drive folder would be the easiest handoff.
           </Block>
         </div>
       )}
@@ -509,7 +509,7 @@ export default function VisualIdentityPage() {
 
           <div style={{ marginTop: '16px' }}>
             <Block variant="amber">
-              <strong>Status:</strong> These lockup arrangements are proposed, not yet designed. Nicole needs to engage the agency or designer to produce the actual "A Duininck Company" badge in SVG format with the approved teal color (#004F71).
+              <strong>Discussion Point:</strong> These lockup arrangements are proposed concepts. The next step is producing the actual "A Duininck Company" badge in SVG format with the approved teal (#004F71). This could be handled by the existing agency or designer.
             </Block>
           </div>
 

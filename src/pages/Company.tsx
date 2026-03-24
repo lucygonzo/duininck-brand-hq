@@ -83,7 +83,7 @@ export default function CompanyPage({ onNavigate }: { onNavigate?: (tabId: strin
           <Body style={{ marginBottom: 0 }}>{COMPANY.mission}</Body>
           <EditorialNote
             preview={'This mission statement reads as vague. "Energized to build for the future" could belong to any company.'}
-            detail={'How would an employee finish the sentence: "Duininck builds for the future by _____"? The wellbeing framework, the centennial, and the family legacy all give this sentence weight, but the current phrasing strips it out. Nicole should pressure-test this against stakeholder interview findings.'}
+            detail={'Discussion Point: How would an employee finish the sentence: "Duininck builds for the future by _____"? The wellbeing framework, the centennial, and the family legacy all give this weight. Worth pressure-testing against stakeholder interview findings.'}
           />
         </Card>
         <Card>
