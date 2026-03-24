@@ -396,6 +396,125 @@ export const VISUAL_IDENTITY = {
     { company: 'Landscapes Unlimited', score: 7, note: 'Clean golf-focused identity. NGF Top 100 recognition every year.' },
     { company: 'Duininck', score: 5, note: 'Strong teal + orange foundation, but 6 fragmented websites with zero visual connection.' },
   ],
+
+  // ---- SURFACES / EXTENDED PALETTE ----
+  surfacesPalette: [
+    { name: 'Card Surface', hex: '#FFFFFF', usage: 'Primary card backgrounds, content containers' },
+    { name: 'Page Background', hex: '#F7F6F3', usage: 'Page-level background, section separation' },
+    { name: 'Soft Surface', hex: '#F0EEEB', usage: 'Secondary card backgrounds, hover states, input fields' },
+    { name: 'Muted Surface', hex: '#E8E5E0', usage: 'Disabled states, subtle dividers, inactive elements' },
+    { name: 'Teal Tint 8%', hex: '#004F7114', usage: 'Selected states, active tab backgrounds, highlight rows' },
+    { name: 'Teal Tint 4%', hex: '#004F710A', usage: 'Subtle hover states, callout backgrounds' },
+    { name: 'Orange Tint 8%', hex: '#FE500014', usage: 'Warning/urgency backgrounds, centennial callouts' },
+    { name: 'Success Tint', hex: '#2E7D4F1A', usage: 'Confirmation states, completed indicators' },
+    { name: 'Error Tint', hex: '#C03A2B1A', usage: 'Error states, critical alerts, competitor flags' },
+  ],
+
+  // ---- AUDIENCE COLOR EMPHASIS ----
+  audienceColorNotes: [
+    { audience: 'GCs & Public Works', emphasis: 'Lead with Teal (#004F71). Conveys authority, reliability, and institutional trust. Orange for CTAs only.', rationale: 'This audience responds to professional, understated visuals. Avoid excessive orange, which reads as consumer-facing.' },
+    { audience: 'Prospective Employees', emphasis: 'Lead with Orange (#FE5000) paired with Teal. Orange conveys energy, opportunity, and warmth.', rationale: 'Recruiting content needs to stop the scroll. Orange draws attention on Indeed and Facebook. Teal grounds it as serious.' },
+    { audience: 'Golf Architects', emphasis: 'Lead with Golf Green (#16251C) and Sage (#83B348). Teal as parent endorsement only.', rationale: 'Golf is a distinct aesthetic world. Dark greens signal sophistication and craft. The Duininck teal should appear only in the "A Duininck Company" badge.' },
+    { audience: 'Current Employees', emphasis: 'Equal Teal and Orange. This is the full brand expression. Add Heritage Gold (#D4880B) for centennial moments.', rationale: 'Internal communications should feel like the complete Duininck identity. No sub-brand filtering needed.' },
+    { audience: 'Communities', emphasis: 'Teal (#004F71) with warm neutrals. Warm Gray (#F7F6F3) backgrounds. Minimal orange.', rationale: 'Community-facing materials should feel trusted, established, and approachable. Warm neutrals soften the institutional teal.' },
+  ],
+
+  // ---- SOURCED LOGO FILES ----
+  sourcedLogos: [
+    { brand: 'Duininck Companies', file: 'Duininck-Color.svg', url: 'https://duininckcompanies.com/wp-content/uploads/2024/09/Duininck-Color.svg', format: 'SVG', status: 'sourced', note: 'Clean vector from website. Best quality available.' },
+    { brand: 'Duininck Companies', file: 'Group-17.svg', url: 'https://duininckcompanies.com/wp-content/uploads/2024/09/Group-17.svg', format: 'SVG', status: 'sourced', note: 'Footer icon/secondary mark.' },
+    { brand: 'Duininck Companies', file: 'dnkc-social-share.jpg', url: 'https://duininckcompanies.com/wp-content/uploads/2024/09/dnkc-social-share.jpg', format: 'JPG (2400x1350)', status: 'sourced', note: 'Social sharing card image.' },
+    { brand: 'Duininck Inc.', file: 'duinink-logo.svg', url: 'https://www.duininck.com/wp-content/uploads/2018/07/duinink-logo.svg', format: 'SVG', status: 'sourced', note: 'Filename has typo ("duinink"). Clean vector.' },
+    { brand: 'Duininck Inc.', file: 'duinink-logo-white.svg', url: 'https://www.duininck.com/wp-content/uploads/2018/07/duinink-logo-white.svg', format: 'SVG', status: 'sourced', note: 'White/reversed version for dark backgrounds.' },
+    { brand: 'Duininck Golf', file: 'Duininck-Golf-Black.png', url: 'https://www.duininckgolf.com/wp-content/uploads/2022/11/Duininck-Golf-Black.png', format: 'PNG (1000x259)', status: 'sourced', note: 'Black version. No SVG available.' },
+    { brand: 'Duininck Golf', file: 'Duininck-Golf-white-2Shadow.png', url: 'https://www.duininckgolf.com/wp-content/uploads/2022/12/Duininck-Golf-white-2Shadow.png', format: 'PNG', status: 'sourced', note: 'White with drop shadow. Not ideal for print.' },
+    { brand: 'Prinsco', file: 'Prinsco_Logo-WaterMgmtSol-2018_Primary-Logo.png', url: 'https://www.prinsco.com/wp-content/uploads/2023/11/Prinsco_Logo-WaterMgmtSol-2018_Primary-Logo.png', format: 'PNG (2550x1006)', status: 'sourced', note: 'Includes "Water Management Solutions" descriptor. Very large file.' },
+    { brand: 'Hart Ranch', file: '', url: '', format: '', status: 'missing', note: 'Not sourced yet. Need to pull from hartranch.com or request from Nicole.' },
+    { brand: 'Duininck Concrete', file: '', url: '', format: '', status: 'missing', note: 'Not sourced. Brand being eliminated but needed for transition docs.' },
+  ],
+
+  fontSources: [
+    { font: 'Inter', url: 'https://fonts.google.com/specimen/Inter', license: 'OFL (free)', status: 'proposed', note: 'Recommended for unified brand. Display + body.' },
+    { font: 'JetBrains Mono', url: 'https://fonts.google.com/specimen/JetBrains+Mono', license: 'OFL (free)', status: 'proposed', note: 'Recommended for data, labels, metadata.' },
+    { font: 'Roboto', url: 'https://fonts.google.com/specimen/Roboto', license: 'Apache 2.0 (free)', status: 'current', note: 'Currently on duininckcompanies.com. Will be replaced.' },
+  ],
+
+  // ---- SOCIAL VISUAL STANDARDS ----
+  socialStandards: {
+    platforms: [
+      {
+        platform: 'LinkedIn',
+        profilePic: '400x400px, square crop. Use Duininck teal logo mark on white background. Company pages: use "D" initial or full wordmark.',
+        coverImage: '1128x191px (desktop), 1128x220px (mobile). Use project photography with teal gradient overlay. "Built to Last" tagline anchored bottom-left.',
+        postDimensions: 'Single image: 1200x627px (landscape) or 1080x1080px (square). Carousel: 1080x1080px per slide. Video: 1920x1080px (16:9).',
+        colorEmphasis: 'Teal-dominant. Professional tone. Orange for CTAs in carousel end-slides only.',
+      },
+      {
+        platform: 'Instagram',
+        profilePic: '320x320px, circular crop. Use teal "D" mark or full wordmark centered on white.',
+        coverImage: 'N/A (Instagram has no cover photo). Bio: include centennial mention and website link.',
+        postDimensions: 'Feed: 1080x1080px (square) or 1080x1350px (portrait, preferred). Stories/Reels: 1080x1920px (9:16). Carousel: 1080x1350px per slide.',
+        colorEmphasis: 'Photography-forward. Let the work speak. Brand colors in text overlays and end-slides, not as backgrounds.',
+      },
+      {
+        platform: 'Facebook',
+        profilePic: '170x170px (desktop), 128x128px (mobile). Same as LinkedIn: logo mark on white.',
+        coverImage: '820x312px (desktop), 640x360px (mobile). Community-focused project image. Warm, approachable framing.',
+        postDimensions: 'Image: 1200x630px (landscape). Square: 1080x1080px. Video: 1280x720px minimum.',
+        colorEmphasis: 'Warm palette. Teal + Warm Gray. This is the community channel, so less formal than LinkedIn.',
+      },
+    ],
+    contentTemplates: [
+      { type: 'Project Carousel', slides: '5-7 slides', structure: 'Slide 1: Before photo with project name. Slides 2-5: During/progress shots. Slide 6: After/completion beauty shot. Slide 7: Branded end-slide with "Built to Last" and Duininck logo.', colors: 'Photography-dominant. Teal text overlay on Slide 1 and 7. No colored backgrounds on photo slides.' },
+      { type: 'Employee Spotlight', slides: '3-4 slides', structure: 'Slide 1: Worker silhouette or hands-at-work photo with name and role. Slide 2: Stats (years at company, projects, fun fact). Slide 3: Quote overlay on equipment/site photo. Slide 4: "We see the whole you" branded end-slide.', colors: 'Teal header text. Warm Gray backgrounds on stat slides. Orange accent on the "whole you" end-slide.' },
+      { type: 'Equipment Feature', slides: '3-5 slides', structure: 'Slide 1: Equipment hero shot (golden hour or dramatic angle). Slide 2: Specs or capability callout. Slide 3-4: Equipment in action on a live project. Slide 5: Branded end-slide.', colors: 'Let equipment photography dominate. Teal for any text overlays. Minimal color treatment.' },
+      { type: 'Recruiting Post', slides: '1 image or 4-slide carousel', structure: 'Single image: equipment beauty shot + "Now Hiring" + pay range + QR code. Carousel: Slide 1 headline, Slide 2 what the role involves, Slide 3 wellbeing framework, Slide 4 how to apply.', colors: 'Orange-dominant for recruiting. Stops the scroll. Teal for supporting text. White backgrounds on info slides.' },
+      { type: 'Community Impact', slides: '1 image', structure: 'Completed project photo from the community perspective (road they drive on, park they use). Overlay with location and project name. Keep simple.', colors: 'Teal + Warm Gray. Approachable. No hard sell.' },
+      { type: 'Centennial Content', slides: '3-5 slides', structure: 'Slide 1: "100 Years" badge with Heritage Gold. Slide 2: Historic photo (if available) or founding story text. Slide 3: Modern project photo. Slide 4: "Built to Last" with centennial date. Slide 5: Event details or CTA.', colors: 'Orange + Heritage Gold (#D4880B) lead. Teal anchors. This is the one time orange dominates the full palette.' },
+    ],
+  },
+
+  // ---- PARTNERSHIP LOCKUPS ----
+  lockupMockups: [
+    {
+      name: 'Horizontal Endorsement',
+      description: 'Sub-brand logo on the left, vertical divider line, "A Duininck Company" text + parent logo on the right.',
+      mockup: '[Duininck Golf Logo]  |  A Duininck Company [D]',
+      usage: 'Website headers, document footers, email signatures.',
+      clearSpace: 'Minimum clear space around the lockup equals the height of the "D" mark on all sides.',
+    },
+    {
+      name: 'Stacked Endorsement',
+      description: 'Sub-brand logo centered on top, "A Duininck Company" line below in smaller text.',
+      mockup: '     [Duininck Golf Logo]\n      A Duininck Company',
+      usage: 'Social media profiles, square formats, signage where width is constrained.',
+      clearSpace: 'Same rule: "D" mark height as minimum margin.',
+    },
+    {
+      name: 'Badge Only',
+      description: '"A Duininck Company" in a small pill badge. No sub-brand logo. Used as a footer element.',
+      mockup: '[ A Duininck Company ]',
+      usage: 'Website footers, collateral fine print, email footer strips.',
+      clearSpace: 'Badge should sit at least 16px from other elements.',
+    },
+    {
+      name: 'Social Profile Lockup',
+      description: 'For social media profile pictures where space is limited. "D" mark in teal on white circle.',
+      mockup: '  [D]\n  ----\n Teal on\n  White',
+      usage: 'LinkedIn, Instagram, Facebook profile pictures for Duininck-branded pages.',
+      clearSpace: 'Logo mark centered with equal padding on all sides within the circle crop.',
+    },
+  ],
+  lockupRules: [
+    { rule: 'Do', detail: 'Use the horizontal endorsement on all Golf properties. It connects Golf to the parent brand for the first time.' },
+    { rule: 'Do', detail: 'Use the badge-only version in email footers for all Duininck-branded communications.' },
+    { rule: 'Do', detail: 'Maintain the clear space rule (height of "D" mark) on every application.' },
+    { rule: 'Do', detail: 'Use teal (#004F71) endorsement text on white/light backgrounds. White text on dark/photography backgrounds.' },
+    { rule: 'Don\'t', detail: 'Never place the endorsement badge over busy photography. Use a solid or gradient bar behind it.' },
+    { rule: 'Don\'t', detail: 'Never use the parent Duininck logo at a larger size than the sub-brand logo in any lockup.' },
+    { rule: 'Don\'t', detail: 'Never combine the endorsement with Prinsco. Prinsco is intentionally independent.' },
+    { rule: 'Don\'t', detail: 'Never rotate, stretch, recolor, or add effects to any logo in the lockup.' },
+  ],
 };
 
 // CONFIRMED segments from Nicole's call

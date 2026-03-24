@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { VISUAL_IDENTITY } from '../data/brandData';
 import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, SubTabs, DataTable, Divider, ProgressBar, C } from '../components/ui';
 
-const TABS = ['Color System', 'Typography', 'Logos & Lockups', 'Photography', 'Sub-Brands', 'Gaps & Evolution'];
+const TABS = ['Color System', 'Typography', 'Logos & Assets', 'Photography', 'Social Standards', 'Lockups', 'Sub-Brands', 'Gaps'];
 const V = VISUAL_IDENTITY;
 
 export default function VisualIdentityPage() {
@@ -99,6 +99,35 @@ export default function VisualIdentityPage() {
               ))}
             </div>
           </Card>
+
+          {/* Surfaces Palette */}
+          <Divider label="Surfaces & Extended Palette" />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '16px' }}>
+            {V.surfacesPalette.map((s, i) => (
+              <div key={i} onClick={() => navigator.clipboard.writeText(s.hex)} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 10px', background: '#fff', border: `1px solid ${C.border}`, borderRadius: '6px' }}>
+                <div style={{ width: '28px', height: '28px', borderRadius: '6px', background: s.hex.length > 7 ? `#${s.hex.slice(1,7)}` : s.hex, border: '1px solid rgba(0,0,0,0.08)', flexShrink: 0, opacity: s.hex.length > 7 ? parseInt(s.hex.slice(7), 16) / 255 : 1 }} />
+                <div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', fontWeight: 600, color: C.text }}>{s.name}</div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted }}>{s.usage}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Audience Color Emphasis */}
+          <Divider label="Color Emphasis by Audience" />
+          <Body style={{ fontSize: '11px', color: C.muted, marginBottom: '10px' }}>Different audiences respond to different color emphasis. The palette stays the same; the lead color shifts.</Body>
+          {V.audienceColorNotes.map((a, i) => (
+            <Card key={i} style={{ marginBottom: '6px', padding: '12px 16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', fontWeight: 700, color: C.accent }}>{a.audience}</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', color: C.sub, marginTop: '4px' }}>{a.emphasis}</div>
+                </div>
+              </div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.muted, marginTop: '6px', fontStyle: 'italic' }}>{a.rationale}</div>
+            </Card>
+          ))}
         </div>
       )}
 
@@ -136,10 +165,50 @@ export default function VisualIdentityPage() {
         </div>
       )}
 
-      {/* ===== TAB 3: LOGOS & LOCKUPS ===== */}
-      {tab === 'Logos & Lockups' && (
+      {/* ===== TAB 3: LOGOS & ASSETS ===== */}
+      {tab === 'Logos & Assets' && (
         <div>
-          <Divider label="Current Logo Inventory" />
+          <Divider label="Sourced Logo Files" />
+          <Body style={{ fontSize: '11px', color: C.muted, marginBottom: '10px' }}>Logo files pulled directly from live websites. Click any link to download. Items marked with ⚠ still need to be sourced from Nicole.</Body>
+          {V.sourcedLogos.map((logo, i) => (
+            <Card key={i} style={{ marginBottom: '6px', padding: '12px 16px', borderLeft: `3px solid ${logo.status === 'missing' ? C.warning : C.success}` }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  {logo.status === 'missing' && <span style={{ fontSize: '14px' }}>⚠️</span>}
+                  <div>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', fontWeight: 600, color: C.text }}>{logo.brand}</div>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted }}>{logo.file || 'Not sourced'} · {logo.format || 'N/A'}</div>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                  <Chip color={logo.status === 'sourced' ? C.success : C.warning}>{logo.status}</Chip>
+                  {logo.url && (
+                    <a href={logo.url} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.accent, textDecoration: 'none', padding: '3px 8px', border: `1px solid ${C.accent}30`, borderRadius: '6px' }}>Download &#8599;</a>
+                  )}
+                </div>
+              </div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.muted, marginTop: '4px' }}>{logo.note}</div>
+            </Card>
+          ))}
+
+          <Divider label="Font Sources" />
+          {V.fontSources.map((f, i) => (
+            <Card key={i} style={{ marginBottom: '6px', padding: '12px 16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '14px', fontWeight: 700, color: C.text }}>{f.font}</div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted }}>{f.license}</div>
+                </div>
+                <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                  <Chip color={f.status === 'proposed' ? C.accent : C.amber}>{f.status}</Chip>
+                  <a href={f.url} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.accent, textDecoration: 'none', padding: '3px 8px', border: `1px solid ${C.accent}30`, borderRadius: '6px' }}>Google Fonts &#8599;</a>
+                </div>
+              </div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.muted, marginTop: '4px' }}>{f.note}</div>
+            </Card>
+          ))}
+
+          <Divider label="Logo Inventory (All Properties)" />
           <DataTable
             headers={['Property', 'Logo Type', 'Format', 'Tagline?', 'Parent Visible?']}
             colWidths={['22%', '22%', '22%', '14%', '20%']}
@@ -151,26 +220,8 @@ export default function VisualIdentityPage() {
             ])}
           />
 
-          <Divider label="Partnership Lockup Rules" />
-          <Block variant="red">
-            <strong>Current problems:</strong>
-            {V.partnershipLockups.problems.map((p, i) => (
-              <div key={i} style={{ display: 'flex', gap: '6px', marginTop: '6px' }}><span style={{ color: C.red, flexShrink: 0 }}>&#9679;</span> {p}</div>
-            ))}
-          </Block>
-
-          <Lbl style={{ marginTop: '16px' }}>Recommendations</Lbl>
-          {V.partnershipLockups.recommendations.map((r, i) => (
-            <Card key={i} style={{ marginBottom: '6px', padding: '12px 16px' }}>
-              <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '12px', color: C.accent, fontWeight: 700, flexShrink: 0 }}>{String(i + 1).padStart(2, '0')}</span>
-                <Body style={{ marginBottom: 0, fontSize: '12px' }}>{r}</Body>
-              </div>
-            </Card>
-          ))}
-
           <Block variant="amber">
-            <strong>Status:</strong> Clear space rules, minimum sizes, and approved color variations are pending the unified brand launch. Source logo files (SVG/EPS) need to come from Nicole.
+            <strong>Still needed from Nicole:</strong> Source vector files (AI/EPS) for all logos, Hart Ranch logo in any format, approved color variations (grayscale, single-color, reversed), and any brand guide PDF that defines logo usage rules.
           </Block>
         </div>
       )}
@@ -227,7 +278,110 @@ export default function VisualIdentityPage() {
         </div>
       )}
 
-      {/* ===== TAB 5: SUB-BRANDS ===== */}
+      {/* ===== TAB 5: SOCIAL STANDARDS ===== */}
+      {tab === 'Social Standards' && (
+        <div>
+          <Divider label="Platform Specifications" />
+          {V.socialStandards.platforms.map((p, i) => (
+            <Card key={i} style={{ marginBottom: '10px', borderLeft: `3px solid ${C.accent}` }}>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '16px', fontWeight: 700, color: C.accent, marginBottom: '8px' }}>{p.platform}</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <div>
+                  <Lbl>Profile Picture</Lbl>
+                  <Body style={{ fontSize: '11px', marginBottom: '6px' }}>{p.profilePic}</Body>
+                </div>
+                <div>
+                  <Lbl>Cover / Banner</Lbl>
+                  <Body style={{ fontSize: '11px', marginBottom: '6px' }}>{p.coverImage}</Body>
+                </div>
+              </div>
+              <Lbl>Post Dimensions</Lbl>
+              <Body style={{ fontSize: '11px', marginBottom: '6px' }}>{p.postDimensions}</Body>
+              <div style={{ padding: '6px 10px', background: C.accentGlow, borderRadius: '4px' }}>
+                <Lbl style={{ marginBottom: '2px' }}>Color Emphasis</Lbl>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.accent }}>{p.colorEmphasis}</div>
+              </div>
+            </Card>
+          ))}
+
+          <Divider label="Content Type Templates" />
+          <Body style={{ fontSize: '11px', color: C.muted, marginBottom: '10px' }}>Visual structure and color rules for each content format. These templates ensure consistency whether Nicole, the designer, or the admin creates the post.</Body>
+          {V.socialStandards.contentTemplates.map((ct, i) => (
+            <Card key={i} style={{ marginBottom: '8px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '14px', fontWeight: 700, color: C.text }}>{ct.type}</div>
+                <Chip color={C.accent}>{ct.slides}</Chip>
+              </div>
+              <Lbl>Structure</Lbl>
+              <Body style={{ fontSize: '11px', marginBottom: '6px' }}>{ct.structure}</Body>
+              <div style={{ padding: '6px 10px', background: C.accentGlow, borderRadius: '4px' }}>
+                <Lbl style={{ marginBottom: '2px' }}>Color Treatment</Lbl>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.accent }}>{ct.colors}</div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      )}
+
+      {/* ===== TAB 6: LOCKUPS ===== */}
+      {tab === 'Lockups' && (
+        <div>
+          <Callout>
+            Partnership lockups define how sub-brands visually connect to the Duininck parent brand. Today, no endorsement system exists. These mockups represent the proposed system.
+          </Callout>
+
+          <Divider label="Lockup Arrangements" />
+          {V.lockupMockups.map((lm, i) => (
+            <Card key={i} style={{ marginBottom: '10px', borderLeft: `3px solid ${C.accent}` }}>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '15px', fontWeight: 700, color: C.text, marginBottom: '4px' }}>{lm.name}</div>
+              <Body style={{ fontSize: '12px', marginBottom: '8px' }}>{lm.description}</Body>
+              <div style={{ background: C.s2, borderRadius: '8px', padding: '16px 20px', marginBottom: '8px', fontFamily: "'JetBrains Mono', monospace", fontSize: '13px', color: C.accent, textAlign: 'center', whiteSpace: 'pre-line', letterSpacing: '0.02em' }}>
+                {lm.mockup}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <div>
+                  <Lbl>Usage</Lbl>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub }}>{lm.usage}</div>
+                </div>
+                <div>
+                  <Lbl>Clear Space</Lbl>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub }}>{lm.clearSpace}</div>
+                </div>
+              </div>
+            </Card>
+          ))}
+
+          <Divider label="Usage Rules" />
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '16px' }}>
+            {V.lockupRules.filter(r => r.rule === 'Do').map((r, i) => (
+              <Card key={i} style={{ borderLeft: `3px solid ${C.success}`, padding: '12px 16px' }}>
+                <div style={{ display: 'flex', gap: '6px', alignItems: 'flex-start' }}>
+                  <span style={{ color: C.success, fontWeight: 700, flexShrink: 0 }}>&#10003;</span>
+                  <Body style={{ fontSize: '12px', marginBottom: 0 }}>{r.detail}</Body>
+                </div>
+              </Card>
+            ))}
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+            {V.lockupRules.filter(r => r.rule === "Don't").map((r, i) => (
+              <Card key={i} style={{ borderLeft: `3px solid ${C.red}`, padding: '12px 16px' }}>
+                <div style={{ display: 'flex', gap: '6px', alignItems: 'flex-start' }}>
+                  <span style={{ color: C.red, fontWeight: 700, flexShrink: 0 }}>&#10007;</span>
+                  <Body style={{ fontSize: '12px', marginBottom: 0 }}>{r.detail}</Body>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          <div style={{ marginTop: '16px' }}>
+            <Block variant="amber">
+              <strong>Status:</strong> These lockup arrangements are proposed, not yet designed. Nicole needs to engage the agency or designer to produce the actual "A Duininck Company" badge in SVG format with the approved teal color (#004F71).
+            </Block>
+          </div>
+        </div>
+      )}
+
+      {/* ===== TAB 7: SUB-BRANDS ===== */}
       {tab === 'Sub-Brands' && (
         <div>
           {V.subBrandPalettes.map((sb, i) => (
@@ -275,8 +429,8 @@ export default function VisualIdentityPage() {
         </div>
       )}
 
-      {/* ===== TAB 6: GAPS & EVOLUTION ===== */}
-      {tab === 'Gaps & Evolution' && (
+      {/* ===== TAB 8: GAPS ===== */}
+      {tab === 'Gaps' && (
         <div>
           <Callout>
             What is missing or needs refinement for a unified Duininck visual brand. Each gap connects to a specific action that should be completed before the centennial launch (July 25, 2026).
