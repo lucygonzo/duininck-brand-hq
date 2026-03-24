@@ -31,16 +31,28 @@ export default function VisualIdentityPage() {
       {/* ===== TAB 1: COLOR SYSTEM ===== */}
       {tab === 'Color System' && (
         <div>
-          <Divider label="Primary Brand Palette" />
+          {/* Hero Swatch: Teal + Orange side by side */}
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0', marginBottom: '20px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
+            <div style={{ background: '#004F71', height: '160px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '20px 24px' }}>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '32px', fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>Duininck Teal</div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginTop: '4px', cursor: 'pointer' }} onClick={() => navigator.clipboard.writeText('#004F71')}>#004F71 · Click to copy</div>
+            </div>
+            <div style={{ background: '#FE5000', height: '160px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '20px 24px' }}>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '24px', fontWeight: 800, color: '#fff' }}>Orange</div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginTop: '4px', cursor: 'pointer' }} onClick={() => navigator.clipboard.writeText('#FE5000')}>#FE5000 · Click to copy</div>
+            </div>
+          </div>
+
+          <Divider label="Full Brand Palette" />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px', marginBottom: '20px' }}>
             {V.primaryPalette.map((c, i) => (
               <div key={i} onClick={() => navigator.clipboard.writeText(c.hex)} style={{ cursor: 'pointer', background: '#fff', border: `1px solid ${C.border}`, borderRadius: '10px', overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
-                <div style={{ height: '64px', background: c.hex, display: 'flex', alignItems: 'flex-end', padding: '6px 8px' }}>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: c.hex === '#FFFFFF' || c.hex === '#F7F6F3' ? C.muted : '#fff', opacity: 0.9 }}>{c.hex}</span>
+                <div style={{ height: '80px', background: c.hex, display: 'flex', alignItems: 'flex-end', padding: '8px 10px' }}>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: c.hex === '#FFFFFF' || c.hex === '#F7F6F3' ? C.muted : '#fff', opacity: 0.9 }}>{c.hex}</span>
                 </div>
-                <div style={{ padding: '8px 10px' }}>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', fontWeight: 600, color: C.text }}>{c.name}</div>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, marginTop: '2px' }}>{c.role}</div>
+                <div style={{ padding: '10px 12px' }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', fontWeight: 600, color: C.text }}>{c.name}</div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, marginTop: '2px' }}>{c.role}</div>
                 </div>
               </div>
             ))}
@@ -128,6 +140,59 @@ export default function VisualIdentityPage() {
               <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.muted, marginTop: '6px', fontStyle: 'italic' }}>{a.rationale}</div>
             </Card>
           ))}
+
+          {/* Action Color Concept */}
+          <Divider label="Action Color: The Orange Signal" />
+          <Card style={{ borderLeft: `4px solid ${C.orange}`, marginBottom: '16px' }}>
+            <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '15px', fontWeight: 700, color: C.orange, marginBottom: '6px' }}>Duininck Orange as the "do something here" signal</div>
+            <Body style={{ fontSize: '12px', marginBottom: '10px' }}>
+              Some of the strongest brands have a single color that permeates every touchpoint where action happens. An HVAC company paints its handles red so every homeowner recognizes the brand at a glance. For Duininck, orange should function the same way. Orange appears on buttons ("Apply Now"), on centennial materials, on recruiting ads, on CTAs, on hard hat stickers. Wherever the brand asks someone to act, orange shows up. Teal is the authority. Orange is the invitation.
+            </Body>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px' }}>
+              {[
+                { context: 'Website CTA button', example: '"Apply Now" in #FE5000 on teal page' },
+                { context: 'Recruiting post', example: 'Orange headline stops the scroll on Indeed/Facebook' },
+                { context: 'Centennial badge', example: '100-year mark in orange on every touchpoint' },
+              ].map((ex, i) => (
+                <div key={i} style={{ padding: '8px 10px', background: C.orangeGlow, borderRadius: '6px' }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.orange, textTransform: 'uppercase', marginBottom: '3px' }}>{ex.context}</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub }}>{ex.example}</div>
+                </div>
+              ))}
+            </div>
+            <Chip color={C.amber}>Open Decision</Chip>
+          </Card>
+
+          {/* Competitive Color Landscape */}
+          <Divider label="Competitive Color Landscape" />
+          <Card style={{ marginBottom: '16px' }}>
+            <Body style={{ fontSize: '12px', marginBottom: '12px' }}>
+              Understanding which colors competitors own in the MN heavy civil market reveals where Duininck can carve visual white space. Teal is currently unclaimed territory.
+            </Body>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
+              {[
+                { company: 'Ames Construction', colors: 'Navy blue + gold', hex: '#1C3454', note: 'Corporate blue. Common, unremarkable.' },
+                { company: 'Knife River', colors: 'Red + black', hex: '#CC0000', note: 'High-energy. Stands out on equipment and signage.' },
+                { company: 'C.S. McCrossan', colors: 'Dark blue + white', hex: '#1A3A6C', note: 'Conservative blue. Feels institutional.' },
+                { company: 'Aggregate Industries', colors: 'Green + gray', hex: '#4A7C3F', note: 'Environmental positioning through color.' },
+                { company: 'Landscapes Unlimited', colors: 'Forest green + white', hex: '#1B5E3B', note: 'Golf industry standard green.' },
+                { company: 'Wadsworth Golf', colors: 'Navy + red + white', hex: '#1C2D5C', note: 'Patriotic palette. Traditional.' },
+              ].map((comp, i) => (
+                <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'center', padding: '8px 10px', background: C.s2, borderRadius: '6px' }}>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: comp.hex, flexShrink: 0, border: '1px solid rgba(0,0,0,0.08)' }} />
+                  <div>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', fontWeight: 600, color: C.text }}>{comp.company}</div>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted }}>{comp.colors}</div>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.ghost }}>{comp.note}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: '12px', padding: '10px 14px', background: C.accentGlow, borderRadius: '8px', border: `1px solid ${C.accent}20` }}>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', fontWeight: 600, color: C.accent, marginBottom: '4px' }}>Recommendation: Duininck Teal owns uncontested space</div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.accent }}>No MN heavy civil competitor uses teal. Blues are everywhere (Ames, McCrossan, Wadsworth). Greens belong to golf and environmental brands. Red is Knife River's territory. Teal (#004F71) sits between blue and green, signaling both professional authority and environmental consciousness. This is white space worth defending.</div>
+            </div>
+          </Card>
         </div>
       )}
 
@@ -378,6 +443,30 @@ export default function VisualIdentityPage() {
               <strong>Status:</strong> These lockup arrangements are proposed, not yet designed. Nicole needs to engage the agency or designer to produce the actual "A Duininck Company" badge in SVG format with the approved teal color (#004F71).
             </Block>
           </div>
+
+          {/* Sponsorship Phrases */}
+          <Divider label="Sponsorship & Co-Branding Phrase" />
+          <Body style={{ fontSize: '11px', color: C.muted, marginBottom: '10px' }}>When Duininck sponsors community events, partners with organizations, or co-brands with suppliers, a consistent phrase anchors the relationship. These options are rooted in the brand thesis (stewardship, craft, community) and the "Built to Last" anchor.</Body>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '12px' }}>
+            {[
+              { phrase: 'Built by Duininck', note: 'Direct. Ties sponsorship to the core capability. Best for construction-adjacent sponsorships.', recommended: true },
+              { phrase: 'A Duininck Partnership', note: 'Collaborative tone. Positions Duininck as an equal partner, not a benefactor. Good for supplier and vendor co-branding.' },
+              { phrase: 'Supported by Duininck Companies', note: 'Formal and traditional. Works for community events, charitable sponsorships, and nonprofit partnerships.' },
+              { phrase: 'Powered by Duininck', note: 'Energetic. Implies capability and infrastructure. Best for technology partnerships or equipment-related branding.' },
+              { phrase: 'Growing Together with Duininck', note: 'Echoes the "People. Values. Growth." tagline. Community-facing. Warm. Good for local sponsorships in Willmar/Prinsburg.' },
+            ].map((opt, i) => (
+              <Card key={i} style={{ padding: '12px 16px', borderLeft: `3px solid ${opt.recommended ? C.success : C.border}` }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '15px', fontWeight: 700, color: opt.recommended ? C.success : C.text }}>"{opt.phrase}"</div>
+                  {opt.recommended && <Chip color={C.success}>Recommended</Chip>}
+                </div>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, lineHeight: 1.5 }}>{opt.note}</div>
+              </Card>
+            ))}
+          </div>
+          <Block variant="amber">
+            <strong>Open decision:</strong> The sponsorship phrase should be selected and formalized before the centennial event. July 25 will involve community partners, vendor relationships, and media coverage that all benefit from consistent co-branding language.
+          </Block>
         </div>
       )}
 
