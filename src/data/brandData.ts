@@ -249,20 +249,153 @@ export const BRAND_IDENTITY = {
 };
 
 export const VISUAL_IDENTITY = {
-  status: 'Brand unification in progress. websites being revised, concrete brand being eliminated',
-  currentPalette: [
-    { name: 'Duininck Teal', hex: '#004F71', role: 'Primary brand color' },
-    { name: 'Duininck Orange', hex: '#FE5000', role: 'Accent / CTA / energy' },
-    { name: 'Dark Navy', hex: '#1E293B', role: 'Text / headers' },
-    { name: 'White', hex: '#FFFFFF', role: 'Backgrounds' },
-    { name: 'Warm Gray', hex: '#F7F6F3', role: 'Background / subtle surfaces' },
+  headline: 'Six websites, six palettes, zero shared colors. The visual system needs unification under Duininck Teal.',
+  status: 'Brand unification in progress. Websites being revised, concrete brand being eliminated.',
+  brandGuideUrl: 'brand-guide.html',
+
+  // ---- PRIMARY PALETTE ----
+  primaryPalette: [
+    { name: 'Duininck Teal', hex: '#004F71', rgb: '0, 79, 113', cmyk: '100, 30, 0, 56', pms: 'PMS 302 C', role: 'Primary brand color', usage: 'Headers, navigation, brand elements, logo, primary buttons' },
+    { name: 'Duininck Orange', hex: '#FE5000', rgb: '254, 80, 0', cmyk: '0, 69, 100, 0', pms: 'PMS 1655 C', role: 'Accent / CTA / energy', usage: 'Call-to-action buttons, highlights, centennial badge, urgency indicators' },
+    { name: 'Dark Navy', hex: '#1E293B', rgb: '30, 41, 59', cmyk: '49, 31, 0, 77', pms: 'PMS 289 C', role: 'Text / headers', usage: 'Body text, headlines, paragraph copy' },
+    { name: 'White', hex: '#FFFFFF', rgb: '255, 255, 255', cmyk: '0, 0, 0, 0', pms: 'N/A', role: 'Backgrounds', usage: 'Page backgrounds, card surfaces, reverse text on dark' },
+    { name: 'Warm Gray', hex: '#F7F6F3', rgb: '247, 246, 243', cmyk: '0, 0, 2, 3', pms: 'Warm Gray 1 C', role: 'Background / subtle surfaces', usage: 'Section backgrounds, card surfaces, soft contrast areas' },
   ],
+
+  // ---- CENTENNIAL CAMPAIGN PALETTE ----
+  centennialPalette: [
+    { name: 'Centennial Orange', hex: '#FE5000', role: 'Lead campaign color', usage: 'Hero badges, event materials, celebration branding' },
+    { name: 'Duininck Teal', hex: '#004F71', role: 'Grounding color', usage: 'Headlines, structural elements alongside orange' },
+    { name: 'Heritage Gold', hex: '#D4880B', role: 'Heritage accent', usage: 'Century marks, milestone callouts, awards' },
+    { name: 'Warm White', hex: '#F7F6F3', role: 'Clean background', usage: 'Event collateral backgrounds' },
+    { name: 'Deep Navy', hex: '#1E293B', role: 'Formal text', usage: 'Formal event invitations, printed programs' },
+  ],
+
+  // ---- SUB-BRAND PALETTES ----
+  subBrandPalettes: [
+    { brand: 'Duininck Golf', status: 'Niche (retains distinct positioning)', colors: [
+      { name: 'Golf Dark Green', hex: '#16251C', role: 'Primary' },
+      { name: 'Golf Vivid Green', hex: '#12C058', role: 'Accent' },
+      { name: 'Golf Sage', hex: '#83B348', role: 'Secondary' },
+    ], note: 'Golf retains niche visual treatment. Different audience (architects vs. GCs). Endorsed as "A Duininck Company."' },
+    { brand: 'Prinsco', status: 'Independent brand', colors: [
+      { name: 'Prinsco Blue', hex: '#4171B4', role: 'Primary' },
+      { name: 'Prinsco Yellow', hex: '#FFEA52', role: 'Accent' },
+    ], note: 'Maintains independent brand identity. Different market (water management). Zero Duininck mention on site.' },
+    { brand: 'Hart Ranch', status: 'Independent brand', colors: [
+      { name: 'Hart Forest Green', hex: '#1C4538', role: 'Primary' },
+      { name: 'Hart Dark Teal', hex: '#00594C', role: 'Secondary' },
+      { name: 'Hart Warm Tan', hex: '#D1C1A8', role: 'Accent' },
+    ], note: '#1 Public Course in SD. Independent premium positioning. Zero Duininck mention on site.' },
+    { brand: 'Duininck Concrete', status: 'Merging (brand being eliminated)', colors: [
+      { name: 'Concrete Red', hex: '#D72138', role: 'Primary' },
+      { name: 'Concrete Light Teal', hex: '#68CCD1', role: 'Secondary' },
+      { name: 'Concrete Gold', hex: '#FBB040', role: 'Accent' },
+    ], note: 'Brand being retired and folded into unified Duininck brand. Colors will be deprecated.' },
+  ],
+
+  // ---- TYPOGRAPHY ----
   typography: {
-    primary: 'Roboto (300, 400). currently on website',
-    note: 'Website redesign underway. Typography may change with unification.',
+    current: { primary: 'Roboto (300, 400)', note: 'Currently on website. Website redesign underway.' },
+    proposed: [
+      { name: 'Display', family: 'Inter', weight: '800 Extra Bold', tracking: '-0.02em', sample: 'Built to Last', usage: 'Headlines, brand anchor, hero text' },
+      { name: 'Subheading', family: 'Inter', weight: '600 Semi Bold', tracking: 'Normal', sample: 'Four generations strong', usage: 'Section headers, card titles, subheads' },
+      { name: 'Body', family: 'Inter', weight: '400 Regular', tracking: 'Normal', sample: 'A century of building things that endure across Minnesota, South Dakota, Texas, and Georgia.', usage: 'Body copy, descriptions, long-form content' },
+      { name: 'Data / Label', family: 'JetBrains Mono', weight: '400 Regular', tracking: '0.12em', sample: 'EST. 1926 · WILLMAR, MN', usage: 'Labels, metadata, data points, uppercase elements' },
+    ],
+    competitorFonts: [
+      { company: 'Knife River', fonts: 'Montserrat (900, uppercase) + Poppins' },
+      { company: 'Ames Construction', fonts: 'Poppins + Poppins' },
+      { company: 'C.S. McCrossan', fonts: 'Montserrat + Poppins' },
+      { company: 'Landscapes Unlimited', fonts: 'Poppins + Open Sans' },
+    ],
+    differentiation: 'Montserrat + Poppins dominates heavy civil. Duininck should avoid these to differentiate visually.',
   },
-  logoNote: 'Brand unification in progress. Concrete brand logo being retired. Golf retains niche visual treatment.',
-  websiteStatus: 'CONFIRMED: Golf and Duininck.com being revised. Concrete brand being eliminated and folded in.',
+
+  // ---- LOGO INVENTORY ----
+  logoInventory: [
+    { property: 'duininckcompanies.com', type: 'SVG wordmark', format: 'SVG', hasTagline: false, parentVisible: true },
+    { property: 'duininck.com', type: 'SVG wordmark', format: 'SVG', hasTagline: false, parentVisible: false },
+    { property: 'duininckgolf.com', type: 'PNG wordmark', format: 'PNG (1000x259px)', hasTagline: false, parentVisible: false },
+    { property: 'dconcrete.com', type: 'PNG wordmark + icon', format: 'PNG', hasTagline: false, parentVisible: false },
+    { property: 'prinsco.com', type: 'PNG wordmark + descriptor', format: 'PNG (2550x1006px)', hasTagline: true, parentVisible: false },
+    { property: 'hartranch.com', type: 'PNG crest/shield mark', format: 'PNG (93x80px)', hasTagline: false, parentVisible: false },
+  ],
+
+  partnershipLockups: {
+    status: 'Not yet defined',
+    problems: [
+      'No "A Duininck Company" endorsement badge exists anywhere today',
+      'No subsidiary logo visually references the parent brand',
+      'Prinsco uses Bank Gothic-style type that looks nothing like any other Duininck entity',
+      'Logo formats are inconsistent: SVG (parent), PNG with shadow (Golf), oversized PNG (Prinsco), tiny PNG (Hart Ranch)',
+    ],
+    recommendations: [
+      'Create an "A Duininck Company" endorsement badge in teal (#004F71) with parent logo',
+      'Place endorsement badge in footer of Golf and Concrete sites immediately',
+      'Standardize all logos to SVG format with defined clear space and minimum sizes',
+      'Design the visual endorsement system: how does "Duininck Golf" relate to "Duininck" visually?',
+      'Define approved color variations: full color, reversed (white), single-color (teal), grayscale',
+    ],
+  },
+
+  // ---- PHOTOGRAPHY GUIDELINES ----
+  photography: {
+    principles: [
+      { rule: 'No talking heads', detail: 'Blue-collar workforce will not go on camera. Use cinematic b-roll with voiceover instead. Hands, equipment, silhouettes are all fair game.' },
+      { rule: 'Film the work, not the workers', detail: 'Equipment in action, grading in progress, paving rolling out, golf course shaping. The work IS the content. Let craftsmanship speak.' },
+      { rule: 'Carousels over graphics', detail: 'Static branded graphics get two likes. Project story carousels (before/during/after) perform. Real imagery only.' },
+      { rule: 'Golden hour is the standard', detail: 'Both Golf and Concrete teams already favor sunrise and golden hour shots. Formalize this as the unified photography language across all divisions.' },
+      { rule: 'Drone and aerial are mandatory', detail: 'Showcase scale and craftsmanship from above. Required for golf course projects and large civil sites. Budget for drone capture on every major project.' },
+      { rule: 'Equipment as hero', detail: 'Heavy equipment is aspirational to the recruiting audience. Treat excavators, pavers, and graders like product photography: clean angles, dramatic lighting, sense of power.' },
+    ],
+    applicationGuidelines: [
+      { format: 'One Sheets / Sell Sheets', rule: 'Full-bleed hero image in the top third. Equipment or completed project, never stock imagery. Teal headline overlay.' },
+      { format: 'Website Pages', rule: 'Cinematic hero with text overlay. Minimum 1920px wide. Dark gradient overlay for text readability. Parallax optional.' },
+      { format: 'Pitch Decks / RFPs', rule: 'Project photography on section dividers. Data slides use warm gray (#F7F6F3) backgrounds. No clip art. Ever.' },
+      { format: 'Social Posts', rule: 'Carousel format preferred. Before/during/after progression for projects. Real job site photos only. No branded graphics.' },
+      { format: 'Job Descriptions / Recruiting', rule: 'Show equipment and crew at work (faces not required). Sunrise/golden hour framing. Aspirational scale and craft.' },
+      { format: 'Video / Reels', rule: 'Cinematic b-roll with voiceover narration. 15 to 60 seconds. Drone establishing shot to open. No interview-style talking heads.' },
+      { format: 'Landing Pages', rule: 'Full-width hero image. Parallax scroll on project imagery where possible. Before/after sliders for Golf course transformation stories.' },
+      { format: 'Internal Comms', rule: 'Candid crew shots (backs and silhouettes are fine). Job site progress documentation style. Safety-first framing in every image.' },
+    ],
+    captureTiming: 'Golf course beauty shots come a YEAR after construction (growing season). The 2026 season captures will feed 2027 content. Capture schedules must be planned NOW for every active project.',
+    assetLinks: [
+      { label: 'Photography Style Guide', path: '02_Visual_Identity/photography-style.md', note: 'Google Drive' },
+      { label: 'Shot List Templates', path: '07_Content_Strategy/seasonal-capture-calendar.md', note: 'Google Drive' },
+      { label: 'Asset Library', path: '09_Assets_Library/asset-inventory.md', note: 'Google Drive' },
+    ],
+  },
+
+  // ---- GAPS & EVOLUTION ----
+  gaps: [
+    { area: 'No Shared Visual Language', severity: 'Critical', detail: 'Zero shared hex codes across 6 websites. Zero shared fonts. Three different CMS platforms. A visitor to any two Duininck properties would never guess they are related.', action: 'Define unified color system where teal (#004F71) appears as family color on every Duininck-branded property.' },
+    { area: 'No Endorsement Badge', severity: 'Critical', detail: 'No "A Duininck Company" badge exists anywhere. No subsidiary logo references the parent visually. No footer attribution connects the family.', action: 'Design and deploy endorsement badge for Golf, Concrete (while it exists), and future unified brand.' },
+    { area: 'No Visible Tagline on Any Website', severity: 'Critical', detail: 'Every competitor has a visible tagline. Duininck has none on any live property. "Built to Last" exists only in Brand HQ, not on any customer-facing page.', action: 'Add "Built to Last" or "People. Values. Growth." to all Duininck web properties before centennial launch.' },
+    { area: 'Inconsistent Logo Formats', severity: 'High', detail: 'Parent uses SVG (good). Others use PNG at wildly different dimensions (93px to 2550px). Some have drop shadows. No shared design language across logos.', action: 'Convert all logos to SVG. Define clear space, minimum size, and approved color variations for each.' },
+    { area: 'No Photography Style Guide', severity: 'High', detail: 'Sunrise/golden hour thread exists organically (Golf and Concrete teams) but is accidental, not systematic. No shared shot list, color grading standard, or composition rules.', action: 'Create unified photography style guide building on the golden hour thread. Include shot lists by content type and project phase.' },
+    { area: 'Typography Fragmentation', severity: 'High', detail: 'Six sites use six different font stacks: Roboto (parent), Poppins (Golf), Teko/Open Sans (Concrete), BankGothicPro (Prinsco), Outfit/Karla (Hart Ranch).', action: 'Standardize on one font pairing for all Duininck-branded properties. Avoid Montserrat/Poppins (competitor territory).' },
+    { area: 'Brand Maturity Gap', severity: 'Medium', detail: 'Knife River scores ~9/10 for brand maturity (trademarked tagline, consistent system). Ames scores ~8/10. Duininck scores ~5/10 due to visual fragmentation despite a strong teal + orange palette foundation.', action: 'Close the gap by unifying visuals at centennial launch (July 25, 2026). The palette is strong. The system around it is missing.' },
+    { area: 'No Print/Collateral Standards', severity: 'Medium', detail: 'No documented standards for business cards, letterhead, signage, vehicle wraps, or equipment branding. Trucks are a primary brand touchpoint and have no wrap standard.', action: 'Develop print standards as part of unified brand rollout. Vehicle wraps should be first priority (most visible public touchpoint).' },
+  ],
+
+  // ---- CROSS-PROPERTY VISUAL AUDIT ----
+  propertyAudit: [
+    { property: 'duininckcompanies.com', primary: '#004F71', secondary: '#FE5000', headingFont: 'Roboto', bodyFont: 'Roboto', cms: 'WordPress/Astra', buttonStyle: 'Sharp (2px radius)' },
+    { property: 'duininck.com', primary: '#1B5633', secondary: 'N/A', headingFont: 'Custom theme', bodyFont: 'Custom theme', cms: 'WordPress (custom)', buttonStyle: 'Green solid' },
+    { property: 'duininckgolf.com', primary: '#16251C', secondary: '#12C058', headingFont: 'Poppins', bodyFont: 'Poppins', cms: 'WordPress/Phlox Pro', buttonStyle: 'Pill (9999px)' },
+    { property: 'dconcrete.com', primary: '#D72138', secondary: '#68CCD1', headingFont: 'Teko', bodyFont: 'Open Sans', cms: 'DudaOne', buttonStyle: 'Square (1px)' },
+    { property: 'prinsco.com', primary: '#4171B4', secondary: '#FFEA52', headingFont: 'BankGothicPro', bodyFont: 'Arial', cms: 'WordPress (custom)', buttonStyle: 'Pill (9999px)' },
+    { property: 'hartranch.com', primary: '#1C4538', secondary: '#00594C', headingFont: 'Outfit', bodyFont: 'Karla', cms: 'Joomla/YooTheme', buttonStyle: 'Standard' },
+  ],
+
+  brandMaturity: [
+    { company: 'Knife River', score: 9, note: 'Trademarked tagline, consistent system, strong employer brand (@lifeatknife)' },
+    { company: 'Ames Construction', score: 8, note: 'Unified ESOP messaging, consistent colors, "One Ames" brand system' },
+    { company: 'C.S. McCrossan', score: 7, note: 'Consistent but dated. Family heritage visible but not leveraged.' },
+    { company: 'Landscapes Unlimited', score: 7, note: 'Clean golf-focused identity. NGF Top 100 recognition every year.' },
+    { company: 'Duininck', score: 5, note: 'Strong teal + orange foundation, but 6 fragmented websites with zero visual connection.' },
+  ],
 };
 
 // CONFIRMED segments from Nicole's call
