@@ -35,7 +35,6 @@ const NAV: Group[] = [
     { id: 'overview', label: 'Overview', component: OverviewPage },
     { id: 'company', label: 'Company Profile', component: CompanyPage },
     { id: 'landscape', label: 'Industry Landscape', component: LandscapePage },
-    { id: 'newsfeed', label: 'Live News Feed', component: NewsFeedPage, research: { complete: 0, total: 3 } },
   ]},
   { group: 'Brand', tabs: [
     { id: 'identity', label: 'Brand Identity', component: BrandIdentityPage },
@@ -47,6 +46,9 @@ const NAV: Group[] = [
     { id: 'audience', label: 'Audience', component: AudiencePage, research: { complete: 7, total: 8 } },
     { id: 'competitive', label: 'Competitive', component: CompetitivePage, research: { complete: 10, total: 12 } },
     { id: 'gap', label: 'Gap Analysis', component: GapPage },
+  ]},
+  { group: 'GTM', tabs: [
+    { id: 'newsfeed', label: 'Live News Feed', component: NewsFeedPage, research: { complete: 0, total: 3 } },
   ]},
   { group: 'Workspace', tabs: [
     { id: 'pipeline', label: 'Research Pipeline', component: ResearchPipelinePage },
@@ -107,6 +109,7 @@ export default function App() {
   const allTabs = NAV.flatMap(g => g.tabs);
   const active = allTabs.find(t => t.id === activeTab) ?? allTabs[0];
   const ActiveComponent = active.component;
+  const handleNavigate = (tabId: string) => setActiveTab(tabId);
 
   return (
     <div style={{ display: 'flex', height: '100vh', background: C.bg, overflow: 'hidden' }}>
@@ -205,7 +208,7 @@ export default function App() {
       {/* Main content */}
       <main style={{ flex: 1, overflowY: 'auto', padding: '32px 36px' }}>
         <div style={{ maxWidth: '960px' }}>
-          <ActiveComponent />
+          <ActiveComponent onNavigate={handleNavigate} />
         </div>
       </main>
     </div>

@@ -1,13 +1,13 @@
 import { useState, ReactNode } from 'react';
 
 // ============================================================
-// UI TOKENS — Duininck Companies Brand HQ
+// UI TOKENS : Duininck Companies Brand HQ
 // Palette derived from duininckcompanies.com:
 //   Primary: Teal #004F71 · Accent: Orange #FE5000 · Warm neutrals
 //   Clean, professional, family-business warmth
 // ============================================================
 export const C = {
-  // Backgrounds — Clean white/warm gray
+  // Backgrounds : Clean white/warm gray
   bg:         '#F7F6F3',
   s1:         '#FFFFFF',
   s2:         '#F0EEEB',
@@ -26,13 +26,13 @@ export const C = {
   muted:   'rgba(26,26,26,0.40)',
   ghost:   'rgba(26,26,26,0.22)',
 
-  // Teal — PRIMARY BRAND (headers, nav, brand elements)
+  // Teal : PRIMARY BRAND (headers, nav, brand elements)
   accent:     '#004F71',
   accentDim:  'rgba(0,79,113,0.08)',
   accentGlow: 'rgba(0,79,113,0.04)',
   accentLight:'#0A6E9A',
 
-  // Orange — SECONDARY ACCENT (CTAs, highlights, urgency)
+  // Orange : SECONDARY ACCENT (CTAs, highlights, urgency)
   orange:     '#FE5000',
   orangeDim:  'rgba(254,80,0,0.08)',
   orangeGlow: 'rgba(254,80,0,0.04)',
