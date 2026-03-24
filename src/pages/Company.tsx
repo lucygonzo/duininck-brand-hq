@@ -27,7 +27,7 @@ const SUB_COLORS: Record<string, string> = {
 
 type SubTab = 'overview' | 'detail';
 
-export default function CompanyPage() {
+export default function CompanyPage({ onNavigate }: { onNavigate?: (tabId: string) => void }) {
   const [timelineRef, setTimelineRef] = useState<HTMLDivElement | null>(null);
   const [portfolioTab, setPortfolioTab] = useState<SubTab>('overview');
   const [expandedSub, setExpandedSub] = useState<number | null>(null);
@@ -43,6 +43,10 @@ export default function CompanyPage() {
       <Callout>
         A century of building what endures. Duininck Companies is a generational commitment to stewardship, service, and growth, expressed through six operating companies across four industries.
       </Callout>
+
+      <div style={{ padding: '6px 10px', background: C.warningDim, borderRadius: '4px', fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.warning, marginBottom: '16px' }}>
+        Editorial note: "Building things that endure" uses "things" as a placeholder noun. Duininck does not use this word in their own materials. Stronger alternatives: "Building roads, water systems, golf courses, and communities that endure" or simply "Building what endures." The specificity reinforces the portfolio breadth. The vagueness of "things" undermines it.
+      </div>
 
       {/* MISSION + VISION */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '20px' }}>
@@ -150,6 +154,15 @@ export default function CompanyPage() {
       {/* PORTFOLIO COMPANIES */}
       <Divider label="Portfolio Companies" />
 
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+        <Body style={{ marginBottom: 0, fontSize: '12px', color: C.muted }}>Six operating companies across water management, construction, golf, and real estate.</Body>
+        {onNavigate && (
+          <button onClick={() => onNavigate('architecture')} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.accent, background: C.accentDim, border: `1px solid ${C.accent}30`, padding: '4px 12px', borderRadius: '12px', cursor: 'pointer' }}>
+            View Brand Architecture &#8599;
+          </button>
+        )}
+      </div>
+
       {/* Sub-tabs for overview vs detail */}
       <div style={{ display: 'flex', gap: '4px', marginBottom: '16px' }}>
         {[{ key: 'overview' as SubTab, label: 'Overview' }, { key: 'detail' as SubTab, label: 'Sub-Brand Detail' }].map(t => (
@@ -172,9 +185,9 @@ export default function CompanyPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
               {[
                 { label: 'Prinsco (Water Mgmt)', value: '~$95.7M est.', note: 'ZoomInfo/D&B estimate' },
-                { label: 'Heavy Civil (MN/SD/TX)', value: 'TBD', note: 'Private, not disclosed' },
-                { label: 'Golf Division', value: 'TBD', note: 'Private, not disclosed' },
-                { label: 'Real Estate/Dev', value: 'TBD', note: 'Private, not disclosed' },
+                { label: 'Heavy Civil (MN/SD/TX)', value: 'Private', note: 'Not disclosed (family-owned)' },
+                { label: 'Golf Division', value: 'Private', note: 'Not disclosed (family-owned)' },
+                { label: 'Real Estate/Dev', value: 'Private', note: 'Not disclosed (family-owned)' },
               ].map((r, i) => (
                 <div key={i}>
                   <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '16px', fontWeight: 700, color: C.accent }}>{r.value}</div>
