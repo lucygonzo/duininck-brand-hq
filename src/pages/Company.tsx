@@ -27,6 +27,34 @@ const SUB_COLORS: Record<string, string> = {
 
 type SubTab = 'overview' | 'detail';
 
+/** Toggleable editorial annotation that lives inside its parent card */
+function EditorialNote({ preview, detail, variant = 'warning' }: { preview: string; detail: string; variant?: 'warning' | 'info' }) {
+  const [open, setOpen] = useState(false);
+  const bg = variant === 'warning' ? C.warningDim : C.accentGlow;
+  const color = variant === 'warning' ? C.warning : C.accent;
+  const icon = variant === 'warning' ? '⚠' : 'ℹ';
+
+  return (
+    <div style={{ marginTop: '10px' }}>
+      <div
+        onClick={() => setOpen(!open)}
+        style={{ display: 'flex', gap: '6px', alignItems: 'flex-start', padding: '8px 10px', background: bg, borderRadius: open ? '6px 6px 0 0' : '6px', cursor: 'pointer', transition: 'border-radius 0.15s' }}
+      >
+        <span style={{ fontSize: '11px', flexShrink: 0, lineHeight: 1.3 }}>{icon}</span>
+        <div style={{ flex: 1 }}>
+          <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color, lineHeight: 1.4 }}>{preview}</span>
+        </div>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, flexShrink: 0, transform: open ? 'rotate(90deg)' : 'none', transition: 'transform 0.2s', display: 'inline-block' }}>&#9654;</span>
+      </div>
+      {open && (
+        <div style={{ padding: '8px 10px 10px 28px', background: bg, borderRadius: '0 0 6px 6px', fontFamily: "'Inter', sans-serif", fontSize: '11px', color: variant === 'warning' ? C.sub : C.accent, lineHeight: 1.6 }}>
+          {detail}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function CompanyPage({ onNavigate }: { onNavigate?: (tabId: string) => void }) {
   const [timelineRef, setTimelineRef] = useState<HTMLDivElement | null>(null);
   const [portfolioTab, setPortfolioTab] = useState<SubTab>('overview');
@@ -42,27 +70,30 @@ export default function CompanyPage({ onNavigate }: { onNavigate?: (tabId: strin
 
       <Callout>
         A century of building what endures. Duininck Companies is a generational commitment to stewardship, service, and growth, expressed through six operating companies across four industries.
+        <EditorialNote
+          preview={'"Building things that endure" uses a vague noun. Duininck does not use "things" in their own materials.'}
+          detail={'Stronger alternatives: "Building roads, water systems, golf courses, and communities that endure" or simply "Building what endures." Specificity reinforces portfolio breadth. Vagueness undermines it. Check whether Nicole has a preferred version from her messaging framework.'}
+        />
       </Callout>
-
-      <div style={{ padding: '6px 10px', background: C.warningDim, borderRadius: '4px', fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.warning, marginBottom: '16px' }}>
-        Editorial note: "Building things that endure" uses "things" as a placeholder noun. Duininck does not use this word in their own materials. Stronger alternatives: "Building roads, water systems, golf courses, and communities that endure" or simply "Building what endures." The specificity reinforces the portfolio breadth. The vagueness of "things" undermines it.
-      </div>
 
       {/* MISSION + VISION */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '20px' }}>
         <Card>
           <Lbl>Mission</Lbl>
-          <Body style={{ marginBottom: '8px' }}>{COMPANY.mission}</Body>
-          <div style={{ padding: '6px 10px', background: C.warningDim, borderRadius: '4px', fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.warning }}>
-            Editorial note: "We are energized to build for the future" is vague. What does this mean in practice? How would an employee or customer finish the sentence: "Duininck builds for the future by _____"? Nicole should pressure-test this against her stakeholder interview findings.
-          </div>
+          <Body style={{ marginBottom: 0 }}>{COMPANY.mission}</Body>
+          <EditorialNote
+            preview={'This mission statement reads as vague. "Energized to build for the future" could belong to any company.'}
+            detail={'How would an employee finish the sentence: "Duininck builds for the future by _____"? The wellbeing framework, the centennial, and the family legacy all give this sentence weight, but the current phrasing strips it out. Nicole should pressure-test this against stakeholder interview findings.'}
+          />
         </Card>
         <Card>
           <Lbl>Vision</Lbl>
-          <Body style={{ marginBottom: '8px' }}>{COMPANY.vision}</Body>
-          <div style={{ padding: '6px 10px', background: C.accentGlow, borderRadius: '4px', fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.accent }}>
-            <strong>Operational context:</strong> "Treating people like neighbors" shows up in how Duininck delivers work. The wellbeing framework (Career, Family, Finances, Health, Community, Spiritual) operationalizes this vision. Glassdoor reviewers confirm it: "Owners are great people that really care for their employees." The question is whether this extends to subcontractors, partners, and communities with the same consistency.
-          </div>
+          <Body style={{ marginBottom: 0 }}>{COMPANY.vision}</Body>
+          <EditorialNote
+            variant="info"
+            preview={'Operational context: "Treating people like neighbors" shows up in how Duininck delivers work.'}
+            detail={'The wellbeing framework (Career, Family, Finances, Health, Community, Spiritual) operationalizes this vision. Glassdoor reviewers confirm it: "Owners are great people that really care for their employees." The open question: does this extend to subcontractors, partners, and communities with the same consistency?'}
+          />
         </Card>
       </div>
 
@@ -84,41 +115,58 @@ export default function CompanyPage({ onNavigate }: { onNavigate?: (tabId: strin
       </div>
 
       <div style={{ position: 'relative', marginBottom: '24px' }}>
-        {/* Generation spans on the left */}
-        <div style={{ display: 'grid', gridTemplateColumns: '200px 2px 1fr', gap: '0' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '220px 24px 1fr', gap: '0' }}>
           {/* LEFT: Generations */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {GEN_SPANS.map((g, i) => {
               const milestonesInSpan = COMPANY.milestones.filter(m => {
                 const yr = parseInt(m.year);
                 return yr >= g.start && yr <= g.end;
               });
               return (
-                <div key={i} style={{ background: `${g.color}10`, border: `1px solid ${g.color}30`, borderRadius: '8px', padding: '10px 12px', flex: milestonesInSpan.length || 1 }}>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: g.color, fontWeight: 700, marginBottom: '2px' }}>{g.gen}</div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.sub, lineHeight: 1.4 }}>{g.label}</div>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, marginTop: '4px' }}>{g.start}s{g.end < 2026 ? ` to ${g.end}s` : ' to present'}</div>
+                <div key={i} style={{ background: `${g.color}10`, border: `1px solid ${g.color}30`, borderRadius: '10px', padding: '14px 16px', flex: milestonesInSpan.length || 1 }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: g.color, fontWeight: 700, marginBottom: '3px' }}>{g.gen}</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, lineHeight: 1.5 }}>{g.label}</div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, marginTop: '6px' }}>{g.start} {g.end < 2026 ? `to ${g.end}` : 'to present'}</div>
                 </div>
               );
             })}
           </div>
 
-          {/* CENTER: vertical line */}
-          <div style={{ background: C.border, width: '2px', margin: '0 12px' }} />
+          {/* CENTER: vertical line with dots */}
+          <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
+            <div style={{ background: C.border, width: '2px', height: '100%' }} />
+          </div>
 
           {/* RIGHT: Milestones */}
-          <div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
             {COMPANY.milestones.map((m, i) => {
               const yr = parseInt(m.year);
               const gen = getGenForYear(yr);
               const isCentennial = m.year === '2026';
               return (
-                <div key={i} style={{ display: 'flex', gap: '10px', padding: '6px 0', borderBottom: `1px solid ${C.borderSoft}` }}>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: isCentennial ? C.orange : gen?.color || C.muted, fontWeight: 600, minWidth: '38px' }}>{m.year}</span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: 1 }}>
-                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: isCentennial ? C.orange : gen?.color || C.muted, flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', color: isCentennial ? C.orange : C.sub, fontWeight: isCentennial ? 700 : 400 }}>{m.event}</span>
-                  </div>
+                <div key={i} style={{
+                  display: 'flex', gap: '12px', alignItems: 'flex-start',
+                  padding: '10px 14px',
+                  background: isCentennial ? C.orangeGlow : 'transparent',
+                  borderRadius: '8px',
+                  borderLeft: `3px solid ${isCentennial ? C.orange : gen?.color || C.muted}`,
+                }}>
+                  <span style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: '13px',
+                    color: isCentennial ? C.orange : gen?.color || C.muted,
+                    fontWeight: 700,
+                    minWidth: '44px',
+                    flexShrink: 0,
+                  }}>{m.year}</span>
+                  <span style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: '12px',
+                    color: isCentennial ? C.orange : C.sub,
+                    fontWeight: isCentennial ? 700 : 400,
+                    lineHeight: 1.5,
+                  }}>{m.event}</span>
                 </div>
               );
             })}
