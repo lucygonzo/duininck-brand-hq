@@ -1613,3 +1613,69 @@ export const MESSAGING_MATRIX = {
     },
   ],
 };
+
+// ---- GTM STRATEGY ----
+export const GTM_STRATEGY = {
+  overview: 'Close the gap between a 9/10 company and a 4.7/10 brand by activating the centennial as the forcing function, unifying digital presence, and deploying the "whole person" employer brand before competitors recognize the white space.',
+  pillars: [
+    {
+      name: 'Brand Unification',
+      description: 'Consolidate 6 fragmented websites into one coherent digital presence. Unified visual identity, verbal identity, and brand architecture across all touchpoints.',
+      timeline: 'Q1-Q3 2026',
+      owner: 'Nicole + Agency + Lucy',
+      kpis: ['Visual consistency score across properties', 'Cross-linking between sites', 'Unified metadata and schema markup'],
+      status: 'In Progress',
+    },
+    {
+      name: 'Centennial Campaign',
+      description: 'Leverage the once-in-100-years moment to amplify brand visibility across every audience. July 25 event as the centerpiece, with pre/post content extending the narrative 6 months in each direction.',
+      timeline: 'Jan-Dec 2026',
+      owner: 'Nicole + Video Partner',
+      kpis: ['Event attendance (target: 2,000)', 'Press coverage (local + trade)', 'Social engagement during campaign', 'Centennial content reach'],
+      status: 'Active',
+    },
+    {
+      name: 'Employer Brand Activation',
+      description: 'Deploy the "whole person" wellbeing framework into every recruiting touchpoint. Fix the Glassdoor gap. Build the trade school pipeline. Make Duininck the employer of choice in MN construction.',
+      timeline: 'Q1-Q4 2026',
+      owner: 'Nicole + Lucy',
+      kpis: ['Glassdoor review count (target: 50+)', 'Job posting differentiation score', 'Ridgewater College partnership status', 'Application volume vs prior year'],
+      status: 'Not Started',
+    },
+    {
+      name: 'Golf Portfolio Resurrection',
+      description: 'Restart dark social accounts, lead with prestige portfolio (Hazeltine, Erin Hills, TPC, Ross/Raynor/Tillinghast), and recapture the architect audience before Landscapes Unlimited and Wadsworth own the narrative completely.',
+      timeline: 'Q1-Q2 2026',
+      owner: 'Nicole + Sam',
+      kpis: ['Instagram restart (target: weekly posting)', 'LinkedIn Golf followers (target: 2,000)', 'GCBAA/NGF visibility', 'Architect relationship pipeline'],
+      status: 'Not Started',
+    },
+    {
+      name: 'Content System Build',
+      description: 'Replace Buffer + Excel with a content operating system that makes a 3-person team perform like 10. AI-assisted production, seasonal capture calendar, carousel templates, and measurement.',
+      timeline: 'Q2-Q3 2026',
+      owner: 'Lucy + Nicole',
+      kpis: ['Tool selected and implemented', 'Seasonal capture plan active', 'Content cadence: 10+ posts/week across platforms', 'Engagement rate vs industry benchmark'],
+      status: 'Not Started',
+    },
+    {
+      name: 'Digital Visibility',
+      description: 'SEO quick wins, GEO foundation (Wikipedia, schema, case studies), and local search optimization. Make Duininck findable by people who don\'t already know the name.',
+      timeline: 'Q1-Q4 2026 (ongoing)',
+      owner: 'Lucy',
+      kpis: ['Page 1 rankings for core keywords', 'AI visibility score', 'Organic traffic growth', 'Google Business Profile optimization'],
+      status: 'Not Started',
+    },
+  ],
+  timingWindows: [
+    { window: 'NOW', action: 'Fix "third generation" meta description. Claim Google Business Profiles. Start Glassdoor review campaign.', urgency: 'Immediate' },
+    { window: 'April 2026', action: 'Seasonal content capture begins. Golf social restart. Centennial content countdown launches.', urgency: 'Critical' },
+    { window: 'July 25, 2026', action: 'Centennial event. Unified brand launch moment. Maximum content capture (multi-camera, drone, live social).', urgency: 'Milestone' },
+    { window: 'Sept 30, 2026', action: 'IIJA authorization expires. MnDOT accelerating project lettings. Maximize bid pipeline.', urgency: 'Market' },
+    { window: 'Q4 2026', action: 'Post-centennial momentum. 2026 captures become 2027 content. Year-end review and 2027 planning.', urgency: 'Planning' },
+  ],
+};
+
+export const GTM_CAMPAIGNS: { name: string; channel: string; audience: string; goal: string; spend: string; results: string; learnings: string; status: string }[] = [];
+
+export const GTM_STEERING: { date: string; insight: string; source: string; type: 'log' | 'action'; action?: string }[] = [];
