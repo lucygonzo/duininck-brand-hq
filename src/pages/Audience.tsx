@@ -1,19 +1,19 @@
 import { useState } from 'react';
-import { AUDIENCE_SEGMENTS_DEEP, TRADE_SCHOOL_PIPELINE } from '../data/brandData';
-import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, SubTabs, StatBox, C } from '../components/ui';
+import { AUDIENCE_SEGMENTS_DEEP, TRADE_SCHOOL_PIPELINE, AUDIENCE_EMPATHY } from '../data/brandData';
+import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, SubTabs, StatBox, Divider, C } from '../components/ui';
 
 const TABS = ['Segments', 'Pipeline', 'Priority Matrix'];
 
 export default function AudiencePage() {
   const [tab, setTab] = useState(TABS[0]);
-  const [expanded, setExpanded] = useState<string | null>(null);
+  const [activeSeg, setActiveSeg] = useState(AUDIENCE_SEGMENTS_DEEP[0].name);
 
   const priorityColor = (p: string) =>
     p.includes('CRITICAL') ? C.red : p.includes('PRIMARY') || p.includes('Primary') ? C.accent : p.includes('HIGH') ? C.amber : p === 'SEPARATE' ? C.muted : C.blue;
 
   return (
     <div>
-      <SectionHeader num="05 / Market" title="Audience" sub="8 validated segments with deep research: channels, funnel leaks, content preferences, and win/loss factors." />
+      <SectionHeader num="05 / Market" title="Audience" sub="8 validated segments with empathy profiles, journey maps, funnel leaks, and channel strategy." />
 
       <Callout>
         Audience research runs BEFORE competitive analysis. Understanding who we serve defines the playing field. These 8 segments (6 confirmed by Nicole, 2 added through research) cover every audience that affects revenue, recruiting, and brand perception.
@@ -23,77 +23,168 @@ export default function AudiencePage() {
 
       {tab === 'Segments' && (
         <div>
-          <Lbl style={{ marginTop: '16px' }}>All Audience Segments (click to expand)</Lbl>
-          {AUDIENCE_SEGMENTS_DEEP.map((seg, i) => {
-            const isExpanded = expanded === seg.name;
+          {/* Segment selector pills */}
+          <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginTop: '12px', marginBottom: '16px' }}>
+            {AUDIENCE_SEGMENTS_DEEP.map((seg) => (
+              <button
+                key={seg.name}
+                onClick={() => setActiveSeg(seg.name)}
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '11px',
+                  fontWeight: activeSeg === seg.name ? 700 : 400,
+                  color: activeSeg === seg.name ? '#fff' : C.sub,
+                  background: activeSeg === seg.name ? priorityColor(seg.priority) : '#fff',
+                  border: `1px solid ${activeSeg === seg.name ? priorityColor(seg.priority) : C.border}`,
+                  borderRadius: '20px',
+                  padding: '5px 12px',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s',
+                }}
+              >
+                {seg.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Active Segment Detail */}
+          {(() => {
+            const seg = AUDIENCE_SEGMENTS_DEEP.find(s => s.name === activeSeg) || AUDIENCE_SEGMENTS_DEEP[0];
+            const empathy = AUDIENCE_EMPATHY[seg.name];
+
             return (
-              <Card key={i} onClick={() => setExpanded(isExpanded ? null : seg.name)} style={{ marginBottom: '8px', cursor: 'pointer', borderLeft: `3px solid ${priorityColor(seg.priority)}` }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div>
-                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: '14px', fontWeight: 700, color: C.text }}>{seg.name}</span>
-                    <Chip color={priorityColor(seg.priority)}>{seg.priority}</Chip>
-                  </div>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: seg.source.includes('CONFIRMED') ? '#22C55E' : C.muted }}>{seg.source}</div>
-                </div>
-
-                {/* Channel badges always visible */}
-                <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: '6px' }}>
-                  {seg.channels.slice(0, 4).map((ch, j) => (
-                    <span key={j} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.sub, background: C.s2, border: `1px solid ${C.borderSoft}`, padding: '2px 6px', borderRadius: '3px' }}>{ch}</span>
-                  ))}
-                  {seg.channels.length > 4 && (
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted }}>+{seg.channels.length - 4} more</span>
-                  )}
-                </div>
-
-                {isExpanded && (
-                  <div style={{ marginTop: '14px', borderTop: `1px solid ${C.border}`, paddingTop: '14px' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                      <div>
-                        <Lbl>Where They Leak (Drop-Off Points)</Lbl>
-                        {seg.funnelLeaks.map((leak, j) => (
-                          <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '3px 0' }}>
-                            <span style={{ color: C.red }}>&#x25CF;</span> {leak}
-                          </div>
-                        ))}
-                      </div>
-                      <div>
-                        <Lbl>Content That Resonates</Lbl>
-                        {seg.contentPreferences.map((cp, j) => (
-                          <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '3px 0' }}>
-                            <span style={{ color: '#22C55E' }}>&#x25CF;</span> {cp}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '12px' }}>
-                      <div>
-                        <Lbl>Where Duininck Wins</Lbl>
-                        {seg.winFactors.map((w, j) => (
-                          <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '3px 0' }}>
-                            <span style={{ color: C.accent }}>&#x25B2;</span> {w}
-                          </div>
-                        ))}
-                      </div>
-                      <div>
-                        <Lbl>Where Duininck Loses</Lbl>
-                        {seg.lossFactors.map((l, j) => (
-                          <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '3px 0' }}>
-                            <span style={{ color: C.orange }}>&#x25BC;</span> {l}
-                          </div>
-                        ))}
-                      </div>
+              <div>
+                {/* Overview Card */}
+                <Card style={{ borderLeft: `4px solid ${priorityColor(seg.priority)}`, marginBottom: '16px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '20px', fontWeight: 800, color: C.text }}>{seg.name}</div>
+                    <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                      <Chip color={priorityColor(seg.priority)}>{seg.priority}</Chip>
+                      {empathy && <Chip color={empathy.dataDepth === 'deep' ? C.success : C.amber}>{empathy.dataDepth} research</Chip>}
                     </div>
                   </div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: seg.source.includes('CONFIRMED') ? '#22C55E' : C.muted, marginBottom: '8px' }}>{seg.source}</div>
+                  <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                    {seg.channels.map((ch, j) => (
+                      <span key={j} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.sub, background: C.s2, border: `1px solid ${C.borderSoft}`, padding: '2px 6px', borderRadius: '3px' }}>{ch}</span>
+                    ))}
+                  </div>
+                </Card>
+
+                {empathy && (
+                  <>
+                    {/* Empathy Profile */}
+                    <Divider label="Empathy Profile" />
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '16px' }}>
+                      <Card style={{ padding: '14px' }}>
+                        <Lbl>Daily Life</Lbl>
+                        <Body style={{ fontSize: '12px' }}>{empathy.dailyLife}</Body>
+                      </Card>
+                      <Card style={{ padding: '14px' }}>
+                        <Lbl>How They Find Us</Lbl>
+                        <Body style={{ fontSize: '12px' }}>{empathy.howTheyFind}</Body>
+                      </Card>
+                      <Card style={{ padding: '14px' }}>
+                        <Lbl>How They Decide</Lbl>
+                        <Body style={{ fontSize: '12px' }}>{empathy.howTheyDecide}</Body>
+                      </Card>
+                      <Card style={{ padding: '14px' }}>
+                        <Lbl>What Earns Their Trust</Lbl>
+                        {empathy.trustSignals.map((ts, j) => (
+                          <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '2px 0' }}>
+                            <span style={{ color: C.success }}>&#x25CF;</span> {ts}
+                          </div>
+                        ))}
+                      </Card>
+                    </div>
+
+                    {/* Frustrations */}
+                    <Card style={{ marginBottom: '16px', padding: '14px', borderLeft: `3px solid ${C.orange}` }}>
+                      <Lbl style={{ color: C.orange }}>What Frustrates Them</Lbl>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
+                        {empathy.frustrations.map((f, j) => (
+                          <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '3px 0' }}>
+                            <span style={{ color: C.orange }}>&#x25CF;</span> {f}
+                          </div>
+                        ))}
+                      </div>
+                    </Card>
+
+                    {/* Journey Map */}
+                    <Divider label="Decision Journey" />
+                    <div style={{ display: 'flex', gap: '0', marginBottom: '16px', overflowX: 'auto' }}>
+                      {empathy.journeyStages.map((stage, j) => (
+                        <div key={j} style={{ flex: '1 1 0', minWidth: '140px', position: 'relative' }}>
+                          {/* Connector arrow */}
+                          {j < empathy.journeyStages.length - 1 && (
+                            <div style={{ position: 'absolute', right: '-8px', top: '16px', color: C.accent, fontSize: '14px', zIndex: 1 }}>&#9654;</div>
+                          )}
+                          <div style={{
+                            background: stage.leak ? C.orangeGlow : C.accentGlow,
+                            border: `1px solid ${stage.leak ? C.orange + '30' : C.accent + '20'}`,
+                            borderRadius: '8px',
+                            padding: '12px',
+                            marginRight: j < empathy.journeyStages.length - 1 ? '16px' : '0',
+                            height: '100%',
+                          }}>
+                            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.accent, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>{stage.stage}</div>
+                            <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.text, fontWeight: 600, marginBottom: '4px' }}>{stage.action}</div>
+                            <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.sub, marginBottom: stage.leak ? '6px' : '0' }}>{stage.duininckRole}</div>
+                            {stage.leak && (
+                              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.orange, fontWeight: 600, borderTop: `1px solid ${C.orange}20`, paddingTop: '4px', marginTop: '4px' }}>
+                                Leak: {stage.leak}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Drive Link */}
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, marginBottom: '16px' }}>
+                      Full research: <span style={{ color: C.accent }}>{empathy.driveLink}</span> in Google Drive
+                    </div>
+                  </>
                 )}
-              </Card>
-            );
-          })}
 
-          <Block variant="blue">
-            <strong>The "Whole Person" Wedge for Recruiting:</strong> No construction company in the Midwest talks about "Career, Family/Social, Finances, Health, Community, Spiritual" wellbeing. When every competitor says "competitive pay and benefits," Duininck can say "we see the whole you." That positioning is genuinely unique across every competitor we researched.
-          </Block>
+                {/* Win/Loss + Funnel Leaks + Content */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '16px' }}>
+                  <Card style={{ padding: '14px' }}>
+                    <Lbl>Where Duininck Wins</Lbl>
+                    {seg.winFactors.map((w, j) => (
+                      <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '3px 0' }}>
+                        <span style={{ color: C.accent }}>&#x25B2;</span> {w}
+                      </div>
+                    ))}
+                  </Card>
+                  <Card style={{ padding: '14px' }}>
+                    <Lbl>Where Duininck Loses</Lbl>
+                    {seg.lossFactors.map((l, j) => (
+                      <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '3px 0' }}>
+                        <span style={{ color: C.orange }}>&#x25BC;</span> {l}
+                      </div>
+                    ))}
+                  </Card>
+                  <Card style={{ padding: '14px' }}>
+                    <Lbl style={{ color: C.red }}>Funnel Leaks</Lbl>
+                    {seg.funnelLeaks.map((leak, j) => (
+                      <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '3px 0' }}>
+                        <span style={{ color: C.red }}>&#x25CF;</span> {leak}
+                      </div>
+                    ))}
+                  </Card>
+                  <Card style={{ padding: '14px' }}>
+                    <Lbl style={{ color: '#22C55E' }}>Content That Resonates</Lbl>
+                    {seg.contentPreferences.map((cp, j) => (
+                      <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, padding: '3px 0' }}>
+                        <span style={{ color: '#22C55E' }}>&#x25CF;</span> {cp}
+                      </div>
+                    ))}
+                  </Card>
+                </div>
+              </div>
+            );
+          })()}
         </div>
       )}
 

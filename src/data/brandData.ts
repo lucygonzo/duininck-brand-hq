@@ -1253,6 +1253,148 @@ export const TRADE_SCHOOL_PIPELINE = [
   },
 ];
 
+// ---- AUDIENCE EMPATHY PROFILES ----
+export const AUDIENCE_EMPATHY: Record<string, {
+  dailyLife: string;
+  howTheyFind: string;
+  howTheyDecide: string;
+  frustrations: string[];
+  trustSignals: string[];
+  journeyStages: { stage: string; action: string; duininckRole: string; leak?: string }[];
+  driveLink: string;
+  dataDepth: 'deep' | 'moderate' | 'shallow';
+}> = {
+  'Prospective Employees': {
+    dailyLife: 'Marcus is 25, operates a skid steer in Willmar. Married, one kid. Scrolls Facebook after dinner. Hears about jobs from guys at church and the gas station. Checks Indeed when he wants a change. Does not use LinkedIn.',
+    howTheyFind: 'Word of mouth first. Indeed second. Facebook job posts shared by friends third. Never searches "construction company websites."',
+    howTheyDecide: 'Pay range is table stakes. Benefits conversation happens at the kitchen table with their spouse. Glassdoor reviews matter if the spouse checks. Culture is felt through the interview, not the job posting.',
+    frustrations: ['Job postings all sound the same', 'No way to know if a company actually cares or just says they do', 'Seasonal layoffs create financial anxiety', 'Long commutes to bigger company jobsites'],
+    trustSignals: ['Real employee stories (not polished testimonials)', 'Specific pay ranges (not "competitive")', 'Named benefits (not "comprehensive package")', 'Company age and stability (100 years = still here next season)'],
+    journeyStages: [
+      { stage: 'Awareness', action: 'Hears about Duininck from a friend, sees a truck, or spots a job post', duininckRole: 'Brand visibility on jobsites, trucks, Facebook', leak: 'No brand recognition outside Willmar area' },
+      { stage: 'Interest', action: 'Searches "Duininck" or clicks Indeed listing', duininckRole: 'Indeed posting that stops the scroll, career page that sells', leak: 'Posting reads like every other contractor' },
+      { stage: 'Research', action: 'Spouse googles "Duininck reviews," checks Glassdoor', duininckRole: 'Glassdoor presence with authentic employee voices', leak: 'Only 9 reviews vs 114 (Ames)' },
+      { stage: 'Apply', action: 'Fills out application on Indeed or website', duininckRole: 'Simple, mobile-friendly application process', leak: 'Too many clicks from listing to submit' },
+      { stage: 'Interview', action: 'Meets with hiring manager or foreman', duininckRole: 'Wellbeing framework visible, family culture felt', leak: 'If interview feels corporate, the culture claim falls flat' },
+      { stage: 'Start', action: 'First day on the jobsite', duininckRole: 'Onboarding that confirms the promise', leak: 'Gap between marketing and reality' },
+    ],
+    driveLink: '04_Audience_Research/persona-recruits.md',
+    dataDepth: 'deep',
+  },
+  'Public Works & GCs': {
+    dailyLife: 'County engineer in a rural MN office. Manages road maintenance budgets, writes project specs, reviews bids. Reads ENR rankings. Attends AGC events twice a year. Knows every contractor by reputation.',
+    howTheyFind: 'They already know who the contractors are. Selection is through formal bid processes (MnDOT letting) or pre-qualification lists. Reputation travels through the county engineer network.',
+    howTheyDecide: 'Lowest responsible bid wins public work. "Responsible" means safety record, past performance, bonding capacity, and equipment capability. Brand doesn\'t win bids directly, but reputation influences who gets invited to negotiate.',
+    frustrations: ['Contractors who underbid then submit change orders', 'Poor communication when field conditions diverge from specs', 'Safety incidents on their projects reflect on them', 'Turnover on contractor crews mid-project'],
+    trustSignals: ['Track record on similar projects', 'Safety statistics (EMR, TRIR)', 'References from other county engineers', 'Equipment capability documentation'],
+    journeyStages: [
+      { stage: 'Project Scoping', action: 'Engineer designs project and writes specs', duininckRole: 'Relationships with engineers who write favorable specs' },
+      { stage: 'Bid Letting', action: 'Project posted on MnDOT bidlet site', duininckRole: 'Submit competitive bid. Being pre-qualified matters.' },
+      { stage: 'Evaluation', action: 'Bids reviewed for responsiveness and responsibility', duininckRole: 'Safety record, past performance, equipment list', leak: 'No documented safety record page on website' },
+      { stage: 'Award', action: 'Contract awarded to lowest responsible bidder', duininckRole: 'Win the work on capability + price' },
+      { stage: 'Execution', action: 'Project constructed over weeks/months', duininckRole: 'On-time, on-budget, no claims, proactive communication', leak: 'No case studies documenting successful outcomes' },
+      { stage: 'Retention', action: 'Engineer remembers experience for next project', duininckRole: 'Follow-up, relationship maintenance, trade event presence' },
+    ],
+    driveLink: '04_Audience_Research/persona-gc-publicworks.md',
+    dataDepth: 'deep',
+  },
+  'Golf Architects & Owners': {
+    dailyLife: 'ASGCA member designing course renovations across the US. Browses Instagram for builder portfolios. Attends GCBAA events. Trusts builders they have worked with before. Portfolio quality matters more than price.',
+    howTheyFind: 'Architect relationships drive most selections. "Having experience with similar projects and a relationship with the architect on past projects is always preferred." Instagram, GCBAA directory, and ASGCA events fill in the rest.',
+    howTheyDecide: 'Portfolio quality is #1. Can they execute this type of work (restoration vs. new build vs. renovation)? Have they worked with this architect before? Are they GCBAA members? Financial stability of the builder matters (can they finish a multi-year project?).',
+    frustrations: ['Builders who don\'t understand the architect\'s vision', 'Poor shaping quality on greens complexes', 'Builders who disappear after construction (no grow-in support)', 'Unreliable timelines that affect course opening dates'],
+    trustSignals: ['Named venue portfolio (Hazeltine, Erin Hills = instant credibility)', 'Repeat architect relationships', 'GCBAA membership', 'Photography of completed courses in their mature beauty phase'],
+    journeyStages: [
+      { stage: 'Design', action: 'Architect designs or plans renovation', duininckRole: 'Pre-existing relationship with architect' },
+      { stage: 'Builder Selection', action: 'Architect recommends builders or reviews GCBAA directory', duininckRole: 'Visible in directory, portfolio shared proactively', leak: 'Dark social accounts, invisible portfolio' },
+      { stage: 'Proposal', action: 'Builder submits proposal with approach and pricing', duininckRole: 'Highlight parent company depth (own aggregates, equipment)', leak: 'No quantified project count to match Landscapes (2,500+)' },
+      { stage: 'Construction', action: '6-18 month build process', duininckRole: 'Partnership approach, "Peace of Mind" delivery' },
+      { stage: 'Grow-In', action: '12+ months of turf maturation after construction', duininckRole: '"One year later" photography for portfolio and social content' },
+      { stage: 'Relationship', action: 'Architect recommends for next project', duininckRole: 'Ongoing relationship maintenance, shared portfolio content' },
+    ],
+    driveLink: '04_Audience_Research/persona-golf-architects.md',
+    dataDepth: 'deep',
+  },
+  'Current Employees (700+)': {
+    dailyLife: 'Equipment operator on a road crew in central MN. Starts at 6am, works until dark during construction season. No company email. Gets information from foreman at morning huddle. Scrolls Facebook on lunch break. Knows 5 coworkers well, 695 not at all.',
+    howTheyFind: 'They don\'t "find" information. It reaches them or it doesn\'t. No intranet, no email, no app. Company news comes through the foreman grapevine or not at all.',
+    howTheyDecide: 'Whether to stay or leave is decided at the kitchen table. Pay, schedule, commute, how they feel about the foreman, whether the family feels secure. Brand has zero influence unless it translates to tangible experience.',
+    frustrations: ['Feeling disconnected from the "big picture"', 'Not knowing what other crews are doing', 'Missing company news and benefit updates', 'Seasonal uncertainty (will I be back next year?)'],
+    trustSignals: ['Foreman relaying real information', 'Seeing the Duininck name on community projects they drive past', 'Benefits that actually get used (not just listed)', 'Being recognized for safety milestones'],
+    journeyStages: [
+      { stage: 'Onboarding', action: 'First day on crew', duininckRole: 'Safety training, crew introduction, values visible', leak: 'No branded onboarding that connects to 100-year story' },
+      { stage: 'Working', action: 'Daily operations on jobsite', duininckRole: 'Safe site, fair treatment, good equipment', leak: 'No internal comms platform reaches them' },
+      { stage: 'Belonging', action: 'Feeling part of something larger', duininckRole: 'Centennial involvement, project pride, recognition', leak: '700 disconnected workers who don\'t know the brand story' },
+      { stage: 'Advocating', action: 'Telling friends and family about Duininck', duininckRole: 'Pre-made social content, referral program', leak: 'No mechanism to turn employees into brand ambassadors' },
+    ],
+    driveLink: '04_Audience_Research/persona-employees.md',
+    dataDepth: 'deep',
+  },
+  'Subcontractors & Trade Partners': {
+    dailyLife: 'Specialty contractor owner in MN. Runs a crew of 8-20. Picks primes based on who pays on time, runs safe sites, and has steady work. Hears about primes through the AGC network and jobsite word of mouth.',
+    howTheyFind: 'Plan rooms, bid listing services, and relationships with prime contractor PMs. The subcontractor community in MN is small. Everyone knows who pays well and who doesn\'t.',
+    howTheyDecide: 'Payment reliability is #1. Then: safety culture, project management quality, change order fairness, and pipeline volume. A sub will take a lower-margin project from a prime who pays on time over a higher-margin project from one who doesn\'t.',
+    frustrations: ['Late payments (net 60+ from some primes)', 'Scope creep without fair change orders', 'Unsafe conditions on prime-managed sites', 'Primes who treat subs as expendable'],
+    trustSignals: ['Word of mouth from other subs', 'MSA membership and event presence', 'Consistent project pipeline', 'Fair documented processes'],
+    journeyStages: [
+      { stage: 'Awareness', action: 'Sub hears about Duininck through network', duininckRole: 'AGC/MSA presence, jobsite reputation', leak: 'If payment reputation is unknown, subs avoid the risk' },
+      { stage: 'Bid', action: 'Sub bids on Duininck project', duininckRole: 'Clear scopes, fair bid process', leak: 'Unclear specs lead to underbids and future disputes' },
+      { stage: 'Work', action: 'Sub performs on Duininck site', duininckRole: 'Safe site management, proactive PM communication' },
+      { stage: 'Payment', action: 'Sub invoices and waits for payment', duininckRole: 'Pay on time, every time', leak: 'One late payment destroys the relationship' },
+      { stage: 'Repeat', action: 'Sub decides whether to bid again', duininckRole: 'Preferred sub program, pipeline visibility' },
+    ],
+    driveLink: '04_Audience_Research/persona-subcontractors.md',
+    dataDepth: 'moderate',
+  },
+  'Civil Engineers & Consultants': {
+    dailyLife: 'Professional engineer at a consulting firm. Designs highway and infrastructure projects. Writes specifications that influence which contractors can bid. Works with MnDOT on project scoping. Values competence and communication.',
+    howTheyFind: 'They already know the qualified contractors. Pre-qualification lists and past project experience determine who gets considered. ACEC and county engineer events build relationships.',
+    howTheyDecide: 'Can this contractor execute the spec? Will they communicate if conditions change? What is their performance history? Engineers value predictability and technical competence above everything else.',
+    frustrations: ['Contractors who don\'t follow specs', 'Poor communication when field conditions diverge', 'Claims and disputes that reflect on the engineer\'s project', 'Having to explain basic requirements to under-qualified crews'],
+    trustSignals: ['On-time completion track record', 'Low change order percentage', 'GPS machine control and technical capability', 'Proactive RFI process'],
+    journeyStages: [
+      { stage: 'Design', action: 'Engineer writes project specs', duininckRole: 'Relationships that lead to favorable spec alignment' },
+      { stage: 'Pre-qual', action: 'Contractor pre-qualification review', duininckRole: 'Current certifications, equipment list, safety record' },
+      { stage: 'Construction', action: 'Engineer oversees contractor performance', duininckRole: 'Execute the spec. Communicate proactively. No surprises.' },
+      { stage: 'Closeout', action: 'Project completion and documentation', duininckRole: 'Clean closeout, no claims, as-built documentation' },
+      { stage: 'Reference', action: 'Engineer recommends for future projects', duininckRole: 'Follow-up relationship, performance data sharing' },
+    ],
+    driveLink: '04_Audience_Research/persona-civil-engineers.md',
+    dataDepth: 'moderate',
+  },
+  'Communities': {
+    dailyLife: 'Resident of Willmar, MN. Drives past Duininck trucks on Highway 12. Knows the Duininck name from church, the county fair, and local news. May not understand the full scope of the company.',
+    howTheyFind: 'They don\'t seek Duininck out. Duininck is part of the community landscape. Visibility comes from project signage, local sponsorships, employee word of mouth, and the West Central Tribune.',
+    howTheyDecide: 'Community members form opinions through accumulated impressions: Is Duininck a good employer? Do they give back? Are their projects well-managed? Do they hire locally?',
+    frustrations: ['Construction disruption (road closures, noise, dust)', 'Not knowing who is responsible for a project', 'Feeling like companies extract value without investing in the community'],
+    trustSignals: ['Visible community investment (sponsorships, donations)', 'Local employment', 'Awards (Minnesota Family Business Award)', 'Centennial event celebrating community'],
+    journeyStages: [
+      { stage: 'Awareness', action: 'See Duininck trucks, signage, or news mention', duininckRole: 'Branded trucks, jobsite signage, local media presence' },
+      { stage: 'Impression', action: 'Form opinion about the company', duininckRole: 'Community sponsorships, volunteer work, employee behavior' },
+      { stage: 'Connection', action: 'Attend centennial event, meet an employee, read about an award', duininckRole: 'July 25 event, Facebook community content, WCT features' },
+      { stage: 'Advocacy', action: 'Speak positively about Duininck to neighbors', duininckRole: 'Give them a reason to be proud: "That company is 100 years old and they hire our neighbors"' },
+    ],
+    driveLink: '04_Audience_Research/persona-communities.md',
+    dataDepth: 'moderate',
+  },
+  'Ag Customers (Prinsco)': {
+    dailyLife: 'Farmer in western MN. Manages drainage on 2,000 acres. Buys pipe through a local dealer. Cares about specs, availability, and price. Attends Farmfest. Listens to ag radio.',
+    howTheyFind: 'Dealer recommendation first. Then: Farmfest booth, ag trade magazine, word of mouth from other farmers. Prinsco\'s "Water Table" podcast reaches technically engaged buyers.',
+    howTheyDecide: 'Product specs for their soil type. Dealer availability and delivery speed. Price comparison with ADS and other manufacturers. Installation support.',
+    frustrations: ['Product availability during peak drainage season', 'Unclear specs for complex soil conditions', 'National brands that don\'t understand Midwest ag', 'Rising material costs'],
+    trustSignals: ['Local dealer relationship', 'Midwest-based manufacturer', '"The Water Table" content showing expertise', 'Family-owned responsiveness'],
+    journeyStages: [
+      { stage: 'Need', action: 'Drainage issue identified on farm', duininckRole: 'Prinsco brand known through dealer network' },
+      { stage: 'Research', action: 'Consult dealer, check specs', duininckRole: 'Product specs at prinsco.com, dealer locator' },
+      { stage: 'Purchase', action: 'Order through dealer', duininckRole: 'Availability, pricing, delivery speed' },
+      { stage: 'Install', action: 'Tile installation on farm', duininckRole: 'Installation guides, tech support if needed' },
+      { stage: 'Loyalty', action: 'Reorder for next project', duininckRole: 'Consistent product quality, dealer relationship maintained' },
+    ],
+    driveLink: '04_Audience_Research/persona-ag-customers.md',
+    dataDepth: 'moderate',
+  },
+};
+
 // ---- MESSAGING MATRIX ----
 export const MESSAGING_MATRIX = {
   coreMessage: {
