@@ -1,0 +1,5 @@
+node_modules/
+dist/
+scripts/drive-vault/credentials.json
+scripts/drive-vault/token.json
+.DS_Store

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duininck Companies — Brand Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal: #004F71;
+      --teal-light: #0A6E9A;
+      --teal-dim: rgba(0,79,113,0.08);
+      --orange: #FE5000;
+      --orange-dim: rgba(254,80,0,0.08);
+      --navy: #1E293B;
+      --text: #1A1A1A;
+      --sub: rgba(26,26,26,0.65);
+      --muted: rgba(26,26,26,0.40);
+      --ghost: rgba(26,26,26,0.22);
+      --bg: #FFFFFF;
+      --surface: #F7F6F3;
+      --border: rgba(0,79,113,0.10);
+      --success: #2E7D4F;
+      --success-dim: rgba(46,125,79,0.10);
+      --warning: #D4880B;
+      --error: #C03A2B;
+      --font: 'Inter', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+
+    /* Layout */
+    .container { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+
+    /* Header */
+    .brand-header { text-align: center; padding: 80px 0 60px; border-bottom: 1px solid var(--border); margin-bottom: 60px; }
+    .brand-header h1 { font-size: 42px; font-weight: 800; color: var(--teal); letter-spacing: -0.03em; margin-bottom: 8px; }
+    .brand-header .tagline { font-size: 18px; font-weight: 400; color: var(--sub); letter-spacing: 0.08em; text-transform: uppercase; }
+    .brand-header .meta { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 16px; text-transform: uppercase; letter-spacing: 0.14em; }
+    .brand-header .centennial { display: inline-block; background: var(--orange-dim); border: 1px solid var(--orange); color: var(--orange); font-family: var(--mono); font-size: 11px; font-weight: 500; padding: 4px 14px; border-radius: 9999px; margin-top: 14px; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* Sections */
+    .section { margin-bottom: 60px; }
+    .section-num { font-family: var(--mono); font-size: 10px; color: var(--teal); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 8px; }
+    .section h2 { font-size: 24px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px; }
+    .section .section-sub { font-size: 13px; color: var(--sub); line-height: 1.65; margin-bottom: 24px; }
+
+    /* Cards */
+    .card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .card-label { font-family: var(--mono); font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 6px; }
+    .card-value { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .card-body { font-size: 13px; color: var(--sub); line-height: 1.65; }
+
+    /* Callout */
+    .callout { background: var(--teal-dim); border-left: 3px solid var(--teal); border-radius: 0 6px 6px 0; padding: 14px 18px; margin-bottom: 24px; font-size: 13px; color: var(--text); line-height: 1.65; }
+    .callout-orange { background: var(--orange-dim); border-left: 3px solid var(--orange); border-radius: 0 6px 6px 0; padding: 14px 18px; margin-bottom: 24px; font-size: 13px; color: var(--text); line-height: 1.65; }
+
+    /* Color swatches */
+    .swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+    .swatch-color { height: 64px; }
+    .swatch-info { padding: 8px 10px; }
+    .swatch-hex { font-family: var(--mono); font-size: 11px; color: var(--text); font-weight: 500; }
+    .swatch-name { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+    /* Type specimens */
+    .type-specimen { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .type-label { font-family: var(--mono); font-size: 9px; color: var(--teal); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; }
+    .type-meta { font-family: var(--mono); font-size: 9px; color: var(--muted); margin-top: 4px; }
+
+    /* Values */
+    .value-card { background: var(--surface); border-radius: 8px; padding: 14px; }
+    .value-name { font-size: 14px; font-weight: 700; color: var(--teal); margin-bottom: 4px; }
+    .value-desc { font-size: 11px; color: var(--sub); line-height: 1.5; }
+
+    /* Voice list */
+    .voice-item { display: flex; gap: 8px; padding: 6px 0; border-bottom: 1px solid rgba(0,79,113,0.05); font-size: 13px; }
+    .voice-check { color: var(--success); flex-shrink: 0; }
+    .voice-x { color: var(--error); flex-shrink: 0; }
+
+    /* Timeline */
+    .timeline-item { display: flex; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(0,79,113,0.05); }
+    .timeline-year { font-family: var(--mono); font-size: 11px; color: var(--teal); font-weight: 500; min-width: 42px; }
+    .timeline-event { font-size: 13px; color: var(--sub); }
+
+    /* Sub-brand */
+    .sub-brand { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: var(--surface); border-radius: 8px; margin-bottom: 6px; }
+    .sub-brand-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .sub-brand-sector { font-family: var(--mono); font-size: 9px; color: var(--muted); }
+    .sub-brand-badge { font-family: var(--mono); font-size: 8px; color: var(--teal); background: var(--teal-dim); padding: 2px 6px; border-radius: 9999px; text-transform: uppercase; }
+    .sub-brand-badge.merging { color: var(--error); background: rgba(192,58,43,0.08); }
+    .sub-brand-badge.niche { color: var(--warning); background: rgba(212,136,11,0.08); }
+
+    /* Wedge */
+    .wedge-card { background: var(--orange-dim); border: 1px solid var(--orange); border-radius: 10px; padding: 24px; margin-bottom: 24px; }
+    .wedge-title { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+    .wedge-body { font-size: 13px; color: var(--sub); line-height: 1.65; margin-bottom: 16px; }
+    .wedge-proof { display: flex; gap: 8px; font-size: 12px; color: var(--text); padding: 5px 0; border-bottom: 1px solid rgba(254,80,0,0.15); }
+    .wedge-num { color: var(--orange); font-weight: 700; flex-shrink: 0; }
+
+    /* Footer */
+    .guide-footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px; }
+    .guide-footer p { font-family: var(--mono); font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; }
+
+    /* TOC */
+    .toc { background: var(--surface); border-radius: 8px; padding: 20px 24px; margin-bottom: 40px; }
+    .toc-title { font-family: var(--mono); font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 10px; }
+    .toc a { display: block; font-size: 13px; color: var(--teal); text-decoration: none; padding: 4px 0; }
+    .toc a:hover { text-decoration: underline; }
+
+    /* Confirmed badge */
+    .confirmed { font-family: var(--mono); font-size: 9px; color: var(--success); background: var(--success-dim); padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
+
+    @media print {
+      .container { max-width: 100%; padding: 20px; }
+      .section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="brand-header">
+      <h1>Duininck Companies</h1>
+      <div class="tagline">People. Values. Growth.</div>
+      <div class="centennial">100 Years · 1926-2026</div>
+      <div class="meta">Brand Guide · March 2026 · Draft v2.0 · Post-CMO Discovery</div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+      <div class="toc-title">Contents</div>
+      <a href="#about">01 — About Duininck</a>
+      <a href="#centennial">02 — Centennial Year</a>
+      <a href="#values">03 — Core Values</a>
+      <a href="#wedge">04 — The Untouchable Wedge</a>
+      <a href="#portfolio">05 — Portfolio Structure</a>
+      <a href="#architecture">06 — Brand Architecture</a>
+      <a href="#colors">07 — Color System</a>
+      <a href="#typography">08 — Typography</a>
+      <a href="#voice">09 — Brand Voice</a>
+      <a href="#identity">10 — Brand Identity</a>
+      <a href="#usage">11 — Usage Guidelines</a>
+    </div>
+
+    <!-- 01 About -->
+    <div class="section" id="about">
+      <div class="section-num">01 / About</div>
+      <h2>About Duininck Companies</h2>
+      <p class="section-sub">A fourth-generation, family-owned portfolio spanning water management, construction, materials, golf course design, and real estate development. Celebrating 100 years in 2026.</p>
+
+      <div class="callout">
+        For 100 years, the Duininck family has been building things that endure: roads, water systems, golf courses, communities, and a company culture rooted in faith and service. Now in its fourth generation, Duininck Companies proves that when you build on the right foundation, growth is not just possible but inevitable.
+      </div>
+
+      <div class="grid-2" style="margin-bottom: 16px;">
+        <div class="card">
+          <div class="card-label">Mission</div>
+          <div class="card-body">We are energized to build for the future with a focus on people, values, and growth.</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Vision</div>
+          <div class="card-body">To steward a thriving, multi-generational family business that advances its people, partners, and communities through values-driven growth.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 16px;">
+        <div class="card-label">Founding Story</div>
+        <div class="card-body">In 1919, 16-year-old Henry Duininck began working on road construction in Minnesota. By 1926, he and his brothers Amos and Wilbur formalized Duininck Brothers Construction. A 1932 bankruptcy during the Depression forced a reorganization, but the family rebuilt. Four generations later, the company spans water management, construction, materials, golf course design, and real estate development.</div>
+      </div>
+
+      <div class="card-label">Key Milestones</div>
+      <div class="timeline-item"><span class="timeline-year">1926</span><span class="timeline-event">Duininck Brothers Construction officially formed</span></div>
+      <div class="timeline-item"><span class="timeline-year">1975</span><span class="timeline-event">Founded Prinsburg Tile Company (precursor to Prinsco)</span></div>
+      <div class="timeline-item"><span class="timeline-year">1986</span><span class="timeline-event">Prinsco shifts to plastic pipe manufacturing</span></div>
+      <div class="timeline-item"><span class="timeline-year">1988</span><span class="timeline-event">Duininck Golf division established</span></div>
+      <div class="timeline-item"><span class="timeline-year">2014</span><span class="timeline-event">Central Team created for enterprise services</span></div>
+      <div class="timeline-item"><span class="timeline-year">2018</span><span class="timeline-event">Gen 4 formally introduced at first Family Summit</span></div>
+      <div class="timeline-item"><span class="timeline-year">2022</span><span class="timeline-event">Portfolio restructured into 3 industry sectors</span></div>
+      <div class="timeline-item"><span class="timeline-year">2024</span><span class="timeline-event">Minnesota Family Business Award</span></div>
+      <div class="timeline-item"><span class="timeline-year">2025</span><span class="timeline-event">Nicole Behne joins as CMO. Brand unification kickoff.</span></div>
+      <div class="timeline-item" style="border-bottom: none;"><span class="timeline-year" style="color: var(--orange); font-weight: 700;">2026</span><span class="timeline-event" style="color: var(--orange); font-weight: 600;">CENTENNIAL YEAR. Brand unification launch. July 25 celebration (~2,000 people).</span></div>
+    </div>
+
+    <!-- 02 Centennial -->
+    <div class="section" id="centennial">
+      <div class="section-num">02 / Centennial</div>
+      <h2>Centennial Year: 2026</h2>
+      <p class="section-sub">This isn't just an anniversary. It's the ultimate brand proof point.</p>
+
+      <div class="callout-orange">
+        Most construction companies don't survive 20 years. Duininck has survived 100 — including a Depression-era bankruptcy, generational transitions, industry consolidation, and market shifts. The centennial is the ultimate brand credential.
+      </div>
+
+      <div class="card" style="margin-bottom: 16px;">
+        <div class="card-label">Main Event</div>
+        <div class="card-value">July 25, 2026</div>
+        <div class="card-body">Public celebration &middot; ~2,000 attendees &middot; Documentary premiere with historic footage &middot; AI-animated stills &middot; Family history showcase</div>
+      </div>
+
+      <div class="card-label">Centennial Opportunities</div>
+      <div style="margin-bottom: 16px;">
+        <div class="wedge-proof"><span class="wedge-num">01</span> <strong>Recruiting:</strong> "Join a company that's been building for 100 years — and is just getting started"</div>
+        <div class="wedge-proof"><span class="wedge-num">02</span> <strong>Customer proof:</strong> "When you hire Duininck, you hire a century of experience"</div>
+        <div class="wedge-proof"><span class="wedge-num">03</span> <strong>Internal pride:</strong> Give 700+ field employees a reason to feel part of something historic</div>
+        <div class="wedge-proof"><span class="wedge-num">04</span> <strong>Press moment:</strong> Local and trade media coverage of 100-year family business milestone</div>
+        <div class="wedge-proof" style="border-bottom: none;"><span class="wedge-num">05</span> <strong>Brand unification moment:</strong> Launch the unified brand AT the centennial event</div>
+      </div>
+    </div>
+
+    <!-- 03 Values -->
+    <div class="section" id="values">
+      <div class="section-num">03 / Values</div>
+      <h2>Core Values</h2>
+      <p class="section-sub">Five foundational values guide every decision across the Duininck portfolio.</p>
+
+      <div class="grid-5" style="margin-bottom: 16px;">
+        <div class="value-card">
+          <div class="value-name">Stewardship</div>
+          <div class="value-desc">We foster the advancement of resources entrusted to our care.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-name">Integrity</div>
+          <div class="value-desc">We conform our conduct to our values in every interaction.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-name">Servant Leadership</div>
+          <div class="value-desc">We lead with clarity of purpose and develop our people.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-name">Family</div>
+          <div class="value-desc">We nurture the wellbeing of families at work and at home.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-name">Generosity</div>
+          <div class="value-desc">We give our time, talent, and finances out of grateful hearts.</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Employee Wellbeing Framework:</strong> Duininck sees every employee as "a whole person" across 6 dimensions: Career, Family/Social, Finances, Health, Community, and Spiritual. No construction company in the Midwest is talking this way. This is the untouchable recruiting advantage.
+      </div>
+    </div>
+
+    <!-- 04 Wedge -->
+    <div class="section" id="wedge">
+      <div class="section-num">04 / Strategy</div>
+      <h2>The Untouchable Wedge</h2>
+      <p class="section-sub">What makes Duininck impossible to replicate — the competitive advantages no one can copy.</p>
+
+      <div class="wedge-card">
+        <div style="font-family: var(--mono); font-size: 9px; color: var(--orange); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 6px;">Unreplicable Competitive Advantage</div>
+        <div class="wedge-title">"The Full Truck"</div>
+        <div class="wedge-body">When a Duininck truck pulls up on a site, it doesn't just represent one crew or one capability. It represents 100 years of earned trust, 4 generations of family commitment, the full weight of 6+ operating companies, and a values system that treats every employee as a whole person. No competitor can build this overnight. No competitor can fake a century.</div>
+
+        <div style="font-family: var(--mono); font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 8px;">Proof Points</div>
+        <div class="wedge-proof"><span class="wedge-num">01</span> 100 years of continuous family operation — survived the Depression, diversified across a century</div>
+        <div class="wedge-proof"><span class="wedge-num">02</span> Blue-collar workforce that stays because they're treated as whole people, not headcount</div>
+        <div class="wedge-proof"><span class="wedge-num">03</span> A CMO from Fortune 200 companies who says she has "more purpose here than anywhere"</div>
+        <div class="wedge-proof"><span class="wedge-num">04</span> Golf division so respected they restore courses by Ross, Raynor, and Tillinghast</div>
+        <div class="wedge-proof"><span class="wedge-num">05</span> Own the infrastructure: water systems, sewer systems, aggregates, pipe manufacturing</div>
+        <div class="wedge-proof"><span class="wedge-num">06</span> Faith-based values that are authentic and longstanding, not a corporate veneer</div>
+        <div class="wedge-proof" style="border-bottom: none;"><span class="wedge-num">07</span> 4th generation is already in the business. The succession isn't a plan — it's happening.</div>
+      </div>
+    </div>
+
+    <!-- 05 Portfolio -->
+    <div class="section" id="portfolio">
+      <div class="section-num">05 / Portfolio</div>
+      <h2>Portfolio Structure</h2>
+      <p class="section-sub">Three industry sectors, six operating companies, one family.</p>
+
+      <div class="card-label" style="margin-bottom: 8px;">Water Management</div>
+      <div class="sub-brand">
+        <div><span class="sub-brand-name">Prinsco</span><br><span class="sub-brand-sector">Plastic pipe manufacturing &middot; Willmar, MN &middot; Independent brand</span></div>
+        <span class="sub-brand-badge">Flagship</span>
+      </div>
+
+      <div class="card-label" style="margin-top: 16px; margin-bottom: 8px;">Construction &amp; Materials <span class="confirmed">Unifying</span></div>
+      <div class="sub-brand">
+        <div><span class="sub-brand-name">Duininck (Heavy Civil)</span><br><span class="sub-brand-sector">Grading, paving, utilities &middot; MN, TX &middot; Unifying under single brand</span></div>
+        <span class="sub-brand-badge">Core</span>
+      </div>
+      <div class="sub-brand">
+        <div><span class="sub-brand-name">Duininck Concrete</span><br><span class="sub-brand-sector">Aggregates, ready mix &middot; Willmar, MN &middot; Brand being eliminated</span></div>
+        <span class="sub-brand-badge merging">Merging</span>
+      </div>
+      <div class="sub-brand">
+        <div><span class="sub-brand-name">Duininck Golf</span><br><span class="sub-brand-sector">Course construction &amp; restoration &middot; MN &amp; GA &middot; Retains niche positioning</span></div>
+        <span class="sub-brand-badge niche">Niche</span>
+      </div>
+
+      <div class="card-label" style="margin-top: 16px; margin-bottom: 8px;">Real Estate</div>
+      <div class="sub-brand">
+        <div><span class="sub-brand-name">Hart Ranch Golf Club</span><br><span class="sub-brand-sector">#1 Public Course in SD &middot; Rapid City, SD &middot; Independent brand</span></div>
+        <span class="sub-brand-badge">Premium</span>
+      </div>
+      <div class="sub-brand">
+        <div><span class="sub-brand-name">Hart Ranch / Duininck Development</span><br><span class="sub-brand-sector">Real estate &amp; community development &middot; SD &amp; MN</span></div>
+        <span class="sub-brand-badge">Growth</span>
+      </div>
+    </div>
+
+    <!-- 06 Architecture -->
+    <div class="section" id="architecture">
+      <div class="section-num">06 / Architecture</div>
+      <h2>Brand Architecture</h2>
+      <p class="section-sub">How the parent brand and subsidiaries relate. <span class="confirmed">Confirmed by CMO</span></p>
+
+      <div class="callout-orange">
+        <strong>"When a Duininck truck pulls up on a site, we need to represent ALL of it, not just a piece of it."</strong> — Nicole Behne, CMO. This quote defined the architecture decision: one unified Duininck brand for construction, with Golf retaining niche positioning.
+      </div>
+
+      <div class="grid-2" style="margin-bottom: 16px;">
+        <div class="card" style="border-left: 3px solid var(--success);">
+          <div class="card-label">Unified Duininck Brand <span class="confirmed">Active</span></div>
+          <div class="card-body">All construction and materials entities operating under a single "Duininck" brand. Concrete brand eliminated. Minnesota and Texas unified. One truck = all capabilities.</div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--warning);">
+          <div class="card-label">Niche Exception: Golf</div>
+          <div class="card-body">Duininck Golf retains distinct positioning. Different audience (architects vs. GCs), different website, different content strategy. Endorsed as "A Duininck Company."</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Independent Brands</div>
+        <div class="card-body">Prinsco (water management) and Hart Ranch (real estate/golf) maintain independent brand identities. Different markets, different customers, established equity.</div>
+      </div>
+    </div>
+
+    <!-- 07 Colors -->
+    <div class="section" id="colors">
+      <div class="section-num">07 / Color</div>
+      <h2>Color System</h2>
+      <p class="section-sub">Brand colors anchored in Duininck's established teal and orange palette.</p>
+
+      <div class="grid-5" style="margin-bottom: 16px;">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #004F71;"></div>
+          <div class="swatch-info"><div class="swatch-hex">#004F71</div><div class="swatch-name">Duininck Teal &middot; Primary</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FE5000;"></div>
+          <div class="swatch-info"><div class="swatch-hex">#FE5000</div><div class="swatch-name">Duininck Orange &middot; Accent</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #1E293B;"></div>
+          <div class="swatch-info"><div class="swatch-hex">#1E293B</div><div class="swatch-name">Dark Navy &middot; Text</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #FFFFFF; border-bottom: 1px solid rgba(0,0,0,0.08);"></div>
+          <div class="swatch-info"><div class="swatch-hex">#FFFFFF</div><div class="swatch-name">White &middot; Background</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F7F6F3;"></div>
+          <div class="swatch-info"><div class="swatch-hex">#F7F6F3</div><div class="swatch-name">Warm Gray &middot; Surface</div></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Color usage:</strong> Teal is the primary brand color used for headers, navigation, and brand elements. Orange is the accent used for CTAs, highlights, energy, and the centennial badge. Dark Navy is the text color. Warm Gray provides background depth.
+      </div>
+    </div>
+
+    <!-- 08 Typography -->
+    <div class="section" id="typography">
+      <div class="section-num">08 / Typography</div>
+      <h2>Typography</h2>
+      <p class="section-sub">Type system for brand communications.</p>
+
+      <div class="type-specimen">
+        <div class="type-label">Display / Headlines</div>
+        <div style="font-size: 32px; font-weight: 800; color: var(--text); letter-spacing: -0.02em;">Built to Last</div>
+        <div class="type-meta">Inter &middot; 800 Extra Bold &middot; -0.02em tracking</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-label">Subheading</div>
+        <div style="font-size: 20px; font-weight: 600; color: var(--text);">People. Values. Growth.</div>
+        <div class="type-meta">Inter &middot; 600 Semi Bold</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-label">Body</div>
+        <div style="font-size: 15px; font-weight: 400; color: var(--sub); line-height: 1.65;">For 100 years, the Duininck family has been building things that endure: roads, water systems, golf courses, communities, and a company culture rooted in faith and service.</div>
+        <div class="type-meta">Inter &middot; 400 Regular &middot; 1.65 line height</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-label">Data / Labels</div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em;">4th Generation &middot; Est. 1926 &middot; Willmar, MN &middot; 100 Years</div>
+        <div class="type-meta">JetBrains Mono &middot; 400 &middot; uppercase &middot; 0.12em tracking</div>
+      </div>
+
+      <div class="callout" style="margin-top: 16px;">
+        <strong>Note:</strong> The current website uses Roboto (300, 400). This brand guide uses Inter as a proposed upgrade. Website redesign is in progress — typography decisions are being finalized with the CMO.
+      </div>
+    </div>
+
+    <!-- 09 Voice -->
+    <div class="section" id="voice">
+      <div class="section-num">09 / Voice</div>
+      <h2>Brand Voice</h2>
+      <p class="section-sub">How Duininck sounds: warm professional, understated confidence, genuine, grounded. Like a firm handshake from someone who builds real things and keeps their word.</p>
+
+      <div class="grid-5" style="margin-bottom: 20px;">
+        <div class="value-card"><div class="value-name">Steadfast</div><div class="value-desc">Reliable and proven. 100 years proves it.</div></div>
+        <div class="value-card"><div class="value-name">Humble</div><div class="value-desc">Let the work speak. The dirt under the fingernails is real.</div></div>
+        <div class="value-card"><div class="value-name">Generous</div><div class="value-desc">With time, talent, and resources. Giving is a reflex.</div></div>
+        <div class="value-card"><div class="value-name">Forward</div><div class="value-desc">Rooted in tradition, building for the next generation.</div></div>
+        <div class="value-card"><div class="value-name">Grounded</div><div class="value-desc">Connected to the land, the work, the people.</div></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-label">Language We Use</div>
+          <div class="voice-item"><span class="voice-check">&#10003;</span> Built to last — 100 years and counting</div>
+          <div class="voice-item"><span class="voice-check">&#10003;</span> People. Values. Growth.</div>
+          <div class="voice-item"><span class="voice-check">&#10003;</span> Four generations strong</div>
+          <div class="voice-item"><span class="voice-check">&#10003;</span> When our truck pulls up, you get all of us</div>
+          <div class="voice-item"><span class="voice-check">&#10003;</span> We see the whole person</div>
+          <div class="voice-item"><span class="voice-check">&#10003;</span> Building for the next generation</div>
+          <div class="voice-item"><span class="voice-check">&#10003;</span> The foundation matters</div>
+          <div class="voice-item"><span class="voice-check">&#10003;</span> Enduring partnerships</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Language We Avoid</div>
+          <div class="voice-item"><span class="voice-x">&#10007;</span> Disrupting the industry</div>
+          <div class="voice-item"><span class="voice-x">&#10007;</span> Move fast and break things</div>
+          <div class="voice-item"><span class="voice-x">&#10007;</span> Crushing it</div>
+          <div class="voice-item"><span class="voice-x">&#10007;</span> Innovative solutions (too startup-y)</div>
+          <div class="voice-item"><span class="voice-x">&#10007;</span> Synergistic alignment</div>
+          <div class="voice-item"><span class="voice-x">&#10007;</span> Best-in-class (overused)</div>
+          <div class="voice-item"><span class="voice-x">&#10007;</span> We're like a family (they ARE a family)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 Identity -->
+    <div class="section" id="identity">
+      <div class="section-num">10 / Identity</div>
+      <h2>Brand Identity</h2>
+      <p class="section-sub">Core brand elements and positioning.</p>
+
+      <div class="grid-2" style="margin-bottom: 16px;">
+        <div class="card">
+          <div class="card-label">Brand Archetype</div>
+          <div class="card-value">The Builder / The Steward</div>
+          <div class="card-body">Creating tangible, lasting infrastructure while protecting and growing what has been entrusted. Nicole's own words validate this: she has "more purpose than ever" at a roads-and-golf company because the foundation is that strong.</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Brand Anchor</div>
+          <div style="font-size: 28px; font-weight: 800; color: var(--teal); letter-spacing: -0.02em; margin-bottom: 8px;">BUILT TO LAST</div>
+          <div class="card-body">Every subsidiary maps back to this. Roads, pipes, courses, communities. The family itself is the proof — 100 years, 4 generations, still building. No competitor can fabricate this.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Core Narrative</div>
+        <div class="card-body" style="font-style: italic;">For 100 years, the Duininck family has been building things that endure: roads, water systems, golf courses, communities, and a company culture rooted in faith and service. Now in its fourth generation, Duininck Companies proves that when you build on the right foundation, growth is not just possible but inevitable.</div>
+      </div>
+    </div>
+
+    <!-- 11 Usage -->
+    <div class="section" id="usage">
+      <div class="section-num">11 / Usage</div>
+      <h2>Usage Guidelines</h2>
+      <p class="section-sub">Rules for using the Duininck brand consistently.</p>
+
+      <div class="card" style="margin-bottom: 16px;">
+        <div class="card-label">Name Usage</div>
+        <div class="card-body">
+          <strong>Full name:</strong> "Duininck Companies" (for corporate communications, formal contexts)<br>
+          <strong>Short name:</strong> "Duininck" (acceptable in running text after first full mention)<br>
+          <strong>Never:</strong> "The Duininck Company" / "Duininck Inc." / "Duininck Corp."<br>
+          <strong>Endorsement:</strong> "A Duininck Company" (for subsidiary use — especially Golf)<br>
+          <strong>Centennial:</strong> "100 Years of Building Things That Endure" (2026 campaign line)
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 16px;">
+        <div class="card-label">Content Guidelines (Post-Discovery)</div>
+        <div class="card-body">
+          <strong>No talking heads:</strong> Blue-collar workforce won't go on camera. Use cinematic b-roll with voiceover instead.<br>
+          <strong>Film the work:</strong> Equipment, job sites, drone footage. The work IS the content.<br>
+          <strong>Carousels over graphics:</strong> Static branded graphics get "two likes." Project story carousels perform.<br>
+          <strong>Capture timing:</strong> Golf beauty shots come a YEAR after construction. Plan captures now for next year's content.<br>
+          <strong>Voice differentiation:</strong> Golf voice is distinct from construction. Architects vs. general contractors.
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 16px;">
+        <div class="card-label">Logo Guidelines</div>
+        <div class="card-body">
+          Brand unification in progress. Concrete brand logo being retired. Logo files, clear space rules, minimum sizes, and approved color variations will be finalized with the unified brand launch.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Contact</div>
+        <div class="card-body">
+          For brand questions, asset requests, or usage approval:<br>
+          Nicole Behne, CMO, Duininck Companies<br>
+          <a href="https://duininckcompanies.com" style="color: var(--teal);">duininckcompanies.com</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="guide-footer">
+      <p>Duininck Companies &middot; Brand Guide &middot; Draft v2.0 &middot; March 2026</p>
+      <p style="margin-top: 6px;">People. Values. Growth. &middot; 100 Years &middot; Built to Last</p>
+    </div>
+  </div>
+</body>
+</html>
