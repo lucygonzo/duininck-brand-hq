@@ -224,11 +224,15 @@ export default function NewsFeedPage() {
 
   return (
     <div>
-      <SectionHeader num="10 / Foundation" title="Live News Feed" sub="Industry intelligence, internal posts, competitor moves, and social mentions across all Duininck sectors." />
+      <SectionHeader num="10 / GTM" title="Live News Feed" sub="Industry intelligence, internal posts, competitor moves, and social mentions across all Duininck sectors." />
 
       <Callout>
-        Your personalized brand intelligence feed. Internal posts from Duininck leadership, industry news from trusted sources, competitor activity alerts, and social mentions. External links open in a new tab so you can engage directly.
+        Your personalized brand intelligence feed. Internal posts from Duininck leadership, industry news from trusted sources, competitor activity alerts, and social mentions across all Duininck operating sectors. Featured items are pinned at the top. External links open in a new tab so you can engage, share, and like directly.
       </Callout>
+
+      <Block variant="amber" style={{ marginBottom: '16px' }}>
+        <strong>Sample feed:</strong> The items below are representative examples showing the intended experience. Once live data connections are established (LinkedIn API, RSS feeds from trade publications, social listening tools), this feed will update automatically on a cadence to be determined with Nicole. Categories covered: industry news, internal activity, competitor moves, social mentions, community coverage, and golf industry developments.
+      </Block>
 
       {/* PEOPLE TO WATCH */}
       <Divider label="People to Watch" />
