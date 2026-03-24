@@ -17,6 +17,7 @@ import ResearchPipelinePage from './pages/ResearchPipeline';
 import ActionsPage from './pages/Actions';
 import DecisionsPage from './pages/Decisions';
 import ReportCardPage from './pages/ReportCard';
+import DigitalEcosystemPage from './pages/DigitalEcosystem';
 
 type TabId = string;
 type Tab = {
@@ -48,6 +49,7 @@ const NAV: Group[] = [
     { id: 'gap', label: 'Gap Analysis', component: GapPage },
   ]},
   { group: 'GTM', tabs: [
+    { id: 'ecosystem', label: 'Digital Ecosystem', component: DigitalEcosystemPage },
     { id: 'newsfeed', label: 'Live News Feed', component: NewsFeedPage, research: { complete: 0, total: 3 } },
   ]},
   { group: 'Workspace', tabs: [
