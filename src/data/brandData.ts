@@ -204,6 +204,25 @@ export const BRAND_IDENTITY = {
   brandAnchorNote: 'Every subsidiary maps back to this: roads that last, pipes that endure, courses that stand the test of time, communities that grow. The family itself is the proof. 100 years, 4 generations, still building. No competitor can fabricate this.',
   coreNarrative: 'For 100 years, the Duininck family has been building things that endure: roads, water systems, golf courses, communities, and a company culture rooted in faith and service. Now in its fourth generation, Duininck Companies proves that when you build on the right foundation, growth is not just possible but inevitable.',
 
+  // Three narrative versions for different contexts
+  narrativeVersions: [
+    {
+      name: 'Legacy-Led',
+      text: 'In 1926, three brothers from Prinsburg, Minnesota started building roads. A century later, their family is still building. Roads became highways. A tile company became a water management leader. A love of the land became a golf course construction division respected worldwide. Through a Depression, four generations of leadership, and an industry that consolidates smaller players every year, Duininck endured. Today, the fourth generation is already in the business, and the question isn\'t whether the company will survive another century. The question is what they\'ll build next.',
+      bestFor: 'Centennial content, community audiences, press releases, about pages',
+    },
+    {
+      name: 'Capability-Led',
+      text: 'When your company manufactures its own pipe, mines its own aggregates, engineers its own projects, paves its own roads, and shapes golf courses that host major championships, you don\'t need to outsource trust. Duininck Companies is a fourth-generation family portfolio that delivers the full weight of 100 years and six operating companies on every project. Competitors send a bid. Duininck sends the whole truck.',
+      bestFor: 'GC/engineer audiences, project proposals, capability statements, bid packages',
+    },
+    {
+      name: 'People-Led',
+      text: 'Nicole Behne spent her career at Hormel Foods and Polaris, Fortune-level companies with global brands. Then she took a job at a roads-and-golf-courses company in rural Minnesota and says she has more purpose here than she\'s ever had. That\'s the Duininck effect. When your values aren\'t a poster on the wall but a way of life your great-grandparents started, people feel it. The 700+ workers in the field feel it. The communities where they live and work feel it. You can\'t build that in a branding workshop. You build it over 100 years.',
+      bestFor: 'Recruiting content, employer brand, internal comms, culture-focused channels',
+    },
+  ],
+
   // THE UNTOUCHABLE WEDGE. what makes Duininck impossible to replicate
   wedge: {
     headline: 'The Full Truck',
@@ -814,12 +833,12 @@ export const COMPETITOR_PROFILES = [
     founded: '1920',
     age: '106 years',
     hq: 'Cloquet, MN',
-    ownership: 'TBD (appears family-owned)',
-    revenue: 'TBD',
-    employees: 'TBD',
+    ownership: 'Private (appears family-owned, unconfirmed)',
+    revenue: 'Not disclosed',
+    employees: 'Not disclosed',
     states: 'MN, western WI, northern IA',
-    glassdoor: { rating: 'TBD', reviews: 0, recommend: 'TBD' },
-    openPositions: 'TBD',
+    glassdoor: { rating: 'Not listed', reviews: 0, recommend: 'N/A' },
+    openPositions: 'Not listed',
     tagline: 'Quality service for over 95 years',
     values: ['Keep promises', 'Do quality work'],
     heritageClaim: 'Founded 1920 by Oscar and Palmer Ulland. 6 YEARS OLDER than Duininck.',
@@ -902,7 +921,7 @@ export const SEO_BASELINE = {
       url: 'prinsco.com',
       metaTitle: 'Home - Prinsco, Inc',
       metaDesc: 'Water management solutions',
-      h1: 'TBD (hero focused on customer appreciation)',
+      h1: 'Now More Than Ever',
       issues: ['Meta description is 3 words', 'Zero connection to Duininck parent brand', 'Has content hub "The Water Table" (podcast + articles) which is good'],
     },
   ],
