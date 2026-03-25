@@ -9,6 +9,7 @@ export default function OverviewPage({ onNavigate }: { onNavigate?: (tabId: stri
   const [expandedPriority, setExpandedPriority] = useState<number | null>(null);
   const [sortBy, setSortBy] = useState<SortKey>('importance');
   const [filterUrgency, setFilterUrgency] = useState<string>('all');
+  const [agendaOpen, setAgendaOpen] = useState(false);
 
   const sortedPriorities = [...OPEN_PRIORITIES]
     .filter(p => filterUrgency === 'all' || p.urgency === filterUrgency)
@@ -23,6 +24,93 @@ export default function OverviewPage({ onNavigate }: { onNavigate?: (tabId: stri
   return (
     <div>
       <SectionHeader num="00 / Foundation" title="Overview" sub="Executive summary: current state, key metrics, and open priorities for the Duininck Companies brand engagement." />
+
+      {/* MEETING AGENDA */}
+      <Card onClick={() => setAgendaOpen(!agendaOpen)} style={{ marginBottom: '16px', cursor: 'pointer', borderLeft: `4px solid ${C.orange}`, background: C.orangeGlow, border: `1px solid ${C.orange}30`, borderLeftWidth: '4px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '18px' }}>📋</span>
+            <div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '15px', fontWeight: 700, color: C.text }}>Meeting Agenda: Nicole Introduction</div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.orange }}>6 discussion points that will shape the strategy</div>
+            </div>
+          </div>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '14px', color: C.orange }}>{agendaOpen ? '▾' : '▸'}</span>
+        </div>
+
+        {agendaOpen && (
+          <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: `1px solid ${C.orange}30` }}>
+            {/* Walkthrough Order */}
+            <Lbl style={{ color: C.orange }}>Walkthrough Order (~28 min)</Lbl>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', marginBottom: '16px' }}>
+              {[
+                { num: '01', page: 'Overview', time: '3 min', note: 'Orient: what we researched, what surprised us' },
+                { num: '02', page: 'Gap Analysis', time: '5 min', note: 'Headline: "A 9/10 company with a 4.7/10 brand"' },
+                { num: '03', page: 'Competitive', time: '5 min', note: '3 centenarian competitors. Knife River at 674 listings.' },
+                { num: '04', page: 'Audience', time: '4 min', note: 'Journey maps. The Glassdoor gap. Trade school pipeline.' },
+                { num: '05', page: 'Verbal Identity', time: '3 min', note: 'Toggle messaging by audience. Core message in action.' },
+                { num: '06', page: 'Digital Ecosystem', time: '3 min', note: '"Third generation" meta description. Zero page-1 rankings.' },
+                { num: '07', page: 'Visual Identity', time: '2 min', note: 'Teal as unclaimed competitive space.' },
+                { num: '08', page: 'GTM Strategy', time: '3 min', note: '6 pillars timed to the centennial.' },
+              ].map((step, i) => (
+                <div key={i} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', padding: '6px 8px', background: '#fff', borderRadius: '6px', border: `1px solid ${C.borderSoft}` }}>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', fontWeight: 700, color: C.orange, flexShrink: 0 }}>{step.num}</span>
+                  <div>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', fontWeight: 600, color: C.text }}>{step.page} <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, fontWeight: 400 }}>{step.time}</span></div>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.sub }}>{step.note}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Discussion Points */}
+            <Lbl style={{ color: C.orange }}>Questions for Nicole (~30 min discussion)</Lbl>
+            {[
+              {
+                question: 'Values conflict: corporate vs. operating',
+                context: 'duininckcompanies.com lists Stewardship, Integrity, Servant Leadership, Family, Generosity. duininck.com lists Safety First, Team Duininck, Value Of Each Person, Mind The Gap, Get It Done. Are both intentional (corporate values vs. operating behaviors)? Or has one replaced the other?',
+                why: 'The answer determines how we present values across the unified brand. Every page, every piece of content, every job posting references values.',
+              },
+              {
+                question: 'Employee count: 700+ or 1,000?',
+                context: 'The discovery call referenced 700+ employees. The duininckcompanies.com website says 1,000 employees. Which number is current, and does the 1,000 include Prinsco?',
+                why: 'This affects audience sizing, internal comms platform scope, and how we frame the "whole person" positioning. The scale of the communication challenge depends on the real number.',
+              },
+              {
+                question: 'Source asset files',
+                context: 'We pulled every logo from the live websites (SVGs and PNGs). To finalize the visual system, we also need source vector files (AI/EPS), the Hart Ranch logo, and any existing brand guide PDF.',
+                why: 'A shared Google Drive folder would be the simplest handoff. We can send the folder structure so files just need to be dropped in.',
+              },
+              {
+                question: 'Analytics access',
+                context: 'We built the SEO and digital ecosystem analysis using SimilarWeb estimates and manual search testing. Google Analytics viewer access would give us real traffic data, keyword performance, and user behavior across all properties.',
+                why: 'The difference between "we estimate 5,000 monthly visitors" and "Google Analytics shows 5,000 monthly visitors with 68% bounce rate" is the difference between a recommendation and a proof point.',
+              },
+              {
+                question: 'Stakeholder interview findings',
+                context: 'Nicole conducted customer and stakeholder interviews during brand unification research. We have not seen transcripts, summaries, or findings from those conversations.',
+                why: 'These interviews contain audience insights we cannot replicate from public data. Customer language, pain points, and perceptions from actual conversations would validate or challenge our audience profiles.',
+              },
+              {
+                question: 'Tool budget range',
+                context: 'The content system design (replacing Buffer + Excel) and internal comms platform selection both require knowing what spend is realistic. Even a broad range (under $200/mo, under $500/mo, under $1,000/mo) would let us recommend the right tier.',
+                why: 'Without a budget signal, we recommend tools and then learn they are out of scope. One number eliminates a round of back-and-forth.',
+              },
+            ].map((dp, i) => (
+              <Card key={i} style={{ marginBottom: '8px', borderLeft: `3px solid #22C55E`, padding: '12px 16px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '13px', fontWeight: 700, color: C.text }}>{dp.question}</div>
+                  <Chip color={'#22C55E'}>Discussion Point</Chip>
+                </div>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.sub, lineHeight: 1.6, marginBottom: '6px' }}>{dp.context}</div>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '10px', color: C.accent, fontStyle: 'italic' }}>Why this matters: {dp.why}</div>
+              </Card>
+            ))}
+
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, marginTop: '8px', textAlign: 'center' }}>Walkthrough: ~28 min · Discussion: ~30 min · Total: ~60 min</div>
+          </div>
+        )}
+      </Card>
 
       {/* START HERE: Three orientation cards */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '20px' }}>
