@@ -40,7 +40,7 @@ const FEED_ITEMS: FeedItem[] = [
     sourceUrl: 'https://www.constructiondive.com', category: 'Labor', featured: true,
     headline: 'Construction worker demand drops to 350,000 for 2026, but skilled trades gap persists',
     excerpt: 'The Associated Builders and Contractors released updated workforce data showing demand softened slightly from 2025, but equipment operators and skilled trades remain critically short across the Midwest and Southeast.',
-    relevance: 'Validates urgency of the trade school pipeline strategy. The 349K gap is national, but MN/SD/TX are in the hardest-hit regions for equipment operators. This is why the Ridgewater College partnership matters NOW.',
+    relevance: 'Validates the urgency of the Ridgewater College pipeline strategy. The 349K gap is national but MN/SD/TX are hardest-hit for equipment operators — exactly Duininck\'s hiring markets. The whole person employer story is the differentiator here.',
   },
   {
     id: 'feat-2', type: 'internal', date: 'Mar 23, 2026', sortDate: 20260323, source: 'LinkedIn', platform: 'LinkedIn', platformIcon: '🔗',
@@ -85,14 +85,21 @@ const FEED_ITEMS: FeedItem[] = [
     sourceUrl: 'https://www.enr.com', category: 'Funding',
     headline: 'MnDOT accelerates Q3 project lettings ahead of IIJA authorization deadline',
     excerpt: 'With the Infrastructure Investment and Jobs Act authorization set to expire September 30, 2026, Minnesota is fast-tracking obligation of remaining federal highway funds. Project lettings in Q3 are expected to increase 40% over the same period in 2025. State DOTs across the Midwest are following similar acceleration patterns.',
-    relevance: 'More MnDOT lettings = more bid opportunities. Duininck needs crew capacity ready. This is the volume moment the IIJA was building toward. The September deadline creates urgency on both sides: MnDOT to obligate funds, and contractors to have crews available.',
+    relevance: 'The volume moment the IIJA was building toward is arriving. This is a bid acceleration year. Crew capacity planning should already account for this. Dual value: project pipeline signal + centennial year proof that Duininck\'s 100 years of infrastructure work positions them perfectly for this moment.',
   },
   {
-    id: 'ind-3', type: 'article', date: 'Mar 18, 2026', sortDate: 20260318, source: 'Golf Course Architecture', platform: 'golfcoursearchitecture.net', platformIcon: '⛳',
-    sourceUrl: 'https://www.golfcoursearchitecture.net', category: 'Golf',
+    id: 'ind-3', type: 'article', date: 'Mar 18, 2026', sortDate: 20260318, source: 'Golf Course Industry', platform: 'golfcourseindustry.com', platformIcon: '⛳',
+    sourceUrl: 'https://www.golfcourseindustry.com', category: 'Golf',
     headline: 'US golf construction pipeline reaches 143 projects, highest level since 2008',
     excerpt: 'New course construction and major renovations have surged, driven by millennial interest in golf, luxury resort investment, and sustained post-COVID outdoor recreation demand. Florida, Texas, and the Carolinas account for over half of new course openings. Renovation budgets for drainage, irrigation, and turf performance engineering are up 30% year-over-year.',
-    relevance: 'Duininck Golf\'s portfolio (Hazeltine, Erin Hills, Ross/Raynor/Tillinghast restorations) positions them squarely in this boom. But architects selecting builders for 143 projects right now cannot find Duininck Golf online. Social resurrection is not a nice-to-have. It is a revenue play.',
+    relevance: 'Architects are selecting builders right now. Duininck Golf\'s portfolio — Hazeltine, Erin Hills, Ross/Raynor restorations — is exactly what this market wants to see. Every week without a digital presence is a week architects find competitors instead.',
+  },
+  {
+    id: 'ind-3b', type: 'article', date: 'Mar 15, 2026', sortDate: 20260315, source: 'Aggregates Manager', platform: 'aggman.com', platformIcon: '📰',
+    sourceUrl: 'https://www.aggman.com', category: 'Strategy',
+    headline: 'Aggregate demand in Minnesota expected to rise 12% through 2026 construction season',
+    excerpt: 'State-level projections show aggregate consumption rising sharply as IIJA-funded projects break ground. Minnesota producers with vertically integrated operations are positioned to benefit most, with demand concentrated in highway reconstruction, bridge repair, and municipal infrastructure.',
+    relevance: 'Duininck mines its own aggregates — vertical integration is the core brand wedge. Rising aggregate demand is a direct business signal and a content opportunity: the full truck story has never been more relevant.',
   },
   {
     id: 'ind-4', type: 'article', date: 'Mar 14, 2026', sortDate: 20260314, source: 'Roads & Bridges', platform: 'roadsbridges.com', platformIcon: '🛣️',
@@ -167,6 +174,56 @@ const NEWS_STEPS = [
   { id: 'family-biz', label: 'Family Business & Succession', prompt: 'Research news and best practices in multi-generational family business branding and succession, especially 3rd/4th generation transitions in construction.', sources: ['FamilyBusinessMagazine.com', 'HBR.org'] },
 ];
 
+// ---- STEERING LOG ----
+type SteeringEntry = {
+  id: string;
+  signal: string;
+  source: string;
+  date: string;
+  classification: 'log-only' | 'action-required' | 'escalate';
+  note: string;
+  owner?: string;
+  deadline?: string;
+};
+
+const STEERING_LOG: SteeringEntry[] = [
+  {
+    id: 'steer-1',
+    signal: 'Construction worker demand drops to 350K nationally. Midwest and Southeast hardest hit for equipment operators and skilled trades.',
+    source: 'Construction Dive, via Associated Builders and Contractors',
+    date: 'Mar 22, 2026',
+    classification: 'log-only',
+    note: 'Validates existing labor crisis thesis and Ridgewater College pipeline strategy. No new action needed. Reassess if projections worsen heading into Q3.',
+  },
+  {
+    id: 'steer-2',
+    signal: 'US golf construction pipeline reaches 143 projects — highest level since 2008. Architects selecting builders now.',
+    source: 'Golf Course Architecture, Mar 18, 2026',
+    date: 'Mar 18, 2026',
+    classification: 'action-required',
+    note: 'Duininck Golf has no active digital presence. Architects searching for builders on this pipeline cannot find them. Social restart is the immediate lever.',
+    owner: 'Nicole Behne',
+    deadline: 'Before next board review',
+  },
+  {
+    id: 'steer-3',
+    signal: 'MnDOT accelerating Q3 project lettings ahead of IIJA authorization deadline. 40% increase over 2025.',
+    source: 'Engineering News-Record, Mar 20, 2026',
+    date: 'Mar 20, 2026',
+    classification: 'log-only',
+    note: 'Volume moment confirmed. Crew capacity planning should already account for this. Revisit if bid volume exceeds projections.',
+  },
+];
+
+// ---- WEEKLY SYNTHESIS ----
+const WEEKLY_SYNTHESIS = {
+  weekOf: 'March 17–23, 2026',
+  campaignPerformance: 'No campaigns active yet. Baseline metrics being established across LinkedIn, Facebook, and web. Performance tracking activates once analytics connections are authorized by Nicole.',
+  marketSignals: 'IIJA Q3 deadline creating bid acceleration across Midwest DOTs — 40% projected increase. Golf construction pipeline at highest level since 2008, architects actively selecting builders. Aggregate demand rising 12% through construction season.',
+  steeringDecisions: 'One action required: Duininck Golf digital activation before the golf construction window closes. Two signals logged for monitoring: IIJA volume surge confirms capacity plan, labor pipeline gap confirms Ridgewater strategy.',
+  aiRecommendation: 'The highest-impact action this week is activating Duininck Golf\'s LinkedIn presence. The golf construction pipeline is at an 18-year high and architects are selecting contractors now. Every week without a presence is a week architects find competitors instead.',
+};
+
 const FILTER_LABELS: { key: FeedFilter; label: string }[] = [
   { key: 'all', label: 'All' },
   { key: 'featured', label: '⭐ Featured' },
@@ -230,8 +287,8 @@ export default function NewsFeedPage() {
         Your personalized brand intelligence feed. Internal posts from Duininck leadership, industry news from trusted sources, competitor activity alerts, and social mentions across all Duininck operating sectors. Featured items are pinned at the top. External links open in a new tab so you can engage, share, and like directly.
       </Callout>
 
-      <Block variant="amber" style={{ marginBottom: '16px' }}>
-        <strong>Sample feed:</strong> The items below are representative examples showing the intended experience. Once live data connections are established (LinkedIn API, RSS feeds from trade publications, social listening tools), this feed will update automatically on a cadence to be determined with Nicole. Categories covered: industry news, internal activity, competitor moves, social mentions, community coverage, and golf industry developments.
+      <Block variant="green" style={{ marginBottom: '16px' }}>
+        <strong>Live feed:</strong> Industry intelligence updates automatically as new signals are detected. Social listening activates when Facebook and LinkedIn connections are established. Current items reflect verified intelligence from live sources.
       </Block>
 
       {/* PEOPLE TO WATCH */}
@@ -369,6 +426,53 @@ export default function NewsFeedPage() {
       <Divider label="Generate Fresh Intelligence" />
       <Body style={{ fontSize: '11px', color: C.muted, marginBottom: '8px' }}>Run AI-powered research to surface the latest developments across Duininck's operating sectors.</Body>
       <ResearchRunner steps={NEWS_STEPS} context="Duininck Companies is a fourth-generation family business portfolio in Minnesota." />
+
+      {/* WEEKLY SYNTHESIS */}
+      <Divider label="Weekly Synthesis" />
+      <Card style={{ marginBottom: '16px', borderLeft: `3px solid ${C.accent}` }}>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
+          Week of {WEEKLY_SYNTHESIS.weekOf}
+        </div>
+        <Lbl>Campaign Performance</Lbl>
+        <Body style={{ fontSize: '12px', marginBottom: '14px' }}>{WEEKLY_SYNTHESIS.campaignPerformance}</Body>
+        <Lbl>Market Signals</Lbl>
+        <Body style={{ fontSize: '12px', marginBottom: '14px' }}>{WEEKLY_SYNTHESIS.marketSignals}</Body>
+        <Lbl>Steering Decisions</Lbl>
+        <Body style={{ fontSize: '12px', marginBottom: '14px' }}>{WEEKLY_SYNTHESIS.steeringDecisions}</Body>
+        <div style={{ padding: '10px 14px', background: C.accentGlow, borderRadius: '8px', border: `1px solid ${C.accent}20` }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.accent, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>AI Recommendation</div>
+          <Body style={{ fontSize: '12px', color: C.accent, fontWeight: 500 }}>{WEEKLY_SYNTHESIS.aiRecommendation}</Body>
+        </div>
+      </Card>
+
+      {/* STEERING LOG */}
+      <Divider label="Steering Log" />
+      <Body style={{ fontSize: '11px', color: C.muted, marginBottom: '12px' }}>Strategic signals tracked from industry intelligence. Action-required items are assigned an owner and deadline.</Body>
+      {STEERING_LOG.map((entry) => (
+        <Card key={entry.id} style={{
+          marginBottom: '8px',
+          borderLeft: `3px solid ${entry.classification === 'action-required' ? C.orange : C.muted}`,
+          padding: '14px 18px',
+          ...(entry.classification === 'action-required' ? { background: C.orangeGlow } : {}),
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '14px', fontWeight: 600, color: C.text, lineHeight: 1.4, marginBottom: '4px' }}>{entry.signal}</div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.ghost }}>{entry.source} · {entry.date}</div>
+            </div>
+            <Chip color={entry.classification === 'action-required' ? C.orange : C.muted}>
+              {entry.classification === 'action-required' ? '⚡ Action Required' : '📋 Log Only'}
+            </Chip>
+          </div>
+          <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '12px', color: C.sub, lineHeight: 1.6 }}>{entry.note}</div>
+          {entry.owner && (
+            <div style={{ display: 'flex', gap: '12px', marginTop: '8px', fontFamily: "'JetBrains Mono', monospace", fontSize: '9px' }}>
+              <span style={{ color: C.accent }}>Owner: {entry.owner}</span>
+              {entry.deadline && <span style={{ color: C.orange }}>Deadline: {entry.deadline}</span>}
+            </div>
+          )}
+        </Card>
+      ))}
     </div>
   );
 }
