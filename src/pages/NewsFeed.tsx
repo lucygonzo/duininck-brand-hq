@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, Divider, C, ResearchRunner } from '../components/ui';
+import { SectionHeader, Callout, Card, Body, Chip, Divider, C, ResearchRunner } from '../components/ui';
 
 type FeedFilter = 'all' | 'industry' | 'internal' | 'competitor' | 'social' | 'featured';
 type SortKey = 'date' | 'relevance';
@@ -116,6 +116,35 @@ const FEED_ITEMS: FeedItem[] = [
     excerpt: 'Ames Construction announced their annual ESOP valuation update, celebrating employee ownership as a core differentiator in recruiting. Their LinkedIn post featured individual employee quotes about what ownership means to them.',
     relevance: "Ames is weaponizing ESOP as an employer brand play. Duininck cannot match ESOP ownership, but can counter with family culture and the wellbeing framework. The response: \"We don't give you stock. We give you purpose.\" Different value proposition, equally powerful when articulated.",
   },
+
+  // ===== SOCIAL POSTS (verified LinkedIn URLs) =====
+  {
+    id: 'soc-1', type: 'social', date: 'Apr 8, 2026', sortDate: 20260408, source: 'LinkedIn · Duininck', platform: 'LinkedIn', platformIcon: '🔗',
+    sourceUrl: 'https://www.linkedin.com/posts/duininck_teamduininck-buildingstrongcommunities-theduininckway-activity-7447761284260864000-zoby',
+    category: 'Centennial', featured: true,
+    author: { name: 'Duininck Inc.', role: 'Company Page', initials: 'DI', color: '#004F71', linkedIn: 'https://www.linkedin.com/company/duininck/', photo: '' },
+    headline: 'Duininck is turning 100 — Save the Date: Centennial Open House, July 25 at Willmar Civic Center',
+    excerpt: 'Duininck posted a centennial announcement inviting the community to celebrate 100 years at the Willmar Civic Center on July 25. #TeamDuininck #BuildingStrongCommunities #TheDuininckWay',
+    relevance: "Centennial campaign is live. The July 25 open house is now public. Community response to this post is the first real-world signal of centennial resonance — watch engagement closely over the next 72 hours. This is the organic centennial signal the Brand Intelligence system was built to detect.",
+  },
+  {
+    id: 'soc-2', type: 'social', date: 'Apr 6, 2026', sortDate: 20260406, source: 'LinkedIn · Duininck', platform: 'LinkedIn', platformIcon: '🔗',
+    sourceUrl: 'https://www.linkedin.com/posts/duininck_call811-nsdm-callbeforeyoudig-activity-7446890047838269441-7BkW',
+    category: 'Culture',
+    author: { name: 'Duininck Inc.', role: 'Company Page', initials: 'DI', color: '#004F71', linkedIn: 'https://www.linkedin.com/company/duininck/', photo: '' },
+    headline: 'April is National Safe Digging Month — At Duininck, safe digging is part of how we operate every day',
+    excerpt: 'Duininck highlighted National Safe Digging Month with operational specifics like "60+ quality control checks" — proof-point language that separates Duininck from generic safety posts. #Call811 #NSDM #CallBeforeYouDig',
+    relevance: "Safety content with operational specificity — '60+ quality control checks' is the kind of proof-point language that separates Duininck from generic safety posts. This is on-register. Track engagement as a benchmark for safety pillar performance.",
+  },
+  {
+    id: 'soc-3', type: 'social', date: 'Apr 3, 2026', sortDate: 20260403, source: 'LinkedIn · Duininck', platform: 'LinkedIn', platformIcon: '🔗',
+    sourceUrl: 'https://www.linkedin.com/posts/duininck_duininck100-activity-7445919407404601344-wxbe',
+    category: 'Centennial', featured: true,
+    author: { name: 'Duininck Inc.', role: 'Company Page', initials: 'DI', color: '#004F71', linkedIn: 'https://www.linkedin.com/company/duininck/', photo: '' },
+    headline: 'In 1956, Duininck Brothers & Gilchrist was building its reputation — From dirt roads to interstates. #Duininck100',
+    excerpt: 'Heritage throwback connecting Duininck\'s history to the Eisenhower Interstate System era. The parallel is exactly the brand narrative — Duininck was building when the country was building. Part of the #Duininck100 centennial content series.',
+    relevance: "Heritage content tied to #Duininck100 hashtag. The Eisenhower Interstate System parallel is exactly the brand narrative — Duininck was building when the country was building. This is organic centennial signal in the wild.",
+  },
 ];
 
 const NEWS_STEPS = [
@@ -136,7 +165,7 @@ const FILTER_LABELS: { key: FeedFilter; label: string }[] = [
 
 const CATEGORY_COLORS: Record<string, string> = {
   'Labor': C.red, 'Funding': C.success, 'Golf': '#2E7D4F', 'Strategy': C.accent,
-  'Tech': C.blue, 'Culture': C.orange, 'Competitor': '#8B4513', 'Mention': C.blue,
+  'Tech': C.blue, 'Culture': C.orange, 'Centennial': C.orange, 'Competitor': '#8B4513', 'Mention': C.blue,
 };
 
 const TYPE_BORDER: Record<string, string> = {

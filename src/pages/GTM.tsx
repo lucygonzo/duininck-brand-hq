@@ -87,20 +87,22 @@ export default function GTMPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '16px' }}>
             {[
-              { source: 'Google Analytics', metrics: ['Monthly visitors', 'Bounce rate', 'Top pages', 'Traffic sources', 'Goal conversions'], status: 'Not Connected', icon: '📊' },
-              { source: 'LinkedIn Analytics', metrics: ['Follower growth', 'Post engagement rate', 'Profile views', 'Company page clicks', 'Job posting views'], status: 'Not Connected', icon: '💼' },
-              { source: 'Google Search Console', metrics: ['Keyword impressions', 'Click-through rate', 'Average position', 'Top queries', 'Index coverage'], status: 'Not Connected', icon: '🔍' },
+              { source: 'Google Analytics', metrics: [['Monthly visitors'], ['Bounce rate'], ['Top pages'], ['Traffic sources'], ['Goal conversions']], status: 'Not Connected', icon: '📊', note: '', lastUpdated: '' },
+              { source: 'LinkedIn Analytics', metrics: [['Followers · Duininck Inc.', '2,662'], ['Followers · Duininck Concrete', '446'], ['Post engagement rate'], ['Profile views'], ['Company page clicks']], status: 'Manual Tracking', icon: '💼', note: 'Duininck Concrete: Transitioning followers to main Duininck page', lastUpdated: 'Apr 8, 2026' },
+              { source: 'Google Search Console', metrics: [['Keyword impressions'], ['Click-through rate'], ['Average position'], ['Top queries'], ['Index coverage']], status: 'Not Connected', icon: '🔍', note: '', lastUpdated: '' },
             ].map((ds, i) => (
-              <Card key={i} style={{ padding: '16px', borderTop: `3px solid ${C.border}` }}>
+              <Card key={i} style={{ padding: '16px', borderTop: `3px solid ${ds.status === 'Manual Tracking' ? C.amber : C.border}` }}>
                 <div style={{ fontSize: '24px', marginBottom: '8px' }}>{ds.icon}</div>
                 <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '14px', fontWeight: 700, color: C.text, marginBottom: '4px' }}>{ds.source}</div>
-                <Chip color={C.muted}>{ds.status}</Chip>
+                <Chip color={ds.status === 'Manual Tracking' ? C.amber : C.muted}>{ds.status}</Chip>
                 <div style={{ marginTop: '10px' }}>
                   {ds.metrics.map((m, j) => (
-                    <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: C.ghost, padding: '2px 0' }}>
-                      {m}: <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: C.border }}>---</span>
+                    <div key={j} style={{ fontFamily: "'Inter', sans-serif", fontSize: '11px', color: m[1] ? C.text : C.ghost, padding: '2px 0' }}>
+                      {m[0]}: <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: m[1] ? C.accent : C.border, fontWeight: m[1] ? 600 : 400 }}>{m[1] || '---'}</span>
                     </div>
                   ))}
+                  {ds.note && <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, marginTop: '6px', fontStyle: 'italic' }}>{ds.note}</div>}
+                  {ds.lastUpdated && <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.ghost, marginTop: '4px' }}>Last updated: {ds.lastUpdated}</div>}
                 </div>
               </Card>
             ))}
