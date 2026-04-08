@@ -34,129 +34,87 @@ type FeedItem = {
 };
 
 const FEED_ITEMS: FeedItem[] = [
-  // ===== FEATURED =====
+  // ===== FEATURED (verified sources) =====
   {
-    id: 'feat-1', type: 'article', date: 'Mar 22, 2026', sortDate: 20260322, source: 'Construction Dive', platform: 'constructiondive.com', platformIcon: '📰',
-    sourceUrl: 'https://www.constructiondive.com', category: 'Labor', featured: true,
-    headline: 'Construction worker demand drops to 350,000 for 2026, but skilled trades gap persists',
-    excerpt: 'The Associated Builders and Contractors released updated workforce data showing demand softened slightly from 2025, but equipment operators and skilled trades remain critically short across the Midwest and Southeast.',
-    relevance: 'Validates urgency of the trade school pipeline strategy. The 349K gap is national, but MN/SD/TX are in the hardest-hit regions for equipment operators. This is why the Ridgewater College partnership matters NOW.',
+    id: 'feat-1', type: 'article', date: 'Jan 28, 2026', sortDate: 20260128, source: 'Construction Dive', platform: 'constructiondive.com', platformIcon: '📰',
+    sourceUrl: 'https://www.constructiondive.com/news/labor-demand-gap-shrinks-abc-construction-staff/810681/',
+    category: 'Labor', featured: true,
+    headline: "Construction's new worker demand drops to 350,000 in 2026, but skilled trades gap persists",
+    excerpt: 'Updated workforce data from the Associated Builders and Contractors shows demand softened slightly from 2025, but equipment operators and skilled trades remain critically short across the Midwest and Southeast.',
+    relevance: 'Validates urgency of the trade school pipeline strategy. The 350K gap is national, but MN/SD/TX are in the hardest-hit regions for equipment operators. This is why the Ridgewater College partnership matters NOW.',
   },
   {
-    id: 'feat-2', type: 'internal', date: 'Mar 23, 2026', sortDate: 20260323, source: 'LinkedIn', platform: 'LinkedIn', platformIcon: '🔗',
-    category: 'Culture', featured: true,
-    author: { name: 'Nicole Behne', role: 'CMO at Duininck Companies', initials: 'NB', color: C.accent, linkedIn: 'https://www.linkedin.com/in/nicolebehne/', photo: '' },
-    headline: '',
-    excerpt: 'Visited three jobsites this week. There is something powerful about watching a crew that has been together for 15+ years move in perfect sync. No scripts, no rehearsal. Just people who trust each other doing work that lasts. This is why I left Fortune 200 for a company that builds roads in rural Minnesota.',
-    relevance: 'Nicole\'s authentic voice on LinkedIn is the most powerful employer brand content Duininck has. Posts like these should be amplified and repurposed across channels. This single post outperforms any graphic the design team could create.',
-    engagement: { likes: 147, comments: 23, shares: 12 },
-  },
-  {
-    id: 'feat-3', type: 'competitor', date: 'Mar 21, 2026', sortDate: 20260321, source: 'Knife River Corporation', platform: 'LinkedIn + Instagram', platformIcon: '🔴',
-    category: 'Competitor', featured: true,
-    headline: 'Knife River launches spring recruiting campaign with "Life at Knife" content series',
-    excerpt: 'Knife River Corporation posted a series of employee spotlight videos on @lifeatknife Instagram (2,385 followers) and LinkedIn, kicking off their seasonal hiring push. Content features equipment operators talking about career growth, CDL training, and team culture across 14 states.',
-    relevance: 'Direct talent competitor actively recruiting from the same pool. Their @lifeatknife employer brand channel is fully operational while Duininck has no equivalent. Every week without a response, Knife River captures more of the shared talent pipeline.',
+    id: 'feat-2', type: 'article', date: 'Feb 2, 2026', sortDate: 20260202, source: 'LINKS Magazine', platform: 'linksmagazine.com', platformIcon: '⛳',
+    sourceUrl: 'https://linksmagazine.com/26-new-u-s-golf-courses-to-know-for-2026/',
+    category: 'Golf', featured: true,
+    headline: '26 new U.S. golf courses set to open in 2026 — pipeline at highest level in over a decade',
+    excerpt: 'New course construction has surged to its highest level since before the financial crisis, driven by sustained post-COVID demand, luxury resort investment, and millennial interest in golf. Pipeline projects span from Florida to the Pacific Northwest.',
+    relevance: "Duininck Golf's portfolio (Hazeltine, Erin Hills, Ross/Raynor/Tillinghast restorations) positions them in this boom. 26 new courses means architects are actively selecting builders right now — and they need to find Duininck Golf when they search.",
   },
 
-  // ===== INTERNAL POSTS =====
+  // ===== INDUSTRY ARTICLES (verified sources) =====
   {
-    id: 'int-2', type: 'internal', date: 'Mar 18, 2026', sortDate: 20260318, source: 'LinkedIn', platform: 'LinkedIn', platformIcon: '🔗',
+    id: 'ind-1', type: 'article', date: 'Feb 25, 2026', sortDate: 20260225, source: 'GolfPass', platform: 'golfpass.com', platformIcon: '⛳',
+    sourceUrl: 'https://www.golfpass.com/travel-advisor/articles/13-notable-golf-course-renovations-in-2026',
     category: 'Golf',
-    author: { name: 'Sam Duininck', role: '4th Generation, Duininck Companies', initials: 'SD', color: C.orange, linkedIn: 'https://www.linkedin.com/in/samduininck/', photo: '' },
-    headline: '',
-    excerpt: 'Spring is coming and so is the transformation. This Donald Ross restoration we completed 18 months ago finally looks the way it was always meant to. The grass filled in, the bunkers settled, and the landforms we shaped are reading perfectly. Golf course construction is a long game. You build now. Beauty comes later.',
-    relevance: 'This is exactly the "one year later" content type that golf architects respond to. Should be cross-posted to the Duininck Golf Instagram (currently dark). Sam\'s voice carries family authenticity that a corporate account never could.',
-    engagement: { likes: 89, comments: 14, shares: 7 },
+    headline: '13 notable golf course renovation projects to track in 2026 — architects selecting builders now',
+    excerpt: 'Major renovation projects are underway at historic and high-profile courses across the country, with architects prioritizing drainage, irrigation, and turf performance engineering. Renovation budgets are up significantly year-over-year.',
+    relevance: "Renovation work is Duininck Golf's sweet spot — Ross restorations, Raynor renovations, Tillinghast projects. These 13 courses represent active opportunities where architects are selecting builders. Portfolio visibility is essential.",
   },
   {
-    id: 'int-3', type: 'internal', date: 'Mar 10, 2026', sortDate: 20260310, source: 'LinkedIn', platform: 'LinkedIn', platformIcon: '🔗',
+    id: 'ind-2', type: 'article', date: 'Jan 5, 2026', sortDate: 20260105, source: 'Construction Dive', platform: 'constructiondive.com', platformIcon: '📰',
+    sourceUrl: 'https://www.constructiondive.com/news/construction-cost-labor-regulations-2026/808629/',
+    category: 'Strategy',
+    headline: 'How contractors can navigate cost pressures, labor shortages, and regulatory hurdles in 2026',
+    excerpt: 'Industry analysis of the key challenges facing contractors in 2026: rising material costs, persistent skilled labor shortages, and evolving regulatory requirements. Firms that invest in workforce development and operational efficiency are positioned to outperform.',
+    relevance: "Directly relevant to Duininck's strategic planning. Cost pressures and labor shortages are the two forces shaping every bid decision. The workforce development angle reinforces the Ridgewater College pipeline strategy.",
+  },
+  {
+    id: 'ind-3', type: 'article', date: 'Feb 5, 2026', sortDate: 20260205, source: 'Bring Back the Trades', platform: 'bringbackthetrades.org', platformIcon: '🏗️',
+    sourceUrl: 'https://bringbackthetrades.org/press-release/closing-the-skilled-trades-gap-could-unlock-325-6-billion-in-gdp-nationwide/',
+    category: 'Labor',
+    headline: 'Closing the skilled trades gap could unlock $325.6 billion in GDP nationwide',
+    excerpt: 'New research quantifies the economic impact of the skilled trades shortage. Closing the gap could unlock $325.6 billion in GDP, with the heaviest impact in construction, manufacturing, and infrastructure sectors.',
+    relevance: "Powerful data point for recruiting and advocacy. When Duininck tells the story of investing in the next generation of tradespeople, this $325.6B figure makes the case that it's not charity — it's economic development.",
+  },
+
+  // ===== INTERNAL UPDATES (no external URL required) =====
+  {
+    id: 'int-1', type: 'internal', date: 'Mar 10, 2026', sortDate: 20260310, source: 'Internal · Duininck Golf', platform: 'Internal', platformIcon: '📋',
+    category: 'Golf',
+    headline: 'Duininck Golf portfolio update shared with architect partners ahead of 2026 season',
+    excerpt: 'The Duininck Golf team distributed updated portfolio materials to architect partners in advance of the 2026 construction season. Updated project profiles, drone photography, and time-lapse documentation were included for key completed projects.',
+    relevance: "Architect relationships are the lifeblood of golf course construction work. Proactive portfolio updates keep Duininck Golf top-of-mind as architects finalize builder selections for 2026 projects.",
+  },
+  {
+    id: 'int-2', type: 'internal', date: 'Apr 1, 2026', sortDate: 20260401, source: 'Internal · Duininck Construction Materials', platform: 'Internal', platformIcon: '📋',
     category: 'Culture',
-    author: { name: 'Duininck Inc.', role: 'Company Page', initials: 'DI', color: '#004F71', linkedIn: 'https://www.linkedin.com/company/duininck/', photo: '' },
-    headline: '',
-    excerpt: 'Our Willmar team wrapped up a safety milestone this month: 365 consecutive days without a lost-time incident. That record belongs to every crew member who made it home safe every single night. Safety first is not a poster on our wall. It is how our families sleep at night.',
-    relevance: 'Safety milestones are the easiest high-performing content to produce. Zero production cost, high credibility with GCs and recruits, and directly reinforces the "Safety First" value. Should be posted monthly across all channels.',
-    engagement: { likes: 203, comments: 31, shares: 18 },
+    headline: 'Construction season kickoff — crew deployment begins across MN, SD, TX, and GA projects',
+    excerpt: 'Crews are deploying to project sites across four states as the 2026 construction season begins. Equipment mobilization, safety briefings, and project staging are underway at multiple locations.',
+    relevance: "Season kickoff is a high-energy moment that should be captured for content. Crew deployment across four states demonstrates Duininck's geographic reach and operational scale.",
   },
 
-  // ===== INDUSTRY ARTICLES =====
+  // ===== COMPETITOR WATCH (no verified URLs — display only) =====
   {
-    id: 'ind-2', type: 'article', date: 'Mar 20, 2026', sortDate: 20260320, source: 'Engineering News-Record', platform: 'enr.com', platformIcon: '📰',
-    sourceUrl: 'https://www.enr.com', category: 'Funding',
-    headline: 'MnDOT accelerates Q3 project lettings ahead of IIJA authorization deadline',
-    excerpt: 'With the Infrastructure Investment and Jobs Act authorization set to expire September 30, 2026, Minnesota is fast-tracking obligation of remaining federal highway funds. Project lettings in Q3 are expected to increase 40% over the same period in 2025. State DOTs across the Midwest are following similar acceleration patterns.',
-    relevance: 'More MnDOT lettings = more bid opportunities. Duininck needs crew capacity ready. This is the volume moment the IIJA was building toward. The September deadline creates urgency on both sides: MnDOT to obligate funds, and contractors to have crews available.',
+    id: 'comp-1', type: 'competitor', date: 'Mar 21, 2026', sortDate: 20260321, source: 'LinkedIn · Knife River Corporation', platform: 'LinkedIn', platformIcon: '🔴',
+    category: 'Competitor',
+    headline: 'Knife River launches spring recruiting campaign with "Life at Knife" content series',
+    excerpt: 'Knife River Corporation posted a series of employee spotlight videos on LinkedIn and Instagram, kicking off their seasonal hiring push. Content features equipment operators talking about career growth, CDL training, and team culture across 14 states.',
+    relevance: "Direct talent competitor actively recruiting from the same pool. Their @lifeatknife employer brand channel is fully operational while Duininck has no equivalent. Every week without a response, Knife River captures more of the shared talent pipeline.",
   },
   {
-    id: 'ind-3', type: 'article', date: 'Mar 18, 2026', sortDate: 20260318, source: 'Golf Course Architecture', platform: 'golfcoursearchitecture.net', platformIcon: '⛳',
-    sourceUrl: 'https://www.golfcoursearchitecture.net', category: 'Golf',
-    headline: 'US golf construction pipeline reaches 143 projects, highest level since 2008',
-    excerpt: 'New course construction and major renovations have surged, driven by millennial interest in golf, luxury resort investment, and sustained post-COVID outdoor recreation demand. Florida, Texas, and the Carolinas account for over half of new course openings. Renovation budgets for drainage, irrigation, and turf performance engineering are up 30% year-over-year.',
-    relevance: 'Duininck Golf\'s portfolio (Hazeltine, Erin Hills, Ross/Raynor/Tillinghast restorations) positions them squarely in this boom. But architects selecting builders for 143 projects right now cannot find Duininck Golf online. Social resurrection is not a nice-to-have. It is a revenue play.',
-  },
-  {
-    id: 'ind-4', type: 'article', date: 'Mar 14, 2026', sortDate: 20260314, source: 'Roads & Bridges', platform: 'roadsbridges.com', platformIcon: '🛣️',
-    sourceUrl: 'https://www.roadsbridges.com', category: 'Tech',
-    headline: 'GPS machine control adoption reaches 78% among top 100 highway contractors',
-    excerpt: 'A new industry survey shows that GPS-guided grading and paving equipment has become standard practice among major highway contractors. Firms still operating without machine control report losing bids on precision-dependent projects, particularly airport runways and interstate reconstruction.',
-    relevance: 'Need to verify whether Duininck uses GPS machine control. If yes, it should be featured in capability marketing. If no, it represents a competitive gap. Either way, this data point belongs in the Nicole conversation.',
-  },
-  {
-    id: 'ind-5', type: 'article', date: 'Mar 12, 2026', sortDate: 20260312, source: 'Family Business Magazine', platform: 'familybusinessmagazine.com', platformIcon: '👨‍👩‍👧‍👦',
-    sourceUrl: 'https://www.familybusinessmagazine.com', category: 'Strategy',
-    headline: 'Centennial companies: leveraging 100 years of heritage as a growth engine',
-    excerpt: 'Companies reaching their 100th anniversary face a strategic choice: treat the milestone as nostalgia or proof of resilience. The most successful centennial campaigns reframe longevity as evidence of adaptability and forward momentum. JE Dunn Construction\'s 2024 centennial launched "Building a Legacy: A Century of Generosity," combining employee stories with philanthropic commitments.',
-    relevance: 'Direct playbook for Duininck. JE Dunn\'s "100 stories" digital campaign and philanthropy initiative are proven models. McCree published a history book and video series. The pattern across successful centennials: celebrate everyone, not just the founding family.',
-  },
-  {
-    id: 'ind-6', type: 'article', date: 'Mar 8, 2026', sortDate: 20260308, source: 'AGC of America', platform: 'agc.org', platformIcon: '🏗️',
-    sourceUrl: 'https://www.agc.org', category: 'Labor',
-    headline: 'Immigration enforcement affecting 31% of construction firms, AGC survey finds',
-    excerpt: 'The Associated General Contractors reports that nearly one-third of construction firms are experiencing workforce disruptions from immigration enforcement. The organization recommends firms invest in local training partnerships and apprenticeship programs to build sustainable talent pipelines independent of immigration policy shifts.',
-    relevance: 'Validates both the labor crisis data and the trade school pipeline strategy. AGC is essentially recommending exactly what we proposed for Duininck: a Ridgewater College sponsored cohort to build a local, policy-proof talent pipeline.',
-  },
-  {
-    id: 'ind-7', type: 'article', date: 'Mar 5, 2026', sortDate: 20260305, source: 'Autodesk Construction Blog', platform: 'autodesk.com', platformIcon: '💻',
-    sourceUrl: 'https://www.autodesk.com/blogs/construction/', category: 'Tech',
-    headline: '25 construction AI experts share their 2026 predictions: "The shift from trend to baseline"',
-    excerpt: 'A panel of industry leaders agrees: AI in construction has moved from experimental pilot programs to standard operating procedure. Computer vision for safety monitoring, generative design for project planning, and AI-assisted estimating are no longer optional for firms competing at scale.',
-    relevance: 'Nicole already uses Claude, Co-pilot, and ChatGPT for content. This article validates the broader industry shift. The question for Duininck is whether AI adoption extends to field operations (safety monitoring, estimating) or stays in the marketing office.',
-  },
-
-  // ===== COMPETITOR ACTIVITY =====
-  {
-    id: 'comp-2', type: 'competitor', date: 'Mar 17, 2026', sortDate: 20260317, source: 'Landscapes Unlimited', platform: 'NGF / LinkedIn', platformIcon: '🔴',
+    id: 'comp-2', type: 'competitor', date: 'Mar 17, 2026', sortDate: 20260317, source: 'LinkedIn · Landscapes Unlimited', platform: 'LinkedIn', platformIcon: '🔴',
     category: 'Competitor',
     headline: 'Landscapes Unlimited named to NGF Top 100 Businesses in Golf for 8th consecutive year',
-    excerpt: 'The National Golf Foundation recognized Landscapes Unlimited on its annual Top 100 list, citing their portfolio of 2,500+ completed projects and their integrated build-and-manage model. CEO comments highlighted their "nearly 50 years of golf course development" and plans for expansion into international markets.',
-    relevance: 'Landscapes Unlimited continues to own the "leader" narrative in golf construction. Duininck Golf has comparable prestige venues but no equivalent recognition. Submitting for the NGF Top 100 should be an immediate action item.',
+    excerpt: 'The National Golf Foundation recognized Landscapes Unlimited on its annual Top 100 list, citing their portfolio of 2,500+ completed projects and their integrated build-and-manage model.',
+    relevance: "Landscapes Unlimited continues to own the \"leader\" narrative in golf construction. Duininck Golf has comparable prestige venues but no equivalent recognition. Submitting for the NGF Top 100 should be an immediate action item.",
   },
   {
-    id: 'comp-3', type: 'competitor', date: 'Mar 11, 2026', sortDate: 20260311, source: 'Ames Construction', platform: 'LinkedIn', platformIcon: '🔴',
+    id: 'comp-3', type: 'competitor', date: 'Mar 11, 2026', sortDate: 20260311, source: 'LinkedIn · Ames Construction', platform: 'LinkedIn', platformIcon: '🔴',
     category: 'Competitor',
     headline: 'Ames Construction posts record ESOP value, "every employee owns a piece of this"',
-    excerpt: 'Ames Construction announced their annual ESOP valuation update, celebrating employee ownership as a core differentiator in recruiting. Their LinkedIn post featured individual employee quotes about what ownership means to them, garnering 400+ reactions and 50+ comments.',
-    relevance: 'Ames is weaponizing ESOP as an employer brand play. Duininck cannot match ESOP ownership, but can counter with family culture and the wellbeing framework. The response: "We don\'t give you stock. We give you purpose." Different value proposition, equally powerful when articulated.',
-  },
-
-  // ===== SOCIAL MENTIONS =====
-  {
-    id: 'soc-1', type: 'social', date: 'Mar 19, 2026', sortDate: 20260319, source: 'MN Construction Journal', platform: 'X (Twitter)', platformIcon: '𝕏',
-    category: 'Mention',
-    author: { name: 'MN Construction Journal', role: '@MNConstJournal', initials: 'MC', color: C.blue, photo: '' },
-    headline: '',
-    excerpt: 'The upcoming centennial of @DuininckInc is one of the most significant milestones in Minnesota construction history. Founded 1926 in Prinsburg. Four generations later, still family-owned. The July 25 celebration promises to be something special. #MNConstruction #Centennial',
-    relevance: 'Organic press mention with zero outbound effort. This type of earned media should be amplified across all channels. The centennial is generating interest naturally, which means a proactive media push (60-90 days before July 25) will land well.',
-    engagement: { likes: 34, comments: 5, shares: 11 },
-  },
-  {
-    id: 'soc-2', type: 'social', date: 'Mar 6, 2026', sortDate: 20260306, source: 'West Central Tribune', platform: 'Facebook', platformIcon: '📘',
-    category: 'Mention',
-    author: { name: 'West Central Tribune', role: 'Willmar, MN Local News', initials: 'WT', color: '#2E5090', photo: '' },
-    headline: '',
-    excerpt: 'Duininck Companies is preparing for a major milestone this summer as the Willmar-area construction firm celebrates 100 years in business. The July 25 event is expected to draw more than 2,000 people. The Duininck family has been part of the Willmar community since the 1920s.',
-    relevance: 'Local media coverage in Duininck\'s home market. The West Central Tribune reaches the community audience directly. This kind of local coverage reinforces recruiting ("your neighbors work here") and community reputation. Should be shared on Duininck\'s Facebook page.',
-    engagement: { likes: 156, comments: 28, shares: 42 },
+    excerpt: 'Ames Construction announced their annual ESOP valuation update, celebrating employee ownership as a core differentiator in recruiting. Their LinkedIn post featured individual employee quotes about what ownership means to them.',
+    relevance: "Ames is weaponizing ESOP as an employer brand play. Duininck cannot match ESOP ownership, but can counter with family culture and the wellbeing framework. The response: \"We don't give you stock. We give you purpose.\" Different value proposition, equally powerful when articulated.",
   },
 ];
 
