@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { GTM_STRATEGY, GTM_CAMPAIGNS, GTM_STEERING } from '../data/brandData';
 import { SectionHeader, Callout, Card, Lbl, Body, Block, Chip, SubTabs, StatBox, Divider, ProgressBar, C } from '../components/ui';
 
-const TABS = ['Strategy', 'Performance', 'Campaigns', 'Steering Log', 'Weekly Synthesis'];
+const TABS = ['Strategy', 'Performance', 'Campaigns', `Steering Log (${GTM_STEERING.length})`, 'Weekly Synthesis'];
 
 export default function GTMPage() {
   const [tab, setTab] = useState(TABS[0]);
@@ -182,7 +182,7 @@ export default function GTMPage() {
       )}
 
       {/* ===== TAB 4: STEERING LOG ===== */}
-      {tab === 'Steering Log' && (
+      {tab === TABS[3] && (
         <div>
           <Divider label="Steering Decision System" />
           <Body style={{ fontSize: '12px', color: C.sub, marginBottom: '12px' }}>
