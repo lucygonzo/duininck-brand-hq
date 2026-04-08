@@ -172,17 +172,21 @@ const TYPE_BORDER: Record<string, string> = {
   'internal': C.accent, 'article': C.muted, 'competitor': C.red, 'social': C.blue,
 };
 
-type TimeRange = '7d' | '30d' | '90d' | '1y' | 'all';
+type TimeRange = '7d' | '30d' | '90d' | '1y' | 'all' | 'custom';
 const TIME_RANGE_LABELS: { key: TimeRange; label: string }[] = [
   { key: '7d', label: '7 days' },
   { key: '30d', label: '30 days' },
   { key: '90d', label: '90 days' },
   { key: '1y', label: '1 year' },
   { key: 'all', label: 'All time' },
+  { key: 'custom', label: 'Custom' },
 ];
 
-// Reference date: April 8, 2026
-const TODAY = 20260408;
+function toSortDate(d: Date): number {
+  return (d.getFullYear() * 10000) + ((d.getMonth() + 1) * 100) + d.getDate();
+}
+
+const TODAY = toSortDate(new Date());
 
 function sortDateToMs(sd: number): number {
   const y = Math.floor(sd / 10000);
@@ -191,21 +195,40 @@ function sortDateToMs(sd: number): number {
   return new Date(y, m, d).getTime();
 }
 
-function isWithinRange(sortDate: number, range: TimeRange): boolean {
+function isWithinRange(sortDate: number, range: TimeRange, customStart?: number, customEnd?: number): boolean {
   if (range === 'all') return true;
+  if (range === 'custom') {
+    if (customStart && sortDate < customStart) return false;
+    if (customEnd && sortDate > customEnd) return false;
+    return true;
+  }
   const todayMs = sortDateToMs(TODAY);
   const itemMs = sortDateToMs(sortDate);
   const days = range === '7d' ? 7 : range === '30d' ? 30 : range === '90d' ? 90 : 365;
   return todayMs - itemMs <= days * 24 * 60 * 60 * 1000;
 }
 
+function sortDateToInputValue(sd: number): string {
+  const y = Math.floor(sd / 10000);
+  const m = Math.floor((sd % 10000) / 100);
+  const d = sd % 100;
+  return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+}
+
+function inputValueToSortDate(val: string): number {
+  const [y, m, d] = val.split('-').map(Number);
+  return (y * 10000) + (m * 100) + d;
+}
+
 export default function NewsFeedPage() {
   const [filter, setFilter] = useState<FeedFilter>('all');
   const [sort, setSort] = useState<SortKey>('date');
   const [timeRange, setTimeRange] = useState<TimeRange>('all');
+  const [customStart, setCustomStart] = useState<number | undefined>(undefined);
+  const [customEnd, setCustomEnd] = useState<number | undefined>(undefined);
   const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
 
-  const timeFiltered = FEED_ITEMS.filter(f => isWithinRange(f.sortDate, timeRange));
+  const timeFiltered = FEED_ITEMS.filter(f => isWithinRange(f.sortDate, timeRange, customStart, customEnd));
 
   const filtered = (() => {
     let items = [...timeFiltered];
@@ -277,13 +300,22 @@ export default function NewsFeedPage() {
 
       {/* TIME RANGE */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', flexWrap: 'wrap', gap: '6px' }}>
-        <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '4px', alignItems: 'center', flexWrap: 'wrap' }}>
           <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, textTransform: 'uppercase', marginRight: '4px' }}>Range:</span>
           {TIME_RANGE_LABELS.map(t => (
             <button key={t.key} onClick={() => setTimeRange(t.key)}
               style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', textTransform: 'uppercase', letterSpacing: '0.06em', padding: '4px 10px', borderRadius: '12px', cursor: 'pointer', border: `1px solid ${timeRange === t.key ? C.accent : C.border}`, background: timeRange === t.key ? C.accentDim : 'transparent', color: timeRange === t.key ? C.accent : C.muted, fontWeight: timeRange === t.key ? 600 : 400, transition: 'all 0.15s' }}
             >{t.label}</button>
           ))}
+          {timeRange === 'custom' && (
+            <div style={{ display: 'flex', gap: '4px', alignItems: 'center', marginLeft: '4px' }}>
+              <input type="date" value={customStart ? sortDateToInputValue(customStart) : ''} onChange={e => setCustomStart(e.target.value ? inputValueToSortDate(e.target.value) : undefined)}
+                style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', padding: '3px 6px', borderRadius: '6px', border: `1px solid ${C.accent}40`, background: C.accentDim, color: C.accent, outline: 'none' }} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted }}>to</span>
+              <input type="date" value={customEnd ? sortDateToInputValue(customEnd) : ''} onChange={e => setCustomEnd(e.target.value ? inputValueToSortDate(e.target.value) : undefined)}
+                style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', padding: '3px 6px', borderRadius: '6px', border: `1px solid ${C.accent}40`, background: C.accentDim, color: C.accent, outline: 'none' }} />
+            </div>
+          )}
         </div>
         <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted }}>
           Showing {filtered.length} of {FEED_ITEMS.length} items
