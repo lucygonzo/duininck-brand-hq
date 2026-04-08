@@ -143,13 +143,43 @@ const TYPE_BORDER: Record<string, string> = {
   'internal': C.accent, 'article': C.muted, 'competitor': C.red, 'social': C.blue,
 };
 
+type TimeRange = '7d' | '30d' | '90d' | '1y' | 'all';
+const TIME_RANGE_LABELS: { key: TimeRange; label: string }[] = [
+  { key: '7d', label: '7 days' },
+  { key: '30d', label: '30 days' },
+  { key: '90d', label: '90 days' },
+  { key: '1y', label: '1 year' },
+  { key: 'all', label: 'All time' },
+];
+
+// Reference date: April 8, 2026
+const TODAY = 20260408;
+
+function sortDateToMs(sd: number): number {
+  const y = Math.floor(sd / 10000);
+  const m = Math.floor((sd % 10000) / 100) - 1;
+  const d = sd % 100;
+  return new Date(y, m, d).getTime();
+}
+
+function isWithinRange(sortDate: number, range: TimeRange): boolean {
+  if (range === 'all') return true;
+  const todayMs = sortDateToMs(TODAY);
+  const itemMs = sortDateToMs(sortDate);
+  const days = range === '7d' ? 7 : range === '30d' ? 30 : range === '90d' ? 90 : 365;
+  return todayMs - itemMs <= days * 24 * 60 * 60 * 1000;
+}
+
 export default function NewsFeedPage() {
   const [filter, setFilter] = useState<FeedFilter>('all');
   const [sort, setSort] = useState<SortKey>('date');
+  const [timeRange, setTimeRange] = useState<TimeRange>('all');
   const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
 
+  const timeFiltered = FEED_ITEMS.filter(f => isWithinRange(f.sortDate, timeRange));
+
   const filtered = (() => {
-    let items = [...FEED_ITEMS];
+    let items = [...timeFiltered];
     if (filter === 'featured') items = items.filter(f => f.featured);
     else if (filter === 'industry') items = items.filter(f => f.type === 'article');
     else if (filter === 'internal') items = items.filter(f => f.type === 'internal');
@@ -172,12 +202,12 @@ export default function NewsFeedPage() {
   };
 
   const counts = {
-    all: FEED_ITEMS.length,
-    featured: FEED_ITEMS.filter(f => f.featured).length,
-    internal: FEED_ITEMS.filter(f => f.type === 'internal').length,
-    industry: FEED_ITEMS.filter(f => f.type === 'article').length,
-    competitor: FEED_ITEMS.filter(f => f.type === 'competitor').length,
-    social: FEED_ITEMS.filter(f => f.type === 'social').length,
+    all: timeFiltered.length,
+    featured: timeFiltered.filter(f => f.featured).length,
+    internal: timeFiltered.filter(f => f.type === 'internal').length,
+    industry: timeFiltered.filter(f => f.type === 'article').length,
+    competitor: timeFiltered.filter(f => f.type === 'competitor').length,
+    social: timeFiltered.filter(f => f.type === 'social').length,
   };
 
   return (
@@ -188,9 +218,12 @@ export default function NewsFeedPage() {
         Your personalized brand intelligence feed. Internal posts from Duininck leadership, industry news from trusted sources, competitor activity alerts, and social mentions across all Duininck operating sectors. Featured items are pinned at the top. External links open in a new tab so you can engage, share, and like directly.
       </Callout>
 
-      <Block variant="amber" style={{ marginBottom: '16px' }}>
-        <strong>Sample feed:</strong> The items below are representative examples showing the intended experience. Once live data connections are established (LinkedIn API, RSS feeds from trade publications, social listening tools), this feed will update automatically on a cadence to be determined with Nicole. Categories covered: industry news, internal activity, competitor moves, social mentions, community coverage, and golf industry developments.
-      </Block>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 16px', background: `${C.blue}08`, border: `1px solid ${C.blue}20`, borderRadius: '8px', marginBottom: '16px' }}>
+        <span style={{ fontSize: '12px', opacity: 0.6 }}>📡</span>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: C.blue, letterSpacing: '0.02em' }}>
+          Intelligence feed active · Industry intelligence verified from live RSS sources · Social listening activates when Facebook and LinkedIn connections are established
+        </span>
+      </div>
 
       {/* PEOPLE TO WATCH */}
       <Divider label="People to Watch" />
@@ -211,6 +244,21 @@ export default function NewsFeedPage() {
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: p.color, background: `${p.color}10`, padding: '2px 8px', borderRadius: '10px' }}>View Profile &#8599;</div>
           </a>
         ))}
+      </div>
+
+      {/* TIME RANGE */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', flexWrap: 'wrap', gap: '6px' }}>
+        <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, textTransform: 'uppercase', marginRight: '4px' }}>Range:</span>
+          {TIME_RANGE_LABELS.map(t => (
+            <button key={t.key} onClick={() => setTimeRange(t.key)}
+              style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', textTransform: 'uppercase', letterSpacing: '0.06em', padding: '4px 10px', borderRadius: '12px', cursor: 'pointer', border: `1px solid ${timeRange === t.key ? C.accent : C.border}`, background: timeRange === t.key ? C.accentDim : 'transparent', color: timeRange === t.key ? C.accent : C.muted, fontWeight: timeRange === t.key ? 600 : 400, transition: 'all 0.15s' }}
+            >{t.label}</button>
+          ))}
+        </div>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', color: C.muted }}>
+          Showing {filtered.length} of {FEED_ITEMS.length} items
+        </span>
       </div>
 
       {/* CONTROLS: Filter + Sort */}

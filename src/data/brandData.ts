@@ -1697,4 +1697,26 @@ export const GTM_STRATEGY = {
 
 export const GTM_CAMPAIGNS: { name: string; channel: string; audience: string; goal: string; spend: string; results: string; learnings: string; status: string }[] = [];
 
-export const GTM_STEERING: { date: string; insight: string; source: string; type: 'log' | 'action'; action?: string }[] = [];
+export const GTM_STEERING: { date: string; insight: string; source: string; type: 'log' | 'action'; action?: string }[] = [
+  {
+    date: 'Mar 22, 2026',
+    insight: 'Construction worker demand drops to 350K nationally. Midwest and Southeast hardest hit for equipment operators and skilled trades.',
+    source: 'Construction Dive, via Associated Builders and Contractors',
+    type: 'log',
+    action: 'Validates existing labor crisis thesis and Ridgewater College pipeline strategy. No new action needed. Reassess if projections worsen heading into Q3.',
+  },
+  {
+    date: 'Feb 2, 2026',
+    insight: 'US golf construction pipeline reaches 140+ active projects — highest level since 2008. Architects selecting builders now.',
+    source: 'LINKS Magazine / National Golf Foundation',
+    type: 'action',
+    action: 'Duininck Golf has no active digital presence. Architects searching for builders on this pipeline cannot find them. Social restart is the immediate lever. Owner: Nicole Behne · Deadline: Before next board review',
+  },
+  {
+    date: 'Mar 20, 2026',
+    insight: 'MnDOT accelerating Q3 project lettings ahead of IIJA authorization deadline. Volume moment confirmed.',
+    source: 'Engineering News-Record',
+    type: 'log',
+    action: 'Crew capacity planning should already account for this. Revisit if bid volume exceeds projections.',
+  },
+];

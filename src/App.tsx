@@ -19,6 +19,7 @@ import DecisionsPage from './pages/Decisions';
 import ReportCardPage from './pages/ReportCard';
 import DigitalEcosystemPage from './pages/DigitalEcosystem';
 import GTMPage from './pages/GTM';
+import IntelligenceSettingsPage from './pages/IntelligenceSettings';
 
 type TabId = string;
 type Tab = {
@@ -52,7 +53,10 @@ const NAV: Group[] = [
   { group: 'GTM', tabs: [
     { id: 'ecosystem', label: 'Digital Ecosystem', component: DigitalEcosystemPage },
     { id: 'gtm', label: 'Go-to-Market', component: GTMPage, research: { complete: 0, total: 5 } },
+  ]},
+  { group: 'Intelligence', tabs: [
     { id: 'newsfeed', label: 'Live News Feed', component: NewsFeedPage, research: { complete: 0, total: 3 } },
+    { id: 'intel-settings', label: 'Intelligence Settings', component: IntelligenceSettingsPage },
   ]},
   { group: 'Workspace', tabs: [
     { id: 'pipeline', label: 'Research Pipeline', component: ResearchPipelinePage },
