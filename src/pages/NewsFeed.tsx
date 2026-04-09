@@ -6,7 +6,7 @@ type SortKey = 'date' | 'relevance';
 
 // ---- PEOPLE TO WATCH ----
 const INTERNAL_PEOPLE = [
-  { name: 'Nicole Behne', role: 'CMO, Duininck Companies', initials: 'NB', color: C.accent, linkedIn: 'https://www.linkedin.com/in/nicolebehne/', photo: 'https://media.licdn.com/dms/image/v2/D5603AQGsNmE8gH-6jA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1684340843906?e=2147483647&v=beta&t=placeholder' },
+  { name: 'Nicole Behne', role: 'CMO, Duininck Companies', initials: 'NB', color: C.accent, linkedIn: 'https://www.linkedin.com/in/nicolebehne/', photo: 'https://media.licdn.com/dms/image/v2/D5603AQGsNmE8gH-6jA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1684340843906?e=2147483647&v=beta&t=YMWjFnGbYh_UaGxkjgKrWCaDQRs' },
   { name: 'Sam Duininck', role: '4th Gen, Business Development', initials: 'SD', color: C.orange, linkedIn: 'https://www.linkedin.com/in/samduininck/', photo: '' },
   { name: 'Duininck Inc.', role: 'Company Page · LinkedIn', initials: 'DI', color: '#004F71', linkedIn: 'https://www.linkedin.com/company/duininck/', photo: '' },
   { name: 'Duininck Golf', role: 'Division Page · LinkedIn', initials: 'DG', color: '#2E7D4F', linkedIn: 'https://www.linkedin.com/company/duininck-golf/', photo: '' },

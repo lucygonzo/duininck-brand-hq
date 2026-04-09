@@ -126,7 +126,7 @@ export default function App() {
         {/* Logo */}
         <div style={{ padding: '20px 18px', borderBottom: `1px solid ${C.border}`, flexShrink: 0 }}>
           <div style={{ fontFamily: "'Inter', sans-serif", fontSize: '18px', fontWeight: 800, color: C.accent, letterSpacing: '-0.02em' }}>Duininck</div>
-          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, textTransform: 'uppercase', letterSpacing: '0.16em', marginTop: '3px' }}>Brand HQ · Mar 2026</div>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted, textTransform: 'uppercase', letterSpacing: '0.16em', marginTop: '3px' }}>Brand HQ · Apr 2026</div>
         </div>
 
         {/* Nav groups */}

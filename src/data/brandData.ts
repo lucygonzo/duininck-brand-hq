@@ -1695,7 +1695,38 @@ export const GTM_STRATEGY = {
   ],
 };
 
-export const GTM_CAMPAIGNS: { name: string; channel: string; audience: string; goal: string; spend: string; results: string; learnings: string; status: string }[] = [];
+export const GTM_CAMPAIGNS: { name: string; channel: string; audience: string; goal: string; spend: string; results: string; learnings: string; status: string }[] = [
+  {
+    name: 'Glassdoor Review Activation',
+    channel: 'Email + Internal Comms',
+    audience: 'Current employees (200+)',
+    goal: 'Increase Glassdoor reviews from 9 to 50+ by Q3',
+    spend: '$0 (organic internal ask)',
+    results: 'Pending launch',
+    learnings: 'Sequence matters — start with tenured crew leads who have the strongest stories, then expand to broader team.',
+    status: 'Planned',
+  },
+  {
+    name: 'Duininck Golf Social Restart',
+    channel: 'Instagram + LinkedIn',
+    audience: 'Golf course architects, club GMs, renovation committees',
+    goal: 'Reactivate dormant Duininck Golf social presence before 2026 build season',
+    spend: '$500/mo (photography + boosted posts)',
+    results: 'Pending launch',
+    learnings: 'Portfolio content from completed projects (Hazeltine, Erin Hills) is the strongest asset. "One year later" before/after posts outperform new-build content.',
+    status: 'Planned',
+  },
+  {
+    name: 'Centennial Content Countdown',
+    channel: 'LinkedIn + Facebook + Local Media',
+    audience: 'Community, employees, industry peers',
+    goal: 'Build awareness for July 25 centennial event; target 2,000+ attendees',
+    spend: '$2,000 (media buy + event collateral)',
+    results: '#Duininck100 posts live — tracking engagement',
+    learnings: 'Heritage throwback content (1956 Interstate era) resonates more than corporate milestone messaging. Let the history speak.',
+    status: 'Active',
+  },
+];
 
 export const GTM_STEERING: { date: string; insight: string; source: string; type: 'log' | 'action'; action?: string }[] = [
   {
