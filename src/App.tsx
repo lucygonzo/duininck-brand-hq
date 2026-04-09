@@ -21,6 +21,7 @@ import DigitalEcosystemPage from './pages/DigitalEcosystem';
 import GTMPage from './pages/GTM';
 import IntelligenceSettingsPage from './pages/IntelligenceSettings';
 import DailyBriefPage from './pages/DailyBrief';
+import PerformancePage from './pages/Performance';
 
 type TabId = string;
 type Tab = {
@@ -57,6 +58,7 @@ const NAV: Group[] = [
   ]},
   { group: 'Intelligence', tabs: [
     { id: 'daily-brief', label: 'Daily Brief', component: DailyBriefPage },
+    { id: 'performance', label: 'Performance', component: PerformancePage },
     { id: 'newsfeed', label: 'Live News Feed', component: NewsFeedPage, research: { complete: 0, total: 3 } },
     { id: 'intel-settings', label: 'Intelligence Settings', component: IntelligenceSettingsPage },
   ]},
