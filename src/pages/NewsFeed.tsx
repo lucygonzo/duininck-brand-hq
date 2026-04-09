@@ -173,6 +173,7 @@ const TYPE_BORDER: Record<string, string> = {
 };
 
 type TimeRange = '7d' | '30d' | '90d' | '1y' | 'all' | 'custom';
+type TimeUnit = 'days' | 'weeks' | 'months';
 const TIME_RANGE_LABELS: { key: TimeRange; label: string }[] = [
   { key: '7d', label: '7 days' },
   { key: '30d', label: '30 days' },
@@ -195,40 +196,28 @@ function sortDateToMs(sd: number): number {
   return new Date(y, m, d).getTime();
 }
 
-function isWithinRange(sortDate: number, range: TimeRange, customStart?: number, customEnd?: number): boolean {
+function customToDays(value: number, unit: TimeUnit): number {
+  return unit === 'days' ? value : unit === 'weeks' ? value * 7 : value * 30;
+}
+
+function isWithinRange(sortDate: number, range: TimeRange, customDays?: number): boolean {
   if (range === 'all') return true;
-  if (range === 'custom') {
-    if (customStart && sortDate < customStart) return false;
-    if (customEnd && sortDate > customEnd) return false;
-    return true;
-  }
   const todayMs = sortDateToMs(TODAY);
   const itemMs = sortDateToMs(sortDate);
-  const days = range === '7d' ? 7 : range === '30d' ? 30 : range === '90d' ? 90 : 365;
+  const days = range === 'custom' ? (customDays || 9999) : range === '7d' ? 7 : range === '30d' ? 30 : range === '90d' ? 90 : 365;
   return todayMs - itemMs <= days * 24 * 60 * 60 * 1000;
-}
-
-function sortDateToInputValue(sd: number): string {
-  const y = Math.floor(sd / 10000);
-  const m = Math.floor((sd % 10000) / 100);
-  const d = sd % 100;
-  return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-}
-
-function inputValueToSortDate(val: string): number {
-  const [y, m, d] = val.split('-').map(Number);
-  return (y * 10000) + (m * 100) + d;
 }
 
 export default function NewsFeedPage() {
   const [filter, setFilter] = useState<FeedFilter>('all');
   const [sort, setSort] = useState<SortKey>('date');
   const [timeRange, setTimeRange] = useState<TimeRange>('all');
-  const [customStart, setCustomStart] = useState<number | undefined>(undefined);
-  const [customEnd, setCustomEnd] = useState<number | undefined>(undefined);
+  const [customValue, setCustomValue] = useState(14);
+  const [customUnit, setCustomUnit] = useState<TimeUnit>('days');
   const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
 
-  const timeFiltered = FEED_ITEMS.filter(f => isWithinRange(f.sortDate, timeRange, customStart, customEnd));
+  const customDays = customToDays(customValue, customUnit);
+  const timeFiltered = FEED_ITEMS.filter(f => isWithinRange(f.sortDate, timeRange, customDays));
 
   const filtered = (() => {
     let items = [...timeFiltered];
@@ -309,11 +298,15 @@ export default function NewsFeedPage() {
           ))}
           {timeRange === 'custom' && (
             <div style={{ display: 'flex', gap: '4px', alignItems: 'center', marginLeft: '4px' }}>
-              <input type="date" value={customStart ? sortDateToInputValue(customStart) : ''} onChange={e => setCustomStart(e.target.value ? inputValueToSortDate(e.target.value) : undefined)}
-                style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', padding: '3px 6px', borderRadius: '6px', border: `1px solid ${C.accent}40`, background: C.accentDim, color: C.accent, outline: 'none' }} />
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted }}>to</span>
-              <input type="date" value={customEnd ? sortDateToInputValue(customEnd) : ''} onChange={e => setCustomEnd(e.target.value ? inputValueToSortDate(e.target.value) : undefined)}
-                style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', padding: '3px 6px', borderRadius: '6px', border: `1px solid ${C.accent}40`, background: C.accentDim, color: C.accent, outline: 'none' }} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '8px', color: C.muted }}>Last</span>
+              <input type="number" min={1} max={365} value={customValue} onChange={e => setCustomValue(Math.max(1, Number(e.target.value) || 1))}
+                style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', width: '42px', padding: '3px 6px', borderRadius: '6px', border: `1px solid ${C.accent}40`, background: C.accentDim, color: C.accent, outline: 'none', textAlign: 'center' }} />
+              <select value={customUnit} onChange={e => setCustomUnit(e.target.value as TimeUnit)}
+                style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '9px', padding: '3px 6px', borderRadius: '6px', border: `1px solid ${C.accent}40`, background: C.accentDim, color: C.accent, outline: 'none', cursor: 'pointer' }}>
+                <option value="days">days</option>
+                <option value="weeks">weeks</option>
+                <option value="months">months</option>
+              </select>
             </div>
           )}
         </div>
